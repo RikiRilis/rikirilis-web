@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro";
+import About from "@/components/portfolio/About.astro";
+import Experience from "@/components/portfolio/Experience.astro";
+import Projects from "@/components/portfolio/Projects.astro";
+import Contact from "@/components/portfolio/Contact.astro";
+import SectionContainer from "@/components/SectionContainer.astro";
+---
+
+<Layout
+    title="Web & Android Developer | Rikelvi Capellán"
+    description="I build easy-to-use websites and Android apps, with fast technologies and UX/UI standards to improve user experience."
+>
+    <SectionContainer id="about">
+        <About />
+    </SectionContainer>
+
+    <SectionContainer id="experience">
+        <Experience />
+    </SectionContainer>
+
+    <SectionContainer id="projects">
+        <Projects />
+    </SectionContainer>
+
+    <SectionContainer id="contact">
+        <Contact />
+    </SectionContainer>
+</Layout>

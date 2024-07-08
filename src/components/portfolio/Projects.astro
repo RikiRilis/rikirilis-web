@@ -1,0 +1,47 @@
+---
+import { type Projects } from "@/interfaces/projects.interface";
+import { projectsService } from "@/services/projects.service";
+import ProjectsCard from "@/components/ProjectsCard.astro";
+import Code from "@/icons/Code.astro";
+
+const allProjects: Projects[] = projectsService().slice(0, 4);
+---
+
+<h2
+  class="flex items-center gap-x-3 text-3xl font-semibold sm:text-4xl text-slate-200 mb-8"
+>
+  <Code class="size-8" />
+  Projects
+</h2>
+
+<div class="flex flex-col gap-y-16 text-">
+  {
+    allProjects.map(
+      ({
+        id,
+        title,
+        description,
+        imgUrl,
+        projectUrl,
+        tags,
+        gitCodeUrl,
+        alt,
+      }) => (
+        <ProjectsCard
+          id={id}
+          title={title}
+          description={description}
+          imgUrl={imgUrl}
+          projectUrl={projectUrl}
+          tags={tags}
+          gitCodeUrl={gitCodeUrl}
+          alt={alt}
+        />
+      ),
+    )
+  }
+</div>
+
+<hr
+  class="w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-800 to-transparent my-20 border-0"
+/>

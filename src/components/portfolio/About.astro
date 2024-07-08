@@ -1,0 +1,99 @@
+---
+import Badge from "@/components/Badge.astro";
+import Binoculars from "@/icons/Binoculars.astro";
+import Chat from "@/icons/Chat.astro";
+import SocialPill from "@/components/SocialPill.astro";
+import GitHub from "@/icons/GitHub.astro";
+import LinkedIn from "@/icons/LinkedIn.astro";
+import Check from "@/icons/Check.astro";
+
+const imageUrl: string =
+  "https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/src/main-pic.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vc3JjL21haW4tcGljLndlYnAiLCJpYXQiOjE3MTk1MTkxNDIsImV4cCI6MzI5NjMxOTE0Mn0.AfuzV2joKThAdRYAjwaKGsWWyiBu4i1VEjtkazr3RKY&t=2024-06-27T20%3A12%3A28.502Z";
+
+const cvUrl: string =
+  "https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/docs/Rikelvi_Capell_n_CV.pdf?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vZG9jcy9SaWtlbHZpX0NhcGVsbF9uX0NWLnBkZiIsImlhdCI6MTcxOTUxNDY2OCwiZXhwIjozMjk2MzE0NjY4fQ.966pqCV2sq2vyNllIrv6RVHiAUtagPdmmNqXuYh8U1M&t=2024-06-27T18%3A57%3A53.059Z";
+---
+
+<div class="flex flex-row w-full gap-4 items-center">
+  <a
+    id="img-container"
+    href="https://rikirilis.xyz/portfolio"
+    class="size-20 sm:size-36 border-2 group border-cyan-600 rounded-full relative overflow-hidden"
+  >
+    <img
+      decoding="async"
+      src={imageUrl}
+      class="object-cover scale-105 sm:group-hover:scale-100 active:group-hover:scale-100 transition duration-300"
+      height="1200"
+      width="630"
+      alt="Rikelvi Capellán portfolio picture"
+    />
+  </a>
+
+  <div class="flex flex-col items-start">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl text-slate-200">
+      <strong>Rikelvi Capellán</strong>
+    </h1>
+    <h3 class="text-md sm:text-xl text-slate-200">
+      <strong>Android & Web Developer</strong>
+    </h3>
+
+    <a
+      href="https://www.linkedin.com/in/rikirilis/"
+      target="_blank"
+      rel="noopener"
+    >
+      <Badge>
+        <Check class="text-cyan-600 w-5 h-5 mr-2" />
+        <h5 class="text-cyan-600 font-bold">Available</h5>
+      </Badge>
+    </a>
+  </div>
+</div>
+
+<hr
+  class="w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-800 to-transparent my-6 border-0"
+/>
+
+<div class="flex flex-col items-center w-full">
+  <h3 class="text-xl text-slate-400 sm:text-balance font-semibold">
+    +3 years of experience. <strong class="text-cyan-600"
+      >Easy-to-use websites</strong
+    > and <strong class="text-cyan-600">Android apps builder</strong> with <strong
+      class="text-cyan-600">fast technologies</strong
+    > and <strong class="text-cyan-600">UX/UI standards</strong> to improve user
+    experience.
+  </h3>
+
+  <nav class="flex w-full gap-3 mt-8 mb-2 flex-wrap">
+    <SocialPill target="_blank" href="https://www.linkedin.com/in/rikirilis/">
+      <LinkedIn class="size-6" />
+      LinkedIn
+    </SocialPill>
+
+    <SocialPill target="_blank" href="https://github.com/RikiRilis">
+      <GitHub class="size-5" />
+      GitHub
+    </SocialPill>
+
+    <SocialPill target="_blank" href={cvUrl}>
+      <Binoculars class="size-6" />
+      Watch CV
+    </SocialPill>
+
+    <SocialPill href="#contact">
+      <Chat class="size-5" />
+      Contact
+    </SocialPill>
+  </nav>
+
+  <hr
+    class="w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-800 to-transparent my-6 border-0"
+  />
+</div>
+
+<style>
+  #img-container {
+    box-shadow: 0 0 15px rgba(8, 145, 178, 1);
+  }
+</style>

@@ -1,0 +1,29 @@
+---
+import Briefcase from "@/icons/Briefcase.astro";
+
+interface Props {
+    title: string;
+    description: string;
+    date: string;
+}
+
+const { title, description, date } = Astro.props;
+---
+
+<span
+    class="absolute flex items-center justify-center w-6 h-6 bg-cyan-950 rounded-full -start-3 ring-8 ring-slate-900"
+>
+    <Briefcase class="size-4 text-cyan-600" />
+</span>
+
+<h3 class="flex items-center ml-2 text-xl font-bold text-cyan-600">
+    {title}
+</h3>
+
+<time class="block mb-3 ml-2 text-sm font-normal leading-none text-slate-500">
+    {date}
+</time>
+
+<p class="mb-4 ml-2 text-base font-normal text-slate-400 text-pretty">
+    {description}
+</p>

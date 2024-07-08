@@ -1,0 +1,90 @@
+---
+import Send from "@/icons/Send.astro";
+import GitHub from "@/icons/GitHub.astro";
+
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+  imgUrl: string;
+  projectUrl: string;
+  tags: {
+    name: string;
+    class: string;
+    iconColor: string;
+    icon: any;
+  }[];
+  gitCodeUrl: string;
+  alt: string;
+}
+
+const { id, title, description, imgUrl, projectUrl, tags, gitCodeUrl, alt } =
+  Astro.props;
+---
+
+<article
+  class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0"
+>
+  <div class="w-full md:1/2">
+    <div
+      class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-300 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:group-hover:-translate-y-1 sm:group-hover:translate-x-1 sm:group-hover:shadow-2xl border border-slate-800 lg:hover:border-slate-700 lg:hover:bg-slate-800/50"
+    >
+      <img
+        src={imgUrl}
+        alt={alt}
+        width="1280"
+        height="720"
+        decoding="async"
+        loading="lazy"
+        class="object-cover object-top w-full h-56 transition duration-300 sm:h-full sm:scale-110 sm:group-hover:scale-105"
+      />
+    </div>
+  </div>
+
+  <div class="w-full md:max-w-lg flex flex-col gap-2">
+    <h3 class="font-bold text-2xl text-slate-200">
+      {title}
+    </h3>
+
+    <ul class="flex flex-row mb-2 gap-x-2">
+      {
+        tags.map((tag) => (
+          <li>
+            <span
+              class={`flex gap-x-2 rounded-full text-xs py-1 px-2 ${tag.class}`}
+            >
+              <tag.icon class={`size-4 ${tag.iconColor}`} />
+              {tag.name}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="text-slate-400 h-full text-pretty mt-2">
+      {description}
+    </p>
+
+    <footer class="flex items-end justify-start gap-x-4 h-fit w-full mt-4">
+      <a
+        href={projectUrl}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center justify-center gap-2 px-3 py-2 space-x-2 text-base text-slate-400 transition bg-slate-900 border border-slate-800 focus-visible:ring-cyan-600/80 text-md sm:hover:bg-slate-800 sm:hover:border-slate-700 group max-w-fit rounded-xl sm:hover:text-slate-200 focus:outline-none focus-visible:outline-none focus-visible:ring focus-visible:ring-white focus-visible:ring-offset-2 active:bg-slate-800"
+      >
+        <Send class="size-6" />
+        Squint
+      </a>
+
+      <a
+        href={gitCodeUrl}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center justify-center gap-2 px-3 py-2 space-x-2 text-base text-slate-400 transition bg-slate-900 border border-slate-800 focus-visible:ring-cyan-600/80 text-md sm:hover:bg-slate-800 sm:hover:border-slate-700 group max-w-fit rounded-xl sm:hover:text-slate-200 focus:outline-none focus-visible:outline-none focus-visible:ring focus-visible:ring-white focus-visible:ring-offset-2 active:bg-slate-800"
+      >
+        <GitHub class="size-6" />
+        Code
+      </a>
+    </footer>
+  </div>
+</article>

@@ -1,0 +1,178 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { type Projects } from "../../interfaces/projects.interface";
+import { projectsService } from "../../services/projects.service";
+
+const { id } = Astro.params;
+const allProjects: Projects[] = projectsService();
+const currentProject = allProjects.find((project) => project.id === id);
+---
+
+<Layout
+    title=`${currentProject?.title} | RikiRilis`
+    description={currentProject!!.description}
+>
+    <div
+        slot="overAll"
+        class="flex flex-col items-center top-0 right-0 fixed w-full h-full z-50 backdrop-blur-xl transition-all duration-300"
+    >
+        <div
+            class="relative flex justify-center items-start w-full h-32 bg-gradient-to-t from-transparent to-slate-950"
+        >
+            <picture class="aspect-video">
+                <img
+                    loading="lazy"
+                    decoding="async"
+                    width="1200"
+                    height="630"
+                    class="mask-image absolute -z-10 top-0 left-0 w-full opacity-50 transition-all duration-300"
+                    src={currentProject?.imgUrl}
+                    alt={currentProject?.alt}
+                    transition:name=`project ${currentProject?.id} image`
+                />
+            </picture>
+
+            <div
+                class="my-4 w-11/12 sm:w-3/4 md:w-2/4 flex flex-row items-center justify-between"
+            >
+                <h2
+                    class="font-bold text-3xl sm:text-4xl sm:text-center text-slate-200"
+                    transition:name=`project ${currentProject?.title} title`
+                >
+                    {currentProject?.title}
+                </h2>
+
+                <svg
+                    id="closeBtn"
+                    class="text-slate-400 hover:text-slate-200 inline-block hover:scale-75 hover:rotate-180 duration-500 transition-all cursor-pointer"
+                    width="30"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                >
+                    <path
+                        d="M20.7457 3.32851C20.3552 2.93798 19.722 2.93798 19.3315 3.32851L12.0371 10.6229L4.74275 3.32851C4.35223 2.93798 3.71906 2.93798 3.32854 3.32851C2.93801 3.71903 2.93801 4.3522 3.32854 4.74272L10.6229 12.0371L3.32856 19.3314C2.93803 19.722 2.93803 20.3551 3.32856 20.7457C3.71908 21.1362 4.35225 21.1362 4.74277 20.7457L12.0371 13.4513L19.3315 20.7457C19.722 21.1362 20.3552 21.1362 20.7457 20.7457C21.1362 20.3551 21.1362 19.722 20.7457 19.3315L13.4513 12.0371L20.7457 4.74272C21.1362 4.3522 21.1362 3.71903 20.7457 3.32851Z"
+                        fill="currentColor"></path>
+                </svg>
+
+                <script>
+                    document
+                        .getElementById("closeBtn")
+                        ?.addEventListener("click", () => {
+                            window.history.back();
+                        });
+                </script>
+            </div>
+        </div>
+
+        <div
+            class="flex flex-col gap-10 w-11/12 sm:w-3/4 md:w-2/4 h-full rounded-3xl bg-gradient-to-t from-transparent to-slate-950 py-4 px-6 lg:px-24 mt-1 overflow-y-auto backdrop-blur-xl"
+            transition:name=`project ${currentProject?.description} desc`
+        >
+            <div class="flex flex-col gap-4 w-full">
+                <h1 class="text-lg sm:text-xl sm:text-center text-slate-200">
+                    <strong>Description</strong>
+                </h1>
+
+                <p class="text-slate-400 sm:text-center">
+                    {currentProject?.description}
+                </p>
+            </div>
+
+            <div class="flex flex-col gap-4 w-full">
+                <h1 class="text-lg sm:text-xl sm:text-center text-slate-200">
+                    <strong>Tecnologies & Frameworks</strong>
+                </h1>
+
+                <div class="flex flex-row flex-wrap gap-2 sm:justify-center">
+                    {
+                        currentProject?.tags.map((tag) => (
+                            <h5 class="w-fit h-fit flex flex-row items-center justify-center px-2 gap-2 rounded-xl bg-cyan-950 text-sm text-cyan-600 font-bold">
+                                {tag}
+                            </h5>
+                        ))
+                    }
+                </div>
+            </div>
+
+            <div class="flex flex-row justify-center gap-2 h-fit w-full">
+                <a
+                    href={currentProject?.projectUrl}
+                    target="_blank"
+                    rel="noopener"
+                    class="flex flex-row justify-center items-center gap-2 bg-cyan-600 hover:bg-transparent text-slate-200 hover:text-cyan-600 border border-transparent hover:border-cyan-600 transition-colors mt-4 sm:mt-0 w-auto py-2 px-3 rounded-xl text-lg font-bold"
+                >
+                    <svg
+                        class="w-5 h-5"
+                        width="800px"
+                        height="800px"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        fill="none"
+                        role="img"
+                    >
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"
+                        ></path>
+                        <path d="M10 14l11 -11"></path>
+                        <path
+                            d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5"
+                        ></path>
+                    </svg>
+                    Squint
+                </a>
+
+                <a
+                    href={currentProject?.gitCodeUrl}
+                    target="_blank"
+                    rel="noopener"
+                    class="flex flex-row justify-center items-center gap-2 bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-400 hover:border-slate-200 transition-colors mt-4 sm:mt-0 w-auto py-2 px-3 rounded-xl text-lg font-bold"
+                >
+                    <svg
+                        class="w-5 h-5"
+                        width="800px"
+                        height="800px"
+                        viewBox="0 0 20 20"
+                        version="1.1"
+                        role="img"
+                        aria-label="GitHub brand logo"
+                    >
+                        <g
+                            id="Page-1"
+                            stroke="none"
+                            stroke-width="1"
+                            fill="none"
+                            fill-rule="evenodd"
+                        >
+                            <g
+                                id="Dribbble-Light-Preview"
+                                transform="translate(-140.000000, -7559.000000)"
+                                fill="currentColor"
+                            >
+                                <g
+                                    id="icons"
+                                    transform="translate(56.000000, 160.000000)"
+                                >
+                                    <path
+                                        d="M94,7399 C99.523,7399 104,7403.59 104,7409.253 C104,7413.782 101.138,7417.624 97.167,7418.981 C96.66,7419.082 96.48,7418.762 96.48,7418.489 C96.48,7418.151 96.492,7417.047 96.492,7415.675 C96.492,7414.719 96.172,7414.095 95.813,7413.777 C98.04,7413.523 100.38,7412.656 100.38,7408.718 C100.38,7407.598 99.992,7406.684 99.35,7405.966 C99.454,7405.707 99.797,7404.664 99.252,7403.252 C99.252,7403.252 98.414,7402.977 96.505,7404.303 C95.706,7404.076 94.85,7403.962 94,7403.958 C93.15,7403.962 92.295,7404.076 91.497,7404.303 C89.586,7402.977 88.746,7403.252 88.746,7403.252 C88.203,7404.664 88.546,7405.707 88.649,7405.966 C88.01,7406.684 87.619,7407.598 87.619,7408.718 C87.619,7412.646 89.954,7413.526 92.175,7413.785 C91.889,7414.041 91.63,7414.493 91.54,7415.156 C90.97,7415.418 89.522,7415.871 88.63,7414.304 C88.63,7414.304 88.101,7413.319 87.097,7413.247 C87.097,7413.247 86.122,7413.234 87.029,7413.87 C87.029,7413.87 87.684,7414.185 88.139,7415.37 C88.139,7415.37 88.726,7417.2 91.508,7416.58 C91.513,7417.437 91.522,7418.245 91.522,7418.489 C91.522,7418.76 91.338,7419.077 90.839,7418.982 C86.865,7417.627 84,7413.783 84,7409.253 C84,7403.59 88.478,7399 94,7399"
+                                        id="github-[#142]"
+                                    >
+                                    </path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                    Code
+                </a>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .mask-image {
+        mask-image: linear-gradient(to bottom, black 10%, transparent 100%);
+    }
+</style>

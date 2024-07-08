@@ -1,0 +1,34 @@
+---
+import ExperienceItem from "@/components/ExperienceItem.astro";
+import Timeline from "@/icons/Timeline.astro";
+
+const EXPERIENCE = [
+    {
+        title: "Freelance Developer",
+        date: "May 2024",
+        description: "I'm a web developer",
+    },
+    {
+        title: "Freelance Developer",
+        date: "May 2024",
+        description: "I'm a web developer",
+    },
+];
+---
+
+<h2
+    class="flex items-center gap-x-3 text-3xl font-semibold sm:text-4xl text-slate-200 mb-8"
+>
+    <Timeline class="size-8" />
+    Work experience
+</h2>
+
+<ol class="w-11/12 ml-3 relative border-s border-slate-800">
+    {
+        EXPERIENCE.map((experience) => (
+            <li class="mb-10 ms-6">
+                <ExperienceItem {...experience} />
+            </li>
+        ))
+    }
+</ol>
