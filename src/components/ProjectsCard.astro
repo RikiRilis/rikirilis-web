@@ -3,7 +3,6 @@ import Send from "@/icons/Send.astro";
 import GitHub from "@/icons/GitHub.astro";
 
 interface Props {
-  id: string;
   title: string;
   description: string;
   imgUrl: string;
@@ -18,7 +17,7 @@ interface Props {
   alt: string;
 }
 
-const { id, title, description, imgUrl, projectUrl, tags, gitCodeUrl, alt } =
+const { title, description, imgUrl, projectUrl, tags, gitCodeUrl, alt } =
   Astro.props;
 ---
 
