@@ -5,6 +5,7 @@ import Tailwind from '@/icons/Tailwind.astro';
 import Kotlin from '@/icons/Kotlin.astro';
 import Firebase from '@/icons/Firebase.astro';
 import Android from '@/icons/Android.astro';
+import { getI18N } from '@/languages/index.ts';
 
 const TAGS = {
   ASTRO: {
@@ -44,12 +45,14 @@ const TAGS = {
     icon: Android
   },
 };
-export const projectsService = (): Projects[] => {
+
+export const projectsService = (currentLocale?: string): Projects[] => {
+  const i18n = getI18N({ currentLocale });
   return [
     {
       id: 'easy-short',
       title: 'Easy Short',
-      description: 'A simply and easy-to-use Url short app for any URL you want to cut, with a basic web page. Don\'t lose your time and short your URL\'s with Easy Short!',
+      description: i18n.EASY_SHORT_DESCRIPTION,
       imgUrl: 'https://rikirilis.xyz/assets/easy-short.webp',
       projectUrl: 'https://rikirilis.xyz/projects/easy-short',
       tags: [TAGS.ASTRO, TAGS.TAILWIND],
@@ -59,7 +62,7 @@ export const projectsService = (): Projects[] => {
     {
       id: 'ng-pipelines',
       title: 'NG Pipelines',
-      description: 'A web app where you can find all the pipes used in Angular projects and personalize your own pipes in an unique place.',
+      description: i18n.NG_PIPELINES_DESCRIPTION,
       imgUrl: 'https://rikirilis.xyz/assets/ng-pipelines.webp',
       projectUrl: 'https://rikirilis.xyz/projects/ng-pipelines',
       tags: [TAGS.ANGULAR, TAGS.TAILWIND],
@@ -69,7 +72,7 @@ export const projectsService = (): Projects[] => {
     {
       id: 'stop-trivia',
       title: 'Stop Trivia',
-      description: 'This is the mythical game of \'STOP!\'. Made with realtime game experience and easy-to-play. Play Stop Trivia in you Android phone.',
+      description: i18n.STOPT_TRIVIA_DESCRIPTION,
       imgUrl: 'https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/src/Stop_Trivia.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vc3JjL1N0b3BfVHJpdmlhLndlYnAiLCJpYXQiOjE3MjAxOTY4NjQsImV4cCI6NDg3Mzc5Njg2NH0.Ns0_bYwlbTpcLfgtfAsBMo-w8hwPMWZol4kPSWoFYbI&t=2024-07-05T16%3A27%3A44.948Z',
       projectUrl: 'https://rikirilis.xyz/projects/stop-trivia',
       tags: [TAGS.KOTLIN, TAGS.FIREBASE, TAGS.ANDROID],
@@ -79,7 +82,7 @@ export const projectsService = (): Projects[] => {
     {
       id: 'anjocc-oficial',
       title: 'ANJOCC Oficial',
-      description: 'The oficial website for ANJOCC (Asosiación Nacional de Jóvenes Candeleros de Cristo) from Dominican Republic, with an user loggin, registration form, Supabase DB and more...',
+      description: i18n.ANJOCC_OFICIAL_DESCRIPTION,
       imgUrl: 'https://rikirilis.xyz/assets/anjocc-oficial.webp',
       projectUrl: 'https://anjocc.com',
       tags: [TAGS.ASTRO, TAGS.TAILWIND],

@@ -1,16 +1,47 @@
 ---
 import RikiRilis from "@/icons/RikiRilis.astro";
+import { getI18N } from "@/languages/index.ts";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({currentLocale});
+const navItems = [
+  {
+    title: "Blog",
+    label: "blog",
+    url: "/blog",
+  },
+  {
+    title: i18n.PORTFOLIO,
+    label: "portfolio",
+    url: "/portfolio#about",
+  },
+  {
+    title: i18n.EXPERIENCE,
+    label: "experience",
+    url: "/portfolio#experience",
+  },
+  {
+    title: i18n.PROJECTS,
+    label: "projects",
+    url: "/portfolio#projects",
+  },
+  {
+    title: i18n.CONTACT,
+    label: "contact",
+    url: "#contact",
+  },
+];
 ---
 
-<header class="w-full flex justify-center fixed z-20">
+<header class="w-full flex justify-center fixed z-50">
   <div
-    class="flex items-center bg-slate-400 bg-opacity-5 backdrop-blur-xl my-4 w-11/12 justify-between sm:justify-normal sm:w-fit pr-4 sm:pr-0 gap-x-6 h-auto overflow-hidden rounded-2xl animate__animated animate__fadeInDown animate__faster"
+    id="header"
+    class="flex items-center my-4 w-11/12 justify-between sm:justify-normal sm:w-fit pr-4 sm:pr-0 gap-x-6 h-auto overflow-hidden rounded-2xl animate__animated animate__fadeInDown animate__faster"
   >
     <a
       href="https://rikirilis.xyz"
       aria-label="Rikelvi's RikiRilis brand logo will open in a new window"
-      class="text-cyan-600 inline-block hover:scale-110 motion-safe:transition
-    motion-reduce:hover:scale-100"
+      class="text-cyan-600 inline-block hover:scale-110 motion-safe:transition motion-reduce:hover:scale-100"
     >
       <RikiRilis
         class="size-10 text-slate-400 transition-colors duration-300 hover:text-cyan-600 motion-reduce:duration-0 ml-4"
@@ -20,38 +51,24 @@ import RikiRilis from "@/icons/RikiRilis.astro";
     <nav
       class="hidden sm:flex flex-row justify-center items-center text-center font-semibold text-slate-400"
     >
-      <a
-        href="/blog"
-        class="p-3 w-full h-full inline-block transition-colors hover:bg-slate-300 hover:bg-opacity-10 hover:text-cyan-600 select-none"
-        >Blog</a
-      >
-      <a
-        href="/portfolio"
-        class="p-3 w-full h-full inline-block transition-colors hover:bg-slate-300 hover:bg-opacity-10 hover:text-cyan-600 select-none"
-        >Portfolio</a
-      >
-      <a
-        href="/portfolio#about"
-        class="p-3 w-full h-full inline-block transition-colors hover:bg-slate-300 hover:bg-opacity-10 hover:text-cyan-600 select-none"
-        >About</a
-      >
-      <a
-        href="/portfolio#projects"
-        class="p-3 w-full h-full inline-block transition-colors hover:bg-slate-300 hover:bg-opacity-10 hover:text-cyan-600 select-none"
-        >Projects</a
-      >
-      <a
-        href="#contact"
-        class="p-3 w-full h-full inline-block transition-colors hover:bg-slate-300 hover:bg-opacity-10 hover:text-cyan-600 select-none"
-        >Contact</a
-      >
+      {
+        navItems.map((item) => (
+          <a
+            href={item.url}
+            aria-label={item.label}
+            class="p-3 w-full h-full inline-block transition-colors hover:bg-slate-300 hover:bg-opacity-10 hover:text-cyan-600 select-none"
+          >
+            {item.title}
+          </a>
+        ))
+      }
     </nav>
 
     <label
       for="check"
       class="menu flex flex-col-reverse cursor-pointer sm:hidden rotate-180"
     >
-      <input type="checkbox" id="check" />
+      <input type="checkbox" id="check" menu-check-input />
       <span class="menu__span-1 bg-slate-400"></span>
       <span class="menu__span-2 bg-slate-400"></span>
       <span class="menu__span-3 bg-slate-400"></span>
@@ -60,54 +77,86 @@ import RikiRilis from "@/icons/RikiRilis.astro";
 </header>
 
 <div
-  id="modal"
-  class="w-full h-screen hidden justify-center z-10 backdrop-blur-2xl shadow-lg fixed"
+  mobile-menu-modal
+  class="w-full h-screen hidden justify-center z-40 backdrop-blur-2xl shadow-lg fixed"
 >
   <nav
-    id="menu"
-    class="flex flex-col justify-center w-11/12 h-[95%] my-4 py-16 relative bg-slate-400 text-slate-400 font-semibold text-2xl bg-opacity-10 shadow-slate-950 rounded-2xl overflow-hidden animate__animated animate__faster"
+    mobile-menu
+    class="flex flex-col justify-center w-11/12 h-[95%] my-4 py-16 relative bg-slate-400 text-slate-400 font-semibold bg-opacity-10 shadow-slate-950 rounded-2xl overflow-hidden animate__animated animate__faster"
   >
-    <a
-      href="/blog"
-      class="p-3 text-center w-full inline-block transition-colors hover:bg-slate-300 hover:bg-opacity-10 hover:text-cyan-600 select-none"
-      >Blog</a
-    >
-    <a
-      href="/portfolio"
-      class="p-3 text-center w-full inline-block transition-colors hover:bg-slate-300 hover:bg-opacity-10 hover:text-cyan-600 select-none"
-      >Portfolio</a
-    >
-    <a
-      href="/portfolio#about"
-      class="p-3 text-center w-full inline-block transition-colors hover:bg-slate-300 hover:bg-opacity-10 hover:text-cyan-600 select-none"
-      >About</a
-    >
-    <a
-      href="/portfolio#projects"
-      class="p-3 text-center w-full inline-block transition-colors hover:bg-slate-300 hover:bg-opacity-10 hover:text-cyan-600 select-none"
-      >Projects</a
-    >
-    <a
-      href="#contact"
-      class="p-3 text-center w-full inline-block transition-colors hover:bg-slate-300 hover:bg-opacity-10 hover:text-cyan-600 select-none"
-      >Contact</a
-    >
+    {
+      navItems.map((item) => (
+        <a
+          href={item.url}
+          aria-label={item.label}
+          class="p-3 text-center w-full inline-block text-xl transition-colors hover:bg-slate-300 hover:bg-opacity-10 hover:text-cyan-600 select-none"
+        >
+          {item.title}
+        </a>
+      ))
+    }
   </nav>
 </div>
 
 <script>
-  document.getElementById("check")?.addEventListener("click", () => {
-    document.getElementById("modal")?.classList.toggle("hidden");
-    document.getElementById("modal")?.classList.toggle("flex");
-    document.getElementById("menu")?.classList.toggle("animate__slideInDown");
-  });
+  document.addEventListener("astro:page-load", () => {
+    const sections = document.querySelectorAll("section");
+    const navItems = document.querySelectorAll("header nav a");
+    const menuCheckInput = document.querySelector("[menu-check-input]") as HTMLInputElement;
+    const mobileMenuModal = document.querySelector("[mobile-menu-modal]");
+    const mobileMenu = document.querySelector("[mobile-menu]");
+    const mobileNavItems = document.querySelectorAll("[mobile-menu] a");
 
-  document.getElementById("modal")?.addEventListener("click", (e) => {
-    if (e.target === document.getElementById("modal")) {
-      document.getElementById("modal")?.classList.toggle("hidden");
-      document.getElementById("modal")?.classList.toggle("flex");
-      document.getElementById("menu")?.classList.toggle("animate__slideInDown");
-    }
+    menuCheckInput?.addEventListener("change", () => {
+      mobileMenuModal?.classList.toggle("hidden");
+      mobileMenuModal?.classList.toggle("flex");
+      mobileMenu?.classList.toggle("animate__slideInDown");
+      document.body.classList.toggle("overflow-hidden");
+    });
+
+    mobileNavItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        mobileMenuModal?.classList.toggle("hidden");
+        mobileMenuModal?.classList.toggle("flex");
+        mobileMenu?.classList.toggle("animate__slideInDown");
+        document.body.classList.toggle("overflow-hidden");
+        menuCheckInput!!.checked = false;
+      });
+    });
+
+    const callback = (entries: any[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navItems.forEach((item) => {
+            if (item.getAttribute("aria-label") == entry.target.id) {
+              item.classList.add("text-cyan-600");
+            } else {
+              item.classList.remove("text-cyan-600");
+            }
+          });
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.4,
+    });
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    document.onvisibilitychange = () => {
+      if (document.visibilityState === "hidden") {
+        observer.disconnect();
+      } else {
+        sections.forEach((section) => {
+          observer.observe(section);
+        });
+      }
+    };
   });
 </script>
 

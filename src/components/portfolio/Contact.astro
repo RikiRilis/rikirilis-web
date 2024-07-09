@@ -1,33 +1,37 @@
 ---
 import Copy from "@/icons/Copy.astro";
 import Check from "@/icons/Check.astro";
-import Send from "@/icons/Send.astro";
 import Chat from "@/icons/Chat.astro";
+import { SendForm } from "@/components/SendForm.jsx";
+import { getI18N } from "@/languages/index.ts";
 
 const email: string = "rikelvicapellan15@gmail.com";
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
 ---
 
 <h2
     class="flex items-center gap-x-3 text-3xl font-semibold sm:text-4xl text-slate-200 mb-8"
 >
     <Chat class="size-8" />
-    Contact
+    {i18n.CONTACT}
 </h2>
 
 <div class="flex flex-col w-full sm:flex-row sm:justify-between gap-4 mt-4">
     <div class="flex-1">
         <p class="text-slate-400 mb-6 text-pretty">
-            <strong class="text-cyan-600"
-                >Hey there! 🤗 Thanks for getting here!</strong
-            > You can contact me by email by writing and sending your message bellow,
-            but if you want you can contact me by <a
-                rel="noopener"
+            <strong class="text-cyan-600">{i18n.CONTACT_TXT_1}</strong>
+            {i18n.CONTACT_TXT_2}
+            <a
+                rel="noopener noreferrer"
                 href="https://instagram.com/rikirilis"
                 target="_blank"
                 class="text-cyan-600 hover:text-slate-300 transition-colors font-bold hover:underline"
                 >Instagram</a
-            > or <a
-                rel="noopener"
+            >
+            {i18n.OR}
+            <a
+                rel="noopener noreferrer"
                 href="https://twitter.com/rikirilis_"
                 target="_blank"
                 class="text-cyan-600 hover:text-slate-300 transition-colors font-bold hover:underline"
@@ -36,8 +40,9 @@ const email: string = "rikelvicapellan15@gmail.com";
         </p>
 
         <p class="text-slate-400 mb-6 text-pretty">
-            I'm always <strong class="text-cyan-600">available</strong> to collaborate
-            and lend a hand on any project where the technologies I know are needed.
+            {i18n.CONTACT_TXT_3}
+            <strong class="text-cyan-600">{i18n.CONTACT_TXT_4}</strong>
+            {i18n.CONTACT_TXT_5}
         </p>
 
         <div
@@ -54,88 +59,28 @@ const email: string = "rikelvicapellan15@gmail.com";
         </div>
     </div>
 
-    <form
-        action="javascript:void(0)"
-        class="flex-1 pt-6 sm:pt-0 sm:w-full"
-        autocomplete="off"
-    >
-        <span class="italic text-slate-400 font-semibold text-sm">
-            *Contact me directly by email if you prefer.
-        </span>
-
-        <div class="flex flex-col gap-2 mt-4">
-            <label class="font-semibold mb-1 flex flex-col">
-                Name
-                <input
-                    required
-                    autocomplete="name"
-                    class="h-10 rounded-lg px-2 focus:outline-none border border-cyan-800 focus:border-cyan-600 focus:bg-transparent focus:shadow-cyan-600 focus:shadow-sm transition-colors placeholder:focus:invisible bg-cyan-950 placeholder-slate-400 ease-in-out duration-200"
-                    type="text"
-                    name="name"
-                    id="name"
-                    placeholder="Rikelvi Capellán"
-                />
-            </label>
-
-            <label class="font-semibold mb-1 flex flex-col">
-                Email
-                <input
-                    required
-                    autocomplete="email"
-                    class="h-10 autofill:!bg-yellow-200 rounded-lg px-2 focus:outline-none border border-cyan-800 focus:border-cyan-600 focus:bg-transparent transition-colors placeholder:focus:invisible bg-cyan-950 placeholder-slate-400 ease-in-out duration-200"
-                    type="email"
-                    name="email"
-                    id="email"
-                    placeholder="example@example.com"
-                />
-            </label>
-
-            <label class="font-semibold mb-1 flex flex-col">
-                Message
-                <textarea
-                    required
-                    class="h-28 rounded-lg px-2 focus:outline-none border border-cyan-800 focus:border-cyan-600 focus:bg-transparent transition-colors placeholder:focus:invisible bg-cyan-950 placeholder-slate-400 ease-in-out duration-200 py-1"
-                    name="message"
-                    id="message"
-                    placeholder="Write your message..."></textarea>
-            </label>
-        </div>
-
-        <button
-            type="submit"
-            formmethod="post"
-            class="flex flex-row w-full justify-center items-center mt-4 gap-2 bg-cyan-600 text-slate-200 sm:hover:text-cyan-600 sm:hover:bg-transparent sm:hover:border-cyan-600 active:text-cyan-600 active:bg-transparent active:border-cyan-600 transition py-2 px-3 rounded-xl text-lg font-bold cursor-pointer border border-transparent"
-        >
-            <Send class="w-5 h-5" />
-            Send
-        </button>
-    </form>
+    <SendForm currentLocale={currentLocale} client:visible />
 </div>
 
 <script is:inline>
-    document.getElementById("copyEmailIcon")?.addEventListener("click", () => {
-        document
-            .getElementById("copyEmailIcon")
-            ?.classList.remove("inline-block");
-        document.getElementById("copyEmailIcon")?.classList.add("hidden");
-        document
-            .getElementById("copiedEmailIcon")
-            ?.classList.add("inline-block");
-        document.getElementById("copiedEmailIcon")?.classList.remove("hidden");
+    document.addEventListener("astro:page-load", () => {
+        const copyEmailIcon = document.getElementById("copyEmailIcon");
+        const copiedEmailIcon = document.getElementById("copiedEmailIcon");
 
-        navigator.clipboard.writeText("rikelvicapellan15@gmail.com");
+        copyEmailIcon.addEventListener("click", () => {
+            copyEmailIcon.classList.remove("inline-block");
+            copyEmailIcon.classList.add("hidden");
+            copiedEmailIcon.classList.add("inline-block");
+            copiedEmailIcon.classList.remove("hidden");
 
-        setTimeout(() => {
-            document
-                .getElementById("copyEmailIcon")
-                ?.classList.add("inline-block");
-            document
-                .getElementById("copyEmailIcon")
-                ?.classList.remove("hidden");
-            document
-                .getElementById("copiedEmailIcon")
-                ?.classList.remove("inline-block");
-            document.getElementById("copiedEmailIcon")?.classList.add("hidden");
-        }, 3000);
+            navigator.clipboard.writeText("rikelvicapellan15@gmail.com");
+
+            setTimeout(() => {
+                copyEmailIcon.classList.add("inline-block");
+                copyEmailIcon.classList.remove("hidden");
+                copiedEmailIcon.classList.remove("inline-block");
+                copiedEmailIcon.classList.add("hidden");
+            }, 3000);
+        });
     });
 </script>

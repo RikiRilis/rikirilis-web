@@ -1,0 +1,13 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getI18N } from "@/languages/index.ts";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+---
+
+<Layout title=`${i18n.BLOG} | RikiRilis` description="View and read all de news from RikiRilis. Here you will find sories about life.">
+    <main>
+        
+    </main>
+</Layout>

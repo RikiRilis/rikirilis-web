@@ -1,0 +1,13 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getI18N } from "@/languages/index.ts";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+---
+
+<Layout title=`${i18n.PROJECTS} | RikiRilis` description="All the projects made by RikiRilis with their links if needed.">
+    <main>
+        
+    </main>
+</Layout>

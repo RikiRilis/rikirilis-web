@@ -3,6 +3,7 @@ import "@fontsource-variable/onest";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import { ViewTransitions } from "astro:transitions";
+import GoToTop from "@/components/GoToTop.astro";
 
 interface Props {
 	title: string;
@@ -13,17 +14,20 @@ const { title, description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" translate="no">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="keywords" content="astro, html, javascript, js, css, rikirilis, portfolio, angular, rikelvi capellan, republica dominicana, dominican republic, developer, desarrollador web, web developer, blog, rikirilis blog, projects, rikirilis projects, rikelvi capellan projects, ts, typescript, components" />
+		<link rel="author" href="https://www.linkedin.com/in/rikirilis" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="canonical" href="https://rikirilis.xyz/" />
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 		/>
-		<meta name="generator" content={Astro.generator} />
 		<ViewTransitions fallback="none" />
 		<title>{title}</title>
 	</head>
@@ -32,7 +36,9 @@ const { title, description } = Astro.props;
 			class="absolute top-0 bottom-0 z-[-2] min-h-screen w-full bg-slate-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(34,211,238,0.2),rgba(255,255,255,0))]"
 		>
 		</div>
-		<slot name="overAll" />
+
+		<GoToTop />
+
 		<Header />
 		<slot />
 		<Footer />
@@ -56,6 +62,34 @@ const { title, description } = Astro.props;
 					Bitstream Vera Sans Mono,
 					Courier New,
 					monospace;
+			}
+
+			#header {
+				animation: blur linear both;
+				animation-timeline: scroll();
+				animation-range: 0 300px;
+			}
+
+			@keyframes blur {
+				to {
+					background-color: rgb(148 163 184 / 0.1);
+					backdrop-filter: blur(24px);
+				}
+			}
+
+			#go-top-btn {
+				visibility: hidden;
+				opacity: 0;
+				animation: visibility linear both;
+				animation-timeline: scroll();
+				animation-range: 0 200px;
+			}
+
+			@keyframes visibility {
+				to {
+					visibility: visible;
+					opacity: 1;
+				}
 			}
 
 			::-webkit-scrollbar-thumb {

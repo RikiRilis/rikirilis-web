@@ -5,25 +5,31 @@ import Experience from "@/components/portfolio/Experience.astro";
 import Projects from "@/components/portfolio/Projects.astro";
 import Contact from "@/components/portfolio/Contact.astro";
 import SectionContainer from "@/components/SectionContainer.astro";
+import { getI18N } from "@/languages/index.ts";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
 ---
 
 <Layout
-    title="Web & Android Developer | Rikelvi Capellán"
+    title=`${i18n.ABOUT_TEXT_1} | Rikelvi Capellán`
     description="I build easy-to-use websites and Android apps, with fast technologies and UX/UI standards to improve user experience."
 >
-    <SectionContainer id="about">
-        <About />
-    </SectionContainer>
+    <main>
+        <SectionContainer id="about">
+            <About />
+        </SectionContainer>
 
-    <SectionContainer id="experience">
-        <Experience />
-    </SectionContainer>
+        <SectionContainer id="experience">
+            <Experience />
+        </SectionContainer>
 
-    <SectionContainer id="projects">
-        <Projects />
-    </SectionContainer>
+        <SectionContainer id="projects">
+            <Projects />
+        </SectionContainer>
 
-    <SectionContainer id="contact">
-        <Contact />
-    </SectionContainer>
+        <SectionContainer id="contact">
+            <Contact />
+        </SectionContainer>
+    </main>
 </Layout>

@@ -3,6 +3,10 @@ import GitHub from "@/icons/GitHub.astro";
 import Discord from "@/icons/Discord.astro";
 import X from "@/icons/X.astro";
 import Instagram from "@/icons/Instagram.astro";
+import { getI18N } from "@/languages/index.ts";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({currentLocale});
 ---
 
 <footer class="flex flex-col w-full items-center">
@@ -19,26 +23,26 @@ import Instagram from "@/icons/Instagram.astro";
       />
 
       <p class="text-sm text-slate-400">
-        © 2024 RikiRilis. Made by <a
-          rel="noopener"
+        {i18n.FOOTER_TXT_1} <a
+          rel="noopener noreferrer"
           href="https://rikirilis.xyz"
           class="text-cyan-600 sm:hover:text-slate-300 active:text-slate-300 transition-colors font-bold sm:hover:underline active:underline"
           >RikiRilis</a
         >
-        (Rikelvi Capellán García) with <a
-          rel="noopener"
+        (Rikelvi Capellán García) {i18n.FOOTER_TXT_2} <a
+          rel="noopener noreferrer"
           href="https://astro.build"
           target="_blank"
           class="text-cyan-600 sm:hover:text-slate-300 active:text-slate-300 transition-colors font-bold sm:hover:underline active:underline"
           >Astro</a
         >, <a
-          rel="noopener"
+          rel="noopener noreferrer"
           href="https://tailwindcss.com"
           target="_blank"
           class="text-cyan-600 sm:hover:text-slate-300 active:text-slate-300 transition-colors font-bold sm:hover:underline active:underline"
           >Tailwind CSS</a
-        > and more tecnologies, deployed using <a
-          rel="noopener"
+        > {i18n.FOOTER_TXT_3} <a
+          rel="noopener noreferrer"
           href="https://vercel.com"
           target="_blank"
           class="text-cyan-600 sm:hover:text-slate-300 active:text-slate-300 transition-colors font-bold sm:hover:underline active:underline"
@@ -55,7 +59,7 @@ import Instagram from "@/icons/Instagram.astro";
           <a
             target="_blank"
             href="https://github.com/RikiRilis"
-            rel="noopener"
+            rel="noopener noreferrer"
             aria-label="Rikelvi's GitHub brand logo will open in a new window"
             class="inline-block hover:scale-125 motion-safe:transition
             motion-reduce:hover:scale-100"
@@ -69,7 +73,7 @@ import Instagram from "@/icons/Instagram.astro";
           <a
             target="_blank"
             href="https://discord.gg/VDk8tprcH2"
-            rel="noopener"
+            rel="noopener noreferrer"
             aria-label="Rikelvi's Discord brand logo will open in a new window"
             class="inline-block hover:scale-125 motion-safe:transition
             motion-reduce:hover:scale-100"
@@ -83,7 +87,7 @@ import Instagram from "@/icons/Instagram.astro";
           <a
             target="_blank"
             href="https://twitter.com/rikirilis_"
-            rel="noopener"
+            rel="noopener noreferrer"
             aria-label="Rikelvi's X brand logo will open in a new window"
             class="inline-block hover:scale-125 motion-safe:transition
             motion-reduce:hover:scale-100"
@@ -97,7 +101,7 @@ import Instagram from "@/icons/Instagram.astro";
           <a
             target="_blank"
             href="https://instagram.com/rikirilis"
-            rel="noopener"
+            rel="noopener noreferrer"
             aria-label="Rikelvi's Instagram brand logo will open in a new window"
             class="inline-block hover:scale-125 motion-safe:transition
             motion-reduce:hover:scale-100"

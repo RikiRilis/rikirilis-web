@@ -19,6 +19,9 @@
       ],
       "@/interfaces": [
         "src/interfaces/*"
+      ],
+      "@/languages": [
+        "src/languages/*"
       ]
     }
   },
