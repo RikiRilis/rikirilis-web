@@ -20,7 +20,10 @@ const { title, description } = Astro.props;
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="keywords" content="astro, html, javascript, js, css, rikirilis, portfolio, angular, rikelvi capellan, republica dominicana, dominican republic, developer, desarrollador web, web developer, blog, rikirilis blog, projects, rikirilis projects, rikelvi capellan projects, ts, typescript, components" />
+		<meta
+			name="keywords"
+			content="astro, html, javascript, js, css, rikirilis, portfolio, angular, rikelvi capellan, republica dominicana, dominican republic, developer, desarrollador web, web developer, blog, rikirilis blog, projects, rikirilis projects, rikelvi capellan projects, ts, typescript, components"
+		/>
 		<link rel="author" href="https://www.linkedin.com/in/rikirilis" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="canonical" href="https://rikirilis.xyz/" />
@@ -33,7 +36,7 @@ const { title, description } = Astro.props;
 	</head>
 	<body class="relative">
 		<div
-			class="absolute top-0 bottom-0 z-[-2] min-h-screen w-full bg-slate-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(34,211,238,0.2),rgba(255,255,255,0))]"
+			class="absolute top-0 bottom-0 z-[-999] min-h-screen w-full bg-slate-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(34,211,238,0.2),rgba(255,255,255,0))]"
 		>
 		</div>
 
@@ -52,6 +55,7 @@ const { title, description } = Astro.props;
 				scroll-behavior: smooth;
 				/* scrollbar-gutter: stable; */
 			}
+
 			code {
 				font-family:
 					Menlo,

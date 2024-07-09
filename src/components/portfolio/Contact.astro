@@ -62,10 +62,14 @@ const i18n = getI18N({ currentLocale });
     <SendForm currentLocale={currentLocale} client:visible />
 </div>
 
-<script is:inline>
+<script>
     document.addEventListener("astro:page-load", () => {
-        const copyEmailIcon = document.getElementById("copyEmailIcon");
-        const copiedEmailIcon = document.getElementById("copiedEmailIcon");
+        const copyEmailIcon = document.getElementById(
+            "copyEmailIcon",
+        ) as HTMLOrSVGImageElement;
+        const copiedEmailIcon = document.getElementById(
+            "copiedEmailIcon",
+        ) as HTMLOrSVGImageElement;
 
         copyEmailIcon.addEventListener("click", () => {
             copyEmailIcon.classList.remove("inline-block");
