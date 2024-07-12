@@ -86,5 +86,6 @@
   "EXPERIENCE_TITLE_2": "Granjas Viloria",
   "EXPERIENCE_DESC_2": "I was lead programmer and supporter in the creation of a private application to manage the inputs and outputs of a chicken farm called Granjas Viloria. The application was developed in Kotlin and had a record of invoices, their proper printing in PDF and a simple TODO. Due to privacy and the lack of publication in stores, the project cannot be shown at the momment.",
   "EXPERIENCE_TITLE_3": "Freelancer",
-  "EXPERIENCE_DESC_3": "I am currently working as a free programmer, expanding the website and blog of this website, studying and getting deeper and deeper into the world of programming."
+  "EXPERIENCE_DESC_3": "I am currently working as a free programmer, expanding the website and blog of this website, studying and getting deeper and deeper into the world of programming.",
+  "BLOG_TOPICS": "Topics"
 }

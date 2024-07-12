@@ -1,9 +1,13 @@
 ---
 import Blog from "@/icons/Blog.astro";
+import { getI18N } from "@/languages/index";
 import MainTitle from "../MainTitle.astro";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
 ---
 
 <MainTitle>
 	<Blog class="size-8" />
-	Blog Topics
+	{i18n.BLOG_TOPICS}
 </MainTitle>
