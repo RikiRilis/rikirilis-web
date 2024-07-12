@@ -26,6 +26,18 @@ const { title, description } = Astro.props;
 		/>
 		<meta name="og:locale" content="en_EN" />
 		<meta name="googlebot" content="index, follow" />
+
+		<script is:inline>
+			window.getThemePreference = () => {
+				const localItem = typeof localStorage !== "undefined" && localStorage.getItem("theme");
+				if (localItem) return localItem;
+				return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+			};
+
+			const isDark = window.getThemePreference() === "dark";
+			document.documentElement.classList.toggle("dark", isDark);
+		</script>
+
 		<link rel="author" href="https://www.linkedin.com/in/rikirilis" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="canonical" href="https://rikirilis.xyz" />
@@ -55,7 +67,7 @@ const { title, description } = Astro.props;
 				background-size: 224px;
 				color-scheme: dark light;
 				scroll-behavior: smooth;
-				/* scrollbar-gutter: stable; */
+				scrollbar-gutter: stable;
 			}
 
 			code {
@@ -68,34 +80,6 @@ const { title, description } = Astro.props;
 					Bitstream Vera Sans Mono,
 					Courier New,
 					monospace;
-			}
-
-			#header {
-				animation: bgBlur linear both;
-				animation-timeline: scroll();
-				animation-range: 0 200px;
-			}
-
-			@keyframes bgBlur {
-				to {
-					background-color: rgb(148 163 184 / 0.1);
-					@apply shadow-md backdrop-blur-3xl;
-				}
-			}
-
-			#go-top-btn {
-				visibility: hidden;
-				opacity: 0;
-				animation: visibility linear both;
-				animation-timeline: scroll();
-				animation-range: 0 200px;
-			}
-
-			@keyframes visibility {
-				to {
-					visibility: visible;
-					opacity: 1;
-				}
 			}
 
 			::-webkit-scrollbar-thumb {

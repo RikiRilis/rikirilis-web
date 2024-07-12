@@ -42,7 +42,7 @@ const navItems = [
 <header class="fixed z-50 flex w-full justify-center">
 	<div
 		id="header"
-		class="animate__animated animate__fadeInDown animate__faster my-4 flex h-auto w-11/12 items-center justify-between gap-x-6 overflow-hidden rounded-2xl pr-4 sm:w-fit sm:justify-normal sm:pr-0"
+		class="animate__animated animate__fadeInDown animate__faster my-4 flex h-auto w-11/12 items-center justify-between overflow-hidden rounded-2xl sm:w-fit sm:justify-normal"
 	>
 		<nav
 			class="hidden flex-row items-center justify-center text-center font-semibold text-slate-600 sm:flex dark:text-slate-400"
@@ -52,7 +52,7 @@ const navItems = [
 					<a
 						href={item.url}
 						aria-label={item.label}
-						class="inline-block h-full w-full select-none p-3 transition hover:bg-slate-600/10 hover:text-cyan-600 dark:hover:bg-slate-300/10"
+						class="inline-block h-full select-none p-3 transition hover:bg-slate-600/10 hover:text-cyan-600 dark:hover:bg-slate-300/10"
 					>
 						{item.title}
 					</a>
@@ -103,6 +103,21 @@ const navItems = [
 		<Footer />
 	</nav>
 </div>
+
+<style>
+	#header {
+		animation: bgBlur linear both;
+		animation-timeline: scroll();
+		animation-range: 0 200px;
+	}
+
+	@keyframes bgBlur {
+		to {
+			background-color: rgb(148 163 184 / 0.1);
+			@apply shadow-md backdrop-blur-3xl;
+		}
+	}
+</style>
 
 <script>
 	document.addEventListener("astro:page-load", () => {
