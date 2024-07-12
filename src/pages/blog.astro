@@ -1,5 +1,5 @@
 ---
-import BlogTopics from "@/components/blog/BlogTopics.astro";
+import Topics from "@/components/blog/Topics.astro";
 import Contact from "@/components/Contact.astro";
 import SectionContainer from "@/components/SectionContainer.astro";
 import { getI18N } from "@/languages/index.ts";
@@ -15,7 +15,7 @@ const i18n = getI18N({ currentLocale });
 >
 	<main>
 		<SectionContainer id="blog">
-			<BlogTopics />
+			<Topics />
 		</SectionContainer>
 
 		<SectionContainer id="contact">
