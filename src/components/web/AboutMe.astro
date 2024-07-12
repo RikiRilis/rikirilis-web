@@ -1,6 +1,6 @@
 ---
 import MainTitle from "@/components/MainTitle.astro";
-import Article from "@/icons/Article.astro";
+import User from "@/icons/User.astro";
 import { getI18N } from "@/languages/index";
 
 const { currentLocale } = Astro;
@@ -8,6 +8,6 @@ const i18n = getI18N({ currentLocale });
 ---
 
 <MainTitle>
-	<Article class="size-8" />
-	{i18n.ARTICLES}
+	<User class="size-8" />
+	{i18n.ABOUT_ME}
 </MainTitle>
