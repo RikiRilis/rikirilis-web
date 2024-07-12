@@ -80,5 +80,11 @@
   "CHANGES_POLICY": "Cambios a la Política",
   "GAME_INFORMATION": "Información del juego",
   "ARTICLES": "Artículos",
-  "ABOUT_ME": "Sobre mí"
+  "ABOUT_ME": "Sobre mí",
+  "EXPERIENCE_TITLE_1": "Inicios...",
+  "EXPERIENCE_DESC_1": "Empecé el desarrollo web desde una clase de programación en la escuela donde estaba. Desde ese momento, mi vida ha girado en torno a la programación web, aplicaciones Android y más.",
+  "EXPERIENCE_TITLE_2": "Granjas Viloria",
+  "EXPERIENCE_DESC_2": "Fui el programador principal y colaborador en la creación de una aplicación privada para gestionar las entradas y salidas de una granja de pollos llamada Granjas Viloria. La aplicación fue desarrollada en Kotlin y tenía un registro de facturas, su correcta impresión en PDF y un simple TODO. Por privacidad y la falta de publicación en las tiendas, no se podrá enseñar el proyecto por el momento.",
+  "EXPERIENCE_TITLE_3": "Freelancer",
+  "EXPERIENCE_DESC_3": "Actualmente trabajo como programador freelance, ampliando el sitio web y el blog de este sitio, estudiando y profundizando cada vez más en el mundo de la programación."
 }

@@ -2,25 +2,23 @@ import { getI18N } from "@/languages/index";
 import { type Experience } from "../interfaces/experience.interface";
 
 export const experiencesService = (currentLocale?: string): Experience[] => {
-	const getI18 = getI18N({ currentLocale });
+	const i18n = getI18N({ currentLocale });
 
 	return [
 		{
-			title: "Actually",
-			date: "May 2024",
-			description: "I'm a freelancer developer. I'm open to collaborate on any project you want.",
+			title: i18n.EXPERIENCE_TITLE_3,
+			date: "Actually",
+			description: i18n.EXPERIENCE_DESC_3,
 		},
 		{
-			title: "ANJOCC Oficial Website",
-			date: "jul 2024",
-			description:
-				"I created the oficial website for ANJOCC (Asociación Nacional de Jóvenes Candeleros de Cristo) from Dominican Republic, with an user loggin, registration form, Supabase DB and more.",
+			title: i18n.EXPERIENCE_TITLE_2,
+			date: "May 2023",
+			description: i18n.EXPERIENCE_DESC_2,
 		},
 		{
-			title: "ANJOCC Oficial Website",
-			date: "jul 2024",
-			description:
-				"I created the oficial website for ANJOCC (Asociación Nacional de Jóvenes Candeleros de Cristo) from Dominican Republic, with an user loggin, registration form, Supabase DB and more.",
+			title: i18n.EXPERIENCE_TITLE_1,
+			date: "Feb 2021",
+			description: i18n.EXPERIENCE_DESC_1,
 		},
 	];
 };
