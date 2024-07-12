@@ -6,12 +6,12 @@ import Sun from "@/icons/Sun.astro";
 <button id="themeToggle" class="relative mx-3 flex size-6 items-center justify-center">
 	<Moon
 		id="dark"
-		class="theme-toggle-icon invisible absolute size-full text-slate-600 transition-all active:text-cyan-600 sm:hover:scale-125 sm:hover:text-cyan-600 dark:text-slate-400"
+		class="theme-toggle-icon invisible absolute size-full text-slate-600 transition-all active:text-cyan-600 dark:text-slate-400 sm:hover:scale-125 sm:hover:text-cyan-600"
 	/>
 
 	<Sun
 		id="light"
-		class="theme-toggle-icon invisible absolute size-full text-slate-600 transition-all active:text-cyan-600 sm:hover:scale-125 sm:hover:text-cyan-600 dark:text-slate-400"
+		class="theme-toggle-icon invisible absolute size-full text-slate-600 transition-all active:text-cyan-600 dark:text-slate-400 sm:hover:scale-125 sm:hover:text-cyan-600"
 	/>
 </button>
 
@@ -24,9 +24,9 @@ import Sun from "@/icons/Sun.astro";
 			});
 		};
 
-		const handleToggleClick = (id) => {
+		const handleToggleClick = () => {
 			const element = document.documentElement;
-			if (id !== "system") element.classList.toggle("dark");
+			element.classList.toggle("dark");
 
 			const isDark = element.classList.contains("dark");
 			localStorage.setItem("theme", isDark ? "dark" : "light");
@@ -35,8 +35,6 @@ import Sun from "@/icons/Sun.astro";
 
 		updateIcon(localStorage.getItem("theme") || "dark");
 
-		document.getElementById("themeToggle").addEventListener("click", (e) => {
-			handleToggleClick(e.target.id);
-		});
+		document.getElementById("themeToggle").addEventListener("click", handleToggleClick);
 	});
 </script>

@@ -28,14 +28,16 @@ const { title, description } = Astro.props;
 		<meta name="googlebot" content="index, follow" />
 
 		<script is:inline>
-			window.getThemePreference = () => {
-				const localItem = typeof localStorage !== "undefined" && localStorage.getItem("theme");
-				if (localItem) return localItem;
-				return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-			};
+			document.addEventListener("astro:page-load", () => {
+				window.getThemePreference = () => {
+					const localItem = typeof localStorage !== "undefined" && localStorage.getItem("theme");
+					if (localItem) return localItem;
+					return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+				};
 
-			const isDark = window.getThemePreference() === "dark";
-			document.documentElement.classList.toggle("dark", isDark);
+				const isDark = window.getThemePreference() === "dark";
+				document.documentElement.classList.toggle("dark", isDark);
+			});
 		</script>
 
 		<link rel="author" href="https://www.linkedin.com/in/rikirilis" />
@@ -63,9 +65,6 @@ const { title, description } = Astro.props;
 		<style is:global>
 			html {
 				font-family: "Onest Variable", system-ui, sans-serif;
-				background: #020617;
-				background-size: 224px;
-				color-scheme: dark light;
 				scroll-behavior: smooth;
 				scrollbar-gutter: stable;
 			}
