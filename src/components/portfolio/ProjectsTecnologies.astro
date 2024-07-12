@@ -1,103 +1,108 @@
 ---
 import SocialPill from "@/components/SocialPill.astro";
-import HTML from "@/icons/HTML.astro";
-import CSS from "@/icons/CSS.astro";
-import JS from "@/icons/JS.astro";
-import TS from "@/icons/TS.astro";
 import Angular from "@/icons/Angular.astro";
 import AstroBrand from "@/icons/AstroBrand.astro";
-import React from "@/icons/React.astro";
-import Tailwind from "@/icons/Tailwind.astro";
 import Bootstrap from "@/icons/Bootstrap.astro";
+import CodePlus from "@/icons/CodePlus.astro";
+import CSS from "@/icons/CSS.astro";
 import Git from "@/icons/Git.astro";
 import GitHub from "@/icons/GitHub.astro";
-import NodeJS from "@/icons/NodeJS.astro";
+import HTML from "@/icons/HTML.astro";
+import JS from "@/icons/JS.astro";
 import Kotlin from "@/icons/Kotlin.astro";
+import NodeJS from "@/icons/NodeJS.astro";
+import React from "@/icons/React.astro";
+import ReactNative from "@/icons/ReactNative.astro";
 import SQL from "@/icons/SQL.astro";
-import CodePlus from "@/icons/CodePlus.astro";
+import Tailwind from "@/icons/Tailwind.astro";
+import TS from "@/icons/TS.astro";
 import { getI18N } from "@/languages/index.ts";
+import MainTitle from "../MainTitle.astro";
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
 ---
 
-<div class="flex flex-col w-full">
-  <h2
-    class="flex items-center gap-x-3 text-3xl font-semibold sm:text-4xl text-slate-200 mb-8"
-  >
-    <CodePlus class="size-8" />
-    {i18n.TECNOLOGIES}
-  </h2>
+<div class="flex w-full flex-col">
+	<MainTitle>
+		<CodePlus class="size-8" />
+		{i18n.TECNOLOGIES}
+	</MainTitle>
 
-  <div class="w-full flex flex-wrap gap-x-2 gap-y-4 mt-4">
-    <SocialPill>
-      <HTML class="size-6" />
-      HTML
-    </SocialPill>
+	<div class="mt-4 flex w-full flex-wrap gap-x-2 gap-y-4">
+		<SocialPill>
+			<HTML class="size-6" />
+			HTML
+		</SocialPill>
 
-    <SocialPill>
-      <CSS class="size-6" />
-      CSS
-    </SocialPill>
+		<SocialPill>
+			<CSS class="size-6" />
+			CSS
+		</SocialPill>
 
-    <SocialPill>
-      <JS class="size-6" />
-      JavaScript
-    </SocialPill>
+		<SocialPill>
+			<JS class="size-6" />
+			JavaScript
+		</SocialPill>
 
-    <SocialPill>
-      <TS class="size-6" />
-      TypeScript
-    </SocialPill>
+		<SocialPill>
+			<TS class="size-6" />
+			TypeScript
+		</SocialPill>
 
-    <SocialPill>
-      <Angular class="size-6" />
-      Angular
-    </SocialPill>
+		<SocialPill>
+			<Angular class="size-6" />
+			Angular
+		</SocialPill>
 
-    <SocialPill>
-      <AstroBrand class="size-6" />
-      Astro
-    </SocialPill>
+		<SocialPill>
+			<AstroBrand class="size-6" />
+			Astro
+		</SocialPill>
 
-    <SocialPill>
-      <React class="size-6" />
-      React
-    </SocialPill>
+		<SocialPill>
+			<React class="size-6" />
+			React
+		</SocialPill>
 
-    <SocialPill>
-      <Tailwind class="size-6" />
-      Tailwind CSS
-    </SocialPill>
+		<SocialPill>
+			<ReactNative class="size-6" />
+			React Native
+		</SocialPill>
 
-    <SocialPill>
-      <Bootstrap class="size-6" />
-      Bootstrap
-    </SocialPill>
+		<SocialPill>
+			<Tailwind class="size-6" />
+			Tailwind CSS
+		</SocialPill>
 
-    <SocialPill>
-      <Git class="size-6" />
-      Git
-    </SocialPill>
+		<SocialPill>
+			<Bootstrap class="size-6" />
+			Bootstrap
+		</SocialPill>
 
-    <SocialPill>
-      <GitHub class="size-6" />
-      GitHub
-    </SocialPill>
+		<SocialPill>
+			<Git class="size-6" />
+			Git
+		</SocialPill>
 
-    <SocialPill>
-      <NodeJS class="size-6" />
-      Node.JS
-    </SocialPill>
+		<SocialPill>
+			<GitHub class="size-6" />
+			GitHub
+		</SocialPill>
 
-    <SocialPill>
-      <Kotlin class="size-6" />
-      Kotlin
-    </SocialPill>
+		<SocialPill>
+			<NodeJS class="size-6" />
+			Node.JS
+		</SocialPill>
 
-    <SocialPill>
-      <SQL class="size-6" />
-      SQL
-    </SocialPill>
-  </div>
+		<SocialPill>
+			<Kotlin class="size-6" />
+			Kotlin
+		</SocialPill>
+
+		<SocialPill>
+			<SQL class="size-6" />
+			SQL
+		</SocialPill>
+	</div>
 </div>

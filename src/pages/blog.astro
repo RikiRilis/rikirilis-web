@@ -1,13 +1,25 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+import BlogTopics from "@/components/blog/BlogTopics.astro";
+import Contact from "@/components/Contact.astro";
+import SectionContainer from "@/components/SectionContainer.astro";
 import { getI18N } from "@/languages/index.ts";
+import Layout from "@/layouts/Layout.astro";
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
 ---
 
-<Layout title=`${i18n.BLOG} | RikiRilis` description="View and read all de news from RikiRilis. Here you will find sories about life.">
-    <main>
-        
-    </main>
+<Layout
+	title=`${i18n.BLOG} | RikiRilis`
+	description="View and read all de news from RikiRilis. Here you will find sories about life."
+>
+	<main>
+		<SectionContainer id="blog">
+			<BlogTopics />
+		</SectionContainer>
+
+		<SectionContainer id="contact">
+			<Contact />
+		</SectionContainer>
+	</main>
 </Layout>

@@ -1,0 +1,11 @@
+---
+import MainTitle from "@/components/MainTitle.astro";
+import { getI18N } from "@/languages/index";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+---
+
+<MainTitle>
+	{i18n.ARTICLES}
+</MainTitle>

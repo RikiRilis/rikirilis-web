@@ -1,211 +1,217 @@
 ---
-import RikiRilis from "@/icons/RikiRilis.astro";
 import { getI18N } from "@/languages/index.ts";
+import Footer from "./Footer.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 
 const { currentLocale } = Astro;
-const i18n = getI18N({currentLocale});
+const i18n = getI18N({ currentLocale });
 const navItems = [
-  {
-    title: "Blog",
-    label: "blog",
-    url: "/blog",
-  },
-  {
-    title: i18n.PORTFOLIO,
-    label: "portfolio",
-    url: "/portfolio#about",
-  },
-  {
-    title: i18n.EXPERIENCE,
-    label: "experience",
-    url: "/portfolio#experience",
-  },
-  {
-    title: i18n.PROJECTS,
-    label: "projects",
-    url: "/portfolio#projects",
-  },
-  {
-    title: i18n.CONTACT,
-    label: "contact",
-    url: "#contact",
-  },
+	{
+		title: "Web",
+		label: "web",
+		url: "/",
+	},
+	{
+		title: "Blog",
+		label: "blog",
+		url: "/blog",
+	},
+	{
+		title: i18n.PORTFOLIO,
+		label: "about",
+		url: "/portfolio#about",
+	},
+	{
+		title: i18n.EXPERIENCE,
+		label: "experience",
+		url: "/portfolio#experience",
+	},
+	{
+		title: i18n.PROJECTS,
+		label: "projects",
+		url: "/portfolio#projects",
+	},
+	{
+		title: i18n.CONTACT,
+		label: "contact",
+		url: "#contact",
+	},
 ];
 ---
 
-<header class="w-full flex justify-center fixed z-50">
-  <div
-    id="header"
-    class="flex items-center my-4 w-11/12 justify-between sm:justify-normal sm:w-fit pr-4 sm:pr-0 gap-x-6 h-auto overflow-hidden rounded-2xl animate__animated animate__fadeInDown animate__faster"
-  >
-    <a
-      href="https://rikirilis.xyz"
-      aria-label="Rikelvi's RikiRilis brand logo will open in a new window"
-      class="text-cyan-600 inline-block hover:scale-110 motion-safe:transition motion-reduce:hover:scale-100"
-    >
-      <RikiRilis
-        class="size-10 text-slate-400 transition-colors duration-300 hover:text-cyan-600 motion-reduce:duration-0 ml-4"
-      />
-    </a>
+<header class="fixed z-50 flex w-full justify-center">
+	<div
+		id="header"
+		class="animate__animated animate__fadeInDown animate__faster my-4 flex h-auto w-11/12 items-center justify-between gap-x-6 overflow-hidden rounded-2xl pr-4 sm:w-fit sm:justify-normal sm:pr-0"
+	>
+		<nav
+			class="hidden flex-row items-center justify-center text-center font-semibold text-slate-600 sm:flex dark:text-slate-400"
+		>
+			{
+				navItems.map((item) => (
+					<a
+						href={item.url}
+						aria-label={item.label}
+						class="inline-block h-full w-full select-none p-3 transition hover:bg-slate-600/10 hover:text-cyan-600 dark:hover:bg-slate-300/10"
+					>
+						{item.title}
+					</a>
+				))
+			}
+		</nav>
 
-    <nav
-      class="hidden sm:flex flex-row justify-center items-center text-center font-semibold text-slate-400"
-    >
-      {
-        navItems.map((item) => (
-          <a
-            href={item.url}
-            aria-label={item.label}
-            class="p-3 w-full h-full inline-block transition-colors hover:bg-slate-300 hover:bg-opacity-10 hover:text-cyan-600 select-none"
-          >
-            {item.title}
-          </a>
-        ))
-      }
-    </nav>
+		<ThemeToggle />
 
-    <label
-      for="check"
-      class="menu flex flex-col-reverse cursor-pointer sm:hidden rotate-180"
-    >
-      <input type="checkbox" id="check" menu-check-input />
-      <span class="menu__span-1 bg-slate-400"></span>
-      <span class="menu__span-2 bg-slate-400"></span>
-      <span class="menu__span-3 bg-slate-400"></span>
-    </label>
-  </div>
+		<label
+			for="check"
+			class="menu group my-2 flex rotate-180 cursor-pointer flex-col-reverse sm:my-0 sm:hidden"
+		>
+			<input type="checkbox" id="check" menu-check-input />
+			<span
+				class="menu__span-1 bg-slate-600 group-active:bg-cyan-600 sm:group-hover:bg-cyan-600 dark:bg-slate-400"
+			></span>
+			<span
+				class="menu__span-2 bg-slate-600 group-active:bg-cyan-600 sm:group-hover:bg-cyan-600 dark:bg-slate-400"
+			></span>
+			<span
+				class="menu__span-3 bg-slate-600 group-active:bg-cyan-600 sm:group-hover:bg-cyan-600 dark:bg-slate-400"
+			></span>
+		</label>
+	</div>
 </header>
 
 <div
-  mobile-menu-modal
-  class="w-full h-screen hidden justify-center z-40 backdrop-blur-2xl shadow-lg fixed"
+	mobile-menu-modal
+	class="animate__animated animate__faster animate__fadeIn fixed z-40 hidden h-screen w-full justify-center py-4 shadow-lg backdrop-blur-2xl"
 >
-  <nav
-    mobile-menu
-    class="flex flex-col justify-center w-11/12 h-[95%] my-4 py-16 relative bg-slate-400 text-slate-400 font-semibold bg-opacity-10 shadow-slate-950 rounded-2xl overflow-hidden animate__animated animate__faster"
-  >
-    {
-      navItems.map((item) => (
-        <a
-          href={item.url}
-          aria-label={item.label}
-          class="p-3 text-center w-full inline-block text-xl transition-colors hover:bg-slate-300 hover:bg-opacity-10 hover:text-cyan-600 select-none"
-        >
-          {item.title}
-        </a>
-      ))
-    }
-  </nav>
+	<nav
+		mobile-menu
+		class="animate__animated animate__faster relative mb-4 flex h-fit w-11/12 flex-col justify-center overflow-y-auto rounded-2xl py-16 font-semibold text-slate-600 dark:text-slate-400"
+	>
+		{
+			navItems.map((item) => (
+				<a
+					href={item.url}
+					aria-label={item.label}
+					class="inline-block h-full w-full select-none rounded-lg p-3 text-center transition hover:bg-slate-600/10 hover:text-cyan-600 dark:hover:bg-slate-300/10"
+				>
+					{item.title}
+				</a>
+			))
+		}
+
+		<Footer />
+	</nav>
 </div>
 
 <script>
-  document.addEventListener("astro:page-load", () => {
-    const sections = document.querySelectorAll("section");
-    const navItems = document.querySelectorAll("header nav a");
-    const menuCheckInput = document.querySelector("[menu-check-input]") as HTMLInputElement;
-    const mobileMenuModal = document.querySelector("[mobile-menu-modal]");
-    const mobileMenu = document.querySelector("[mobile-menu]");
-    const mobileNavItems = document.querySelectorAll("[mobile-menu] a");
+	document.addEventListener("astro:page-load", () => {
+		const sections = document.querySelectorAll("section");
+		const navItems = document.querySelectorAll("header nav a");
+		const menuCheckInput = document.querySelector("[menu-check-input]") as HTMLInputElement;
+		const mobileMenuModal = document.querySelector("[mobile-menu-modal]");
+		const mobileMenu = document.querySelector("[mobile-menu]");
+		const mobileNavItems = document.querySelectorAll("[mobile-menu] a");
 
-    menuCheckInput?.addEventListener("change", () => {
-      mobileMenuModal?.classList.toggle("hidden");
-      mobileMenuModal?.classList.toggle("flex");
-      mobileMenu?.classList.toggle("animate__slideInDown");
-      document.body.classList.toggle("overflow-hidden");
-    });
+		menuCheckInput?.addEventListener("change", () => {
+			mobileMenuModal?.classList.toggle("hidden");
+			mobileMenuModal?.classList.toggle("flex");
+			mobileMenu?.classList.toggle("animate__zoomIn");
+			document.body.classList.toggle("overflow-hidden");
+		});
 
-    mobileNavItems.forEach((item) => {
-      item.addEventListener("click", () => {
-        mobileMenuModal?.classList.toggle("hidden");
-        mobileMenuModal?.classList.toggle("flex");
-        mobileMenu?.classList.toggle("animate__slideInDown");
-        document.body.classList.toggle("overflow-hidden");
-        menuCheckInput!!.checked = false;
-      });
-    });
+		mobileNavItems.forEach((item) => {
+			item.addEventListener("click", () => {
+				mobileMenuModal?.classList.toggle("hidden");
+				mobileMenuModal?.classList.toggle("flex");
+				mobileMenu?.classList.toggle("animate__slideInDown");
+				document.body.classList.toggle("overflow-hidden");
+				menuCheckInput!!.checked = false;
+			});
+		});
 
-    const callback = (entries: any[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          navItems.forEach((item) => {
-            if (item.getAttribute("aria-label") == entry.target.id) {
-              item.classList.add("text-cyan-600");
-            } else {
-              item.classList.remove("text-cyan-600");
-            }
-          });
-        }
-      });
-    };
+		const callback = (entries: any[]) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					navItems.forEach((item) => {
+						if (item.getAttribute("aria-label") == entry.target.id) {
+							item.classList.add("text-cyan-600");
+						} else {
+							item.classList.remove("text-cyan-600");
+						}
+					});
+				}
+			});
+		};
 
-    const observer = new IntersectionObserver(callback, {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.2,
-    });
+		const observer = new IntersectionObserver(callback, {
+			root: null,
+			rootMargin: "0px",
+			threshold: 0.2,
+		});
 
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
+		sections.forEach((section) => {
+			observer.observe(section);
+		});
 
-    document.onvisibilitychange = () => {
-      if (document.visibilityState === "hidden") {
-        observer.disconnect();
-      } else {
-        sections.forEach((section) => {
-          observer.observe(section);
-        });
-      }
-    };
-  });
+		document.onvisibilitychange = () => {
+			if (document.visibilityState === "hidden") {
+				observer.disconnect();
+			} else {
+				sections.forEach((section) => {
+					observer.observe(section);
+				});
+			}
+		};
+	});
 </script>
 
 <style>
-  #check {
-    display: none;
-  }
+	#check {
+		display: none;
+	}
 
-  .menu {
-    width: 2em;
-  }
+	.menu {
+		width: 2em;
+	}
 
-  #check:checked ~ .menu__span-1 {
-    transform-origin: bottom;
-    width: 100%;
-    transform: rotate3d(0, 0, 1, -45deg) translate3d(8px, -6px, 0);
-  }
+	#check:checked ~ .menu__span-1 {
+		transform-origin: bottom;
+		width: 100%;
+		transform: rotate3d(0, 0, 1, -45deg) translate3d(8px, -6px, 0);
+	}
 
-  #check:checked ~ .menu__span-2 {
-    transform-origin: top;
-    transform: rotate3d(0, 0, 1, 45deg);
-  }
+	#check:checked ~ .menu__span-2 {
+		transform-origin: top;
+		transform: rotate3d(0, 0, 1, 45deg);
+	}
 
-  #check:checked ~ .menu__span-3 {
-    transform-origin: bottom;
-    transform: rotate3d(0, 0, 1, -45deg) translate3d(4px, -19px, 0);
-    opacity: 0;
-  }
+	#check:checked ~ .menu__span-3 {
+		transform-origin: bottom;
+		transform: rotate3d(0, 0, 1, -45deg) translate3d(4px, -19px, 0);
+		opacity: 0;
+	}
 
-  .menu span {
-    margin: auto 0;
-    height: 0.19em;
-    border-radius: 20px;
-    margin: 3px 0;
-    transition: 0.2s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-  }
+	.menu span {
+		margin: auto 0;
+		height: 0.19em;
+		border-radius: 20px;
+		margin: 3px 0;
+		transition: 0.2s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+	}
 
-  .menu__span-1 {
-    width: 50%;
-    will-change: transform;
-  }
+	.menu__span-1 {
+		width: 50%;
+		will-change: transform;
+	}
 
-  .menu__span-2 {
-    width: 100%;
-    will-change: transform;
-  }
+	.menu__span-2 {
+		width: 100%;
+		will-change: transform;
+	}
 
-  .menu__span-3 {
-    width: 75%;
-    will-change: transform;
-  }
+	.menu__span-3 {
+		width: 75%;
+		will-change: transform;
+	}
 </style>

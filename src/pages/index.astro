@@ -1,16 +1,21 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Contact from "@/components/portfolio/Contact.astro";
+import Contact from "@/components/Contact.astro";
 import SectionContainer from "@/components/SectionContainer.astro";
+import Articles from "@/components/web/Articles.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout
-    title="Web | RikiRilis"
-    description="The RikiRilis' Website. Read stories and comments about all you want to know. I build easy-to-use websites and Android apps, with fast technologies and UX/UI standards to improve user experience."
+	title="Web | RikiRilis"
+	description="The RikiRilis' Website. Read stories and comments about all you want to know. I build easy-to-use websites and Android apps, with fast technologies and UX/UI standards to improve user experience."
 >
-    <main>
-        <SectionContainer id="contact">
-            <Contact />
-        </SectionContainer>
-    </main>
+	<main>
+		<SectionContainer id="web">
+			<Articles />
+		</SectionContainer>
+
+		<SectionContainer id="contact">
+			<Contact />
+		</SectionContainer>
+	</main>
 </Layout>

@@ -1,43 +1,40 @@
 ---
-import { type Projects } from "@/interfaces/projects.interface";
-import { projectsService } from "@/services/projects.service";
 import ProjectsCard from "@/components/ProjectsCard.astro";
 import Code from "@/icons/Code.astro";
-import ProjectsTecnologies from "./ProjectsTecnologies.astro";
+import { type Project } from "@/interfaces/project.interface";
 import { getI18N } from "@/languages/index.ts";
+import { projectsService } from "@/services/projects.service";
+import ProjectsTecnologies from "./ProjectsTecnologies.astro";
+import MainTitle from "../MainTitle.astro";
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
-const allProjects: Projects[] = projectsService(currentLocale).slice(0, 4);
+const allProjects: Project[] = projectsService(currentLocale).slice(0, 4);
 ---
 
-<h2
-  class="flex items-center gap-x-3 text-3xl font-semibold sm:text-4xl text-slate-200 mb-8"
->
-  <Code class="size-8" />
-  {i18n.PROJECTS}
-</h2>
+<MainTitle>
+	<Code class="size-8" />
+	{i18n.PROJECTS}
+</MainTitle>
 
-<div class="flex flex-col gap-y-16 text-">
-  {
-    allProjects.map(
-      ({ title, description, imgUrl, projectUrl, tags, gitCodeUrl, alt }) => (
-        <ProjectsCard
-          title={title}
-          description={description}
-          imgUrl={imgUrl}
-          projectUrl={projectUrl}
-          tags={tags}
-          gitCodeUrl={gitCodeUrl}
-          alt={alt}
-        />
-      ),
-    )
-  }
+<div class="text- flex flex-col gap-y-16">
+	{
+		allProjects.map(({ title, description, imgUrl, projectUrl, tags, gitCodeUrl, alt }) => (
+			<ProjectsCard
+				title={title}
+				description={description}
+				imgUrl={imgUrl}
+				projectUrl={projectUrl}
+				tags={tags}
+				gitCodeUrl={gitCodeUrl}
+				alt={alt}
+			/>
+		))
+	}
 </div>
 
 <hr
-  class="w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-800 to-transparent my-20 border-0"
+	class="my-20 h-0.5 w-full border-0 bg-gradient-to-r from-transparent via-cyan-800 to-transparent"
 />
 
 <ProjectsTecnologies />

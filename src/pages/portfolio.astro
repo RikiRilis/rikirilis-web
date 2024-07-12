@@ -1,35 +1,35 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import About from "@/components/portfolio/About.astro";
+import Contact from "@/components/Contact.astro";
 import Experience from "@/components/portfolio/Experience.astro";
 import Projects from "@/components/portfolio/Projects.astro";
-import Contact from "@/components/portfolio/Contact.astro";
 import SectionContainer from "@/components/SectionContainer.astro";
 import { getI18N } from "@/languages/index.ts";
+import Layout from "../layouts/Layout.astro";
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
 ---
 
 <Layout
-    title=`${i18n.ABOUT_TEXT_1} | Rikelvi Capellán`
-    description="I build easy-to-use websites and Android apps, with fast technologies and UX/UI standards to improve user experience."
+	title=`${i18n.ABOUT_TEXT_1} | Rikelvi Capellán`
+	description="I build easy-to-use websites and Android apps, with fast technologies and UX/UI standards to improve user experience."
 >
-    <main>
-        <SectionContainer id="about">
-            <About />
-        </SectionContainer>
+	<main>
+		<SectionContainer id="about">
+			<About />
+		</SectionContainer>
 
-        <SectionContainer id="experience">
-            <Experience />
-        </SectionContainer>
+		<SectionContainer id="experience">
+			<Experience />
+		</SectionContainer>
 
-        <SectionContainer id="projects">
-            <Projects />
-        </SectionContainer>
+		<SectionContainer id="projects">
+			<Projects />
+		</SectionContainer>
 
-        <SectionContainer id="contact">
-            <Contact />
-        </SectionContainer>
-    </main>
+		<SectionContainer id="contact">
+			<Contact />
+		</SectionContainer>
+	</main>
 </Layout>

@@ -3,19 +3,19 @@ import UpArrow from "@/icons/UpArrow.astro";
 ---
 
 <a
-    id="go-top-btn"
-    class="flex fixed size-10 bottom-4 right-4 border border-slate-800 bg-slate-900 justify-center items-center z-30 rounded-xl transition duration-300 sm:hover:bg-slate-800 sm:hover:border-slate-700 active:bg-slate-800 active:border-slate-700 cursor-pointer group"
+	id="go-top-btn"
+	class="flex fixed size-10 bottom-4 right-4 border border-slate-800 bg-slate-900 justify-center items-center z-30 rounded-xl transition duration-300 sm:hover:bg-slate-800 sm:hover:border-slate-700 active:bg-slate-800 active:border-slate-700 cursor-pointer group"
 >
-    <UpArrow
-        class="size-6 text-slate-400 transform transition duration-300 sm:rotate-45 sm:group-hover:rotate-0"
-    />
+	<UpArrow
+		class="size-6 text-slate-400 transform transition duration-300 sm:rotate-45 sm:group-hover:rotate-0"
+	/>
 </a>
 
 <script>
-    document.addEventListener("astro:page-load", () => {
-        const goToTopBtn = document.getElementById("go-top-btn") as HTMLAnchorElement;
-        goToTopBtn.addEventListener("click", () => {
-            window.scrollTo(0, 0);
-        });
-    });
+	document.addEventListener("astro:page-load", () => {
+		const goToTopBtn = document.getElementById("go-top-btn") as HTMLAnchorElement;
+		goToTopBtn.addEventListener("click", () => {
+			window.scrollTo(0, 0);
+		});
+	});
 </script>
