@@ -2,11 +2,11 @@
 
 [Visit it →](https://rikirilis.xyz)
 
-## Description →
+## 📃 Description →
 
 This repository have the RikiRilis' web, blog and portfolio made with [Astro](https://astro.build/), [Tailwind CSS](https://tailwindcss.com/), and deployed in [Vercel](https://vercel.com/).
 
-## You can use this repository by following the next steps →
+## 🤝 You can use this repository by following the next steps →
 
 1. Clone the repository:
    `git clone https://github.com/RikiRilis/rikirilis-web.git`
