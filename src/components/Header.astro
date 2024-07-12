@@ -45,7 +45,7 @@ const navItems = [
 		class="animate__animated animate__fadeInDown animate__faster my-4 flex h-auto w-11/12 items-center justify-between overflow-hidden rounded-2xl pr-3 sm:w-fit sm:scroll-pr-0 sm:justify-normal"
 	>
 		<nav
-			class="hidden flex-row items-center justify-center text-center font-semibold text-slate-600 sm:flex dark:text-slate-400"
+			class="hidden flex-row items-center justify-center text-center font-semibold text-slate-600 dark:text-slate-400 sm:flex"
 		>
 			{
 				navItems.map((item) => (
@@ -68,13 +68,13 @@ const navItems = [
 		>
 			<input type="checkbox" id="check" menu-check-input />
 			<span
-				class="menu__span-1 bg-slate-600 group-active:bg-cyan-600 sm:group-hover:bg-cyan-600 dark:bg-slate-400"
+				class="menu__span-1 bg-slate-600 group-active:bg-cyan-600 dark:bg-slate-400 sm:group-hover:bg-cyan-600"
 			></span>
 			<span
-				class="menu__span-2 bg-slate-600 group-active:bg-cyan-600 sm:group-hover:bg-cyan-600 dark:bg-slate-400"
+				class="menu__span-2 bg-slate-600 group-active:bg-cyan-600 dark:bg-slate-400 sm:group-hover:bg-cyan-600"
 			></span>
 			<span
-				class="menu__span-3 bg-slate-600 group-active:bg-cyan-600 sm:group-hover:bg-cyan-600 dark:bg-slate-400"
+				class="menu__span-3 bg-slate-600 group-active:bg-cyan-600 dark:bg-slate-400 sm:group-hover:bg-cyan-600"
 			></span>
 		</label>
 	</div>
@@ -108,7 +108,7 @@ const navItems = [
 	#header {
 		animation: bgBlur linear both;
 		animation-timeline: scroll();
-		animation-range: 0 200px;
+		animation-range: 0 100px;
 	}
 
 	@keyframes bgBlur {
