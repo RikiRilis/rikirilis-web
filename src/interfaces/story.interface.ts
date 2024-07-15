@@ -1,4 +1,4 @@
-export interface Article {
+export interface Story {
 	id: number;
 	title: string;
 	author: string;
