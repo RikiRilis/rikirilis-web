@@ -10,7 +10,8 @@
       "@/icons": ["src/icons/*"],
       "@/services": ["src/services/*"],
       "@/interfaces": ["src/interfaces/*"],
-      "@/languages": ["src/languages/*"]
+      "@/languages": ["src/languages/*"],
+      "@/db": ["src/db/*"]
     }
   }
 }
