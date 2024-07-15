@@ -1,7 +1,10 @@
 export interface Article {
-	id: string;
+	id: number;
 	title: string;
-	description: string;
 	author: string;
-	time: string;
+	tags: string[];
+	contect: string;
+	created_at: string;
+	uuid: string;
+	lang: string;
 }
