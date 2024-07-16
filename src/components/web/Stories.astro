@@ -1,13 +1,26 @@
 ---
 import MainTitle from "@/components/MainTitle.astro";
+import StoryCard from "@/components/StoryCard.astro";
+import { supabase } from "@/db/supabase";
 import Book from "@/icons/Book.astro";
 import { getI18N } from "@/languages/index";
+import TextEditor from "../TextEditor.astro";
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
+const { data: stories, error } = await supabase.from("web_stories").select("*");
 ---
 
 <MainTitle>
 	<Book class="size-8" />
 	{i18n.STORIES}
+	<TextEditor />
 </MainTitle>
+
+{
+	stories?.map((story) => (
+		<div class="flex w-full flex-col gap-2">
+			<StoryCard {...story} />
+		</div>
+	))
+}

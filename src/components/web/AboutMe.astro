@@ -5,9 +5,34 @@ import { getI18N } from "@/languages/index";
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
+const aboutImage =
+	"https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/src/about_image.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vc3JjL2Fib3V0X2ltYWdlLndlYnAiLCJpYXQiOjE3MjEwMTI3MzMsImV4cCI6MTc0ODkwMTI3MzN9.xUILjnKC-cRjrFuUbU70xQqx2SxT6U-AMgrdlqTMiIA&t=2024-07-15T03%3A05%3A26.995Z";
 ---
 
 <MainTitle>
 	<User class="size-8" />
 	{i18n.ABOUT_ME}
 </MainTitle>
+
+<div
+	class="flex w-full flex-col-reverse items-center justify-between gap-6 md:flex-row md:items-start"
+>
+	<div class="max-w-xl">
+		<p class="text-pretty text-slate-600 dark:text-slate-400">
+			I'm Rikelvi Capellán García, a web and Android developer from Dominican Republic, also known
+			as RikiRilis on social networks.
+		</p>
+	</div>
+
+	<a href="https://rikirilis.xyz/portfolio" title={i18n.PORTFOLIO}>
+		<img
+			loading="lazy"
+			decoding="async"
+			src={aboutImage}
+			width="720"
+			height="1280"
+			class="aspect-square h-full w-48 rotate-6 rounded-3xl bg-slate-600 object-cover p-1 shadow-lg shadow-black/30 transition-transform ease-in-out dark:bg-slate-800 dark:shadow-black/60 md:w-64 md:p-2 md:hover:scale-105"
+			alt="About RikiRilis' image, Rikelvi Capellán"
+		/>
+	</a>
+</div>

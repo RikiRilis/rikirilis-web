@@ -3,7 +3,7 @@ export interface Story {
 	title: string;
 	author: string;
 	tags: string[];
-	contect: string;
+	content: string;
 	created_at: string;
 	uuid: string;
 	lang: string;
