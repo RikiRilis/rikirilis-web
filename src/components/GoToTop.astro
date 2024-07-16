@@ -29,8 +29,10 @@ import UpArrow from "@/icons/UpArrow.astro";
 </style>
 
 <script>
+	import { $ } from "@/lib/dom-selector.ts";
+
 	document.addEventListener("astro:page-load", () => {
-		const goToTopBtn = document.getElementById("go-top-btn") as HTMLAnchorElement;
+		const goToTopBtn = $("#go-top-btn") as HTMLAnchorElement;
 		goToTopBtn.addEventListener("click", () => {
 			window.scrollTo(0, 0);
 		});

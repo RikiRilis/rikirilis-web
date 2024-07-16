@@ -25,7 +25,7 @@ const i18n = getI18N({ currentLocale });
 				rel="noopener noreferrer"
 				href="https://instagram.com/rikirilis"
 				target="_blank"
-				class="font-bold text-cyan-600 transition-colors active:text-slate-700 active:underline sm:hover:text-slate-700 sm:hover:underline dark:active:text-slate-300 dark:sm:hover:text-slate-300"
+				class="font-bold text-cyan-600 transition-colors active:text-slate-700 active:underline dark:active:text-slate-300 sm:hover:text-slate-700 sm:hover:underline dark:sm:hover:text-slate-300"
 				>Instagram</a
 			>
 			{i18n.OR}
@@ -33,7 +33,7 @@ const i18n = getI18N({ currentLocale });
 				rel="noopener noreferrer"
 				href="https://twitter.com/rikirilis_"
 				target="_blank"
-				class="font-bold text-cyan-600 transition-colors active:text-slate-700 active:underline sm:hover:text-slate-700 sm:hover:underline dark:active:text-slate-300 dark:sm:hover:text-slate-300"
+				class="font-bold text-cyan-600 transition-colors active:text-slate-700 active:underline dark:active:text-slate-300 sm:hover:text-slate-700 sm:hover:underline dark:sm:hover:text-slate-300"
 				>X</a
 			>.
 		</p>
@@ -61,24 +61,26 @@ const i18n = getI18N({ currentLocale });
 	<SendForm currentLocale={currentLocale} client:visible />
 </div>
 
-<script is:inline>
-	document.addEventListener("astro:page-load", () => {
-		const copyEmailIcon = document.getElementById("copyEmailIcon");
-		const copiedEmailIcon = document.getElementById("copiedEmailIcon");
+<script>
+	import { $ } from "@/lib/dom-selector.ts";
 
-		copyEmailIcon.addEventListener("click", () => {
-			copyEmailIcon.classList.remove("inline-block");
-			copyEmailIcon.classList.add("hidden");
-			copiedEmailIcon.classList.add("inline-block");
-			copiedEmailIcon.classList.remove("hidden");
+	document.addEventListener("astro:page-load", () => {
+		const copyEmailIcon = $("#copyEmailIcon");
+		const copiedEmailIcon = $("#copiedEmailIcon");
+
+		copyEmailIcon?.addEventListener("click", () => {
+			copyEmailIcon?.classList.remove("inline-block");
+			copyEmailIcon?.classList.add("hidden");
+			copiedEmailIcon?.classList.add("inline-block");
+			copiedEmailIcon?.classList.remove("hidden");
 
 			navigator.clipboard.writeText("rikelvicapellan15@gmail.com");
 
 			setTimeout(() => {
-				copyEmailIcon.classList.add("inline-block");
-				copyEmailIcon.classList.remove("hidden");
-				copiedEmailIcon.classList.remove("inline-block");
-				copiedEmailIcon.classList.add("hidden");
+				copyEmailIcon?.classList.add("inline-block");
+				copyEmailIcon?.classList.remove("hidden");
+				copiedEmailIcon?.classList.remove("inline-block");
+				copiedEmailIcon?.classList.add("hidden");
 			}, 3000);
 		});
 	});

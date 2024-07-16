@@ -15,10 +15,12 @@ import Sun from "@/icons/Sun.astro";
 	/>
 </button>
 
-<script is:inline>
+<script>
+	import { $, $$ } from "@/lib/dom-selector.ts";
+
 	document.addEventListener("astro:page-load", () => {
-		const updateIcon = (themePreference) => {
-			document.querySelectorAll(".theme-toggle-icon").forEach((element) => {
+		const updateIcon = (themePreference: string | null) => {
+			$$(".theme-toggle-icon").forEach((element) => {
 				element.style.scale = element.id === themePreference ? "1" : "0";
 				element.style.visibility = element.id === themePreference ? "visible" : "hidden";
 			});
@@ -35,6 +37,6 @@ import Sun from "@/icons/Sun.astro";
 
 		updateIcon(localStorage.getItem("theme") || "dark");
 
-		document.getElementById("themeToggle").addEventListener("click", handleToggleClick);
+		$("#themeToggle")?.addEventListener("click", handleToggleClick);
 	});
 </script>
