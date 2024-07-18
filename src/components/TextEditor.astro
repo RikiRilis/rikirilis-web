@@ -33,13 +33,25 @@ const i18n = getI18N({ currentLocale });
 >
 	<div class="flex h-[90vh] w-11/12 flex-col rounded-3xl bg-slate-600/50 p-4">
 		<div class="mb-4 flex items-center justify-between">
-			<input
-				id="story-title-input"
-				required
-				class="h-10 rounded-lg bg-slate-600/10 px-2 text-base font-normal text-slate-400 placeholder-slate-400 transition-colors ease-in-out autofill:!bg-yellow-200 focus:bg-slate-200/20 focus:outline-none placeholder:focus:invisible dark:focus:border-cyan-600"
-				type="text"
-				placeholder="Title"
-			/>
+			<div class="flex flex-col gap-2 sm:flex-row sm:items-center">
+				<input
+					id="story-title-input"
+					required
+					class="h-10 rounded-lg bg-slate-600/10 px-2 text-base font-normal text-slate-400 placeholder-slate-400 transition-colors ease-in-out autofill:!bg-yellow-200 focus:bg-slate-200/20 focus:outline-none placeholder:focus:invisible dark:focus:border-cyan-600"
+					type="text"
+					placeholder="Title"
+				/>
+				<select
+					id="language-selector"
+					class="h-8 w-fit cursor-pointer rounded-md bg-slate-600 px-1 text-base text-slate-200 outline-none"
+				>
+					<option class="text-base" value="" selected="" hidden="" disabled=""
+						>{i18n.LANGUAGE}</option
+					>
+					<option value="es">{i18n.SPANISH}</option>
+					<option value="en">{i18n.ENGLISH}</option>
+				</select>
+			</div>
 
 			<Close
 				id="close-modal-button"
@@ -185,6 +197,7 @@ const i18n = getI18N({ currentLocale });
 </style>
 
 <script>
+	import { insertRow } from "@/db/supabase";
 	import { $, $$ } from "@/lib/dom-selector.ts";
 
 	document.addEventListener("astro:page-load", () => {
@@ -198,35 +211,50 @@ const i18n = getI18N({ currentLocale });
 			addStoryButton = $("#add-story-button") as HTMLAnchorElement,
 			modal = $("#modal") as HTMLDivElement,
 			sendStoryButton = $("#send-story-button") as HTMLAnchorElement,
+			storyTitleInput = $("#story-title-input") as HTMLInputElement,
+			languageSelector = $("#language-selector") as HTMLSelectElement,
 			closeModalButton = $("#close-modal-button");
 
 		let active = false;
 
-		optionButtons.forEach((button) => {
+		function formatDoc(cmd: any, value: string | null = null) {
+			if (value) {
+				document.execCommand(cmd, false, value);
+			} else {
+				document.execCommand(cmd);
+			}
+		}
+
+		function addLink() {
+			const url = prompt("Insert url");
+			formatDoc("createLink", url);
+		}
+
+		optionButtons?.forEach((button) => {
 			button.addEventListener("click", () => {
 				formatDoc(button.id);
 			});
 		});
 
-		addLinkButton.addEventListener("click", () => {
+		addLinkButton?.addEventListener("click", () => {
 			addLink();
 		});
 
-		formatBlock.addEventListener("change", () => {
+		formatBlock?.addEventListener("change", () => {
 			formatDoc(formatBlock.id, formatBlock.value);
 		});
 
-		fontSize.addEventListener("change", () => {
+		fontSize?.addEventListener("change", () => {
 			formatDoc(fontSize.id, fontSize.value);
 		});
 
-		addStoryButton.addEventListener("click", () => {
+		addStoryButton?.addEventListener("click", () => {
 			modal.classList.toggle("hidden");
 			modal.classList.toggle("flex");
 			document.body.classList.toggle("overflow-hidden");
 		});
 
-		modal.addEventListener("click", (e) => {
+		modal?.addEventListener("click", (e) => {
 			if (e.target === modal) {
 				modal.classList.toggle("hidden");
 				modal.classList.toggle("flex");
@@ -234,17 +262,29 @@ const i18n = getI18N({ currentLocale });
 			}
 		});
 
-		sendStoryButton.addEventListener("click", () => {
-			modal.classList.toggle("hidden");
-			modal.classList.toggle("flex");
-			document.body.classList.toggle("overflow-hidden");
+		sendStoryButton?.addEventListener("click", () => {
+			if (storyTitleInput.value !== "" && languageSelector.value !== "") {
+				insertRow({
+					title: storyTitleInput.value,
+					content: content.innerHTML,
+					tags: ["a", "b", "c"],
+					lang: languageSelector.value,
+				});
+
+				modal.classList.toggle("hidden");
+				modal.classList.toggle("flex");
+				document.body.classList.toggle("overflow-hidden");
+				content.innerHTML = `<font size="4">Text...</font>`;
+				storyTitleInput.value = "";
+				languageSelector.value = "";
+			}
 		});
 
-		copyCode.addEventListener("click", () => {
+		copyCode?.addEventListener("click", () => {
 			navigator.clipboard.writeText(content.innerHTML.trim());
 		});
 
-		content.addEventListener("mouseenter", function () {
+		content?.addEventListener("mouseenter", function () {
 			const a = content.querySelectorAll("a");
 			a.forEach((item) => {
 				item.addEventListener("mouseenter", function () {
@@ -257,7 +297,7 @@ const i18n = getI18N({ currentLocale });
 			});
 		});
 
-		showCode.addEventListener("click", function () {
+		showCode?.addEventListener("click", function () {
 			showCode.dataset.active = String(!active);
 			active = !active;
 			if (active) {
@@ -274,19 +314,8 @@ const i18n = getI18N({ currentLocale });
 			modal.classList.toggle("flex");
 			document.body.classList.toggle("overflow-hidden");
 			content.innerHTML = `<font size="4">Text...</font>`;
+			storyTitleInput.value = "";
+			languageSelector.value = "";
 		});
-
-		function formatDoc(cmd: any, value: string | null = null) {
-			if (value) {
-				document.execCommand(cmd, false, value);
-			} else {
-				document.execCommand(cmd);
-			}
-		}
-
-		function addLink() {
-			const url = prompt("Insert url");
-			formatDoc("createLink", url);
-		}
 	});
 </script>
