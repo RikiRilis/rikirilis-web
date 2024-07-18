@@ -5,8 +5,11 @@ interface Window {
 }
 
 interface ImportMetaEnv {
-	readonly SECRET_SUPABASE_URL: string;
-	readonly SECRET_SUPABASE_ANON_KEY: string;
+	readonly SUPABASE_URL: string;
+	readonly SUPABASE_ANON_KEY: string;
+	readonly EMAILJS_KEY: string;
+	readonly EMAILJS_SERVICE_ID: string;
+	readonly PUBLIC_EMAILJS_TEMPLATE_ID: string;
 }
 
 interface ImportMeta {
