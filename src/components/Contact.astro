@@ -58,7 +58,7 @@ const i18n = getI18N({ currentLocale });
 		</div>
 	</div>
 
-	<SendForm currentLocale={currentLocale} client:visible />
+	<SendForm currentLocale={{ currentLocale }} client:visible />
 </div>
 
 <script>
