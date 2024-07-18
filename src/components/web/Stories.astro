@@ -17,10 +17,6 @@ const { data: stories, error } = await supabase.from("web_stories").select("*");
 	<TextEditor />
 </MainTitle>
 
-{
-	stories?.map((story) => (
-		<div class="flex w-full flex-col gap-2">
-			<StoryCard {...story} />
-		</div>
-	))
-}
+<div class="flex w-full flex-col gap-2">
+	{stories?.map((story) => <StoryCard {...story} />)}
+</div>
