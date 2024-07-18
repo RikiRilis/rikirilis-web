@@ -12,7 +12,8 @@
       "@/interfaces": ["src/interfaces/*"],
       "@/languages": ["src/languages/*"],
       "@/db": ["src/db/*"],
-      "@/lib": ["src/lib/*"]
+      "@/lib": ["src/lib/*"],
+      "@/hooks": ["src/hooks/*"]
     }
   }
 }
