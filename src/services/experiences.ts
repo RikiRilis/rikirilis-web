@@ -1,5 +1,5 @@
 import { getI18N } from "@/languages/index";
-import { type Experience } from "../interfaces/experience.interface";
+import { type Experience } from "../interfaces/experience";
 
 export const experiencesService = (currentLocale?: string): Experience[] => {
 	const i18n = getI18N({ currentLocale });

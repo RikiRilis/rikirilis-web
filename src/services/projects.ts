@@ -1,4 +1,4 @@
-import { type Project } from "@/interfaces/project.interface";
+import { type Project } from "@/interfaces/project";
 import AstroBrand from "@/icons/AstroBrand.astro";
 import Angular from "@/icons/Angular.astro";
 import Tailwind from "@/icons/Tailwind.astro";

@@ -1,11 +1,11 @@
 ---
 import ProjectsCard from "@/components/ProjectsCard.astro";
 import Code from "@/icons/Code.astro";
-import { type Project } from "@/interfaces/project.interface";
+import { type Project } from "@/interfaces/project";
 import { getI18N } from "@/languages/index.ts";
-import { projectsService } from "@/services/projects.service";
-import ProjectsTecnologies from "./ProjectsTecnologies.astro";
+import { projectsService } from "@/services/projects";
 import MainTitle from "../MainTitle.astro";
+import ProjectsTecnologies from "./ProjectsTecnologies.astro";
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
