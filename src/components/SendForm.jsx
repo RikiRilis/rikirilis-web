@@ -1,61 +1,35 @@
-import { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
 import { getI18N } from "@/languages/index";
+import { useEmailjs } from "@/hooks/useEmailjs";
+import { useRef } from "react";
 
-export const SendForm = (currentLocale) => {
-	const user_name = useRef(),
-		user_email = useRef(),
-		message = useRef(),
-		i18n = getI18N({ currentLocale }),
-		[sending, setSending] = useState(false);
+export const SendForm = ({ currentLocale }) => {
+	const i18n = getI18N({ currentLocale });
+	const { sending, sendEmail } = useEmailjs();
+	const form = useRef();
 
-	const sendEmail = (e) => {
-		e.preventDefault();
-
+	const handleClick = (event) => {
+		event.preventDefault();
 		if (sending) return;
 
-		setSending(true);
+		const { user_name, user_email, message } = Object.fromEntries(
+			new window.FormData(event.target)
+		);
 
-		emailjs.init({
-			publicKey: "sBTAHA5e6bTr3L4lD",
-			blockHeadless: true,
-			limitRate: {
-				id: "app",
-				throttle: 120000,
-			},
-		});
-
-		emailjs
-			.send("service_q4ed9v6", "template_yv5sx76", {
-				from_name: user_name.current.value.trim(),
-				to_name: "RikiRilis",
-				from_email: user_email.current.value.trim(),
-				subject: "Email from contact form | RikiRilis",
-				message: message.current.value.trim(),
-			})
-			.then(() => {
-				user_name.current.value = "";
-				user_email.current.value = "";
-				message.current.value = "";
-				setSending(false);
-			})
-			.catch(() => {
-				setSending(false);
-			});
+		sendEmail({ user_name, user_email, message });
+		form.current.reset();
 	};
 
 	return (
-		<form onSubmit={sendEmail} className="flex-1 pt-6 sm:w-full sm:pt-0">
+		<form ref={form} onSubmit={handleClick} className="flex-1 pt-6 sm:w-full sm:pt-0">
 			<span className="text-sm italic text-slate-400">{i18n.CONTACT_TXT_6}</span>
 
 			<div className="mt-4 flex flex-col gap-2">
 				<label className="mb-1 flex flex-col font-semibold text-slate-600 dark:text-slate-200">
 					{i18n.NAME}
 					<input
-						ref={user_name}
 						required
 						autoComplete="name"
-						className="h-10 rounded-lg border dark:border-cyan-800 bg-slate-200 dark:bg-cyan-950 text-slate-600 dark:text-slate-400 px-2 font-normal placeholder-slate-400 transition-colors ease-in-out dark:focus:border-cyan-600 focus:bg-slate-200/20 dark:focus:bg-transparent focus:shadow-sm focus:outline-none placeholder:focus:invisible"
+						className="h-10 rounded-lg border bg-slate-200 px-2 font-normal text-slate-600 placeholder-slate-400 transition-colors ease-in-out focus:bg-slate-200/20 focus:shadow-sm focus:outline-none placeholder:focus:invisible dark:border-cyan-950 dark:bg-cyan-950/50 dark:text-slate-400 dark:placeholder-slate-500 dark:focus:border-cyan-600 dark:focus:bg-transparent"
 						type="text"
 						name="user_name"
 						placeholder="Rikelvi Capellán"
@@ -65,10 +39,9 @@ export const SendForm = (currentLocale) => {
 				<label className="mb-1 flex flex-col font-semibold text-slate-600 dark:text-slate-200">
 					{i18n.EMAIL}
 					<input
-						ref={user_email}
 						required
 						autoComplete="email"
-						className="h-10 rounded-lg border dark:border-cyan-800 bg-slate-200 dark:bg-cyan-950 text-slate-600 dark:text-slate-400 px-2 font-normal placeholder-slate-400 transition-colors ease-in-out autofill:!bg-yellow-200 dark:focus:border-cyan-600 focus:bg-slate-200/20 dark:focus:bg-transparent focus:outline-none placeholder:focus:invisible"
+						className="h-10 rounded-lg border bg-slate-200 px-2 font-normal text-slate-600 placeholder-slate-400 transition-colors ease-in-out autofill:!bg-yellow-200 focus:bg-slate-200/20 focus:outline-none placeholder:focus:invisible dark:border-cyan-950 dark:bg-cyan-950/50 dark:text-slate-400 dark:placeholder-slate-500 dark:focus:border-cyan-600 dark:focus:bg-transparent"
 						type="email"
 						name="user_email"
 						placeholder="example@example.com"
@@ -78,9 +51,8 @@ export const SendForm = (currentLocale) => {
 				<label className="mb-1 flex flex-col font-semibold text-slate-600 dark:text-slate-200">
 					{i18n.MESSAGE}
 					<textarea
-						ref={message}
 						required
-						className="h-28 rounded-lg border dark:border-cyan-800 bg-slate-200 dark:bg-cyan-950 text-slate-600 dark:text-slate-400 px-2 py-1 font-normal placeholder-slate-400 transition-colors ease-in-out dark:focus:border-cyan-600 focus:bg-slate-200/20 dark:focus:bg-transparent focus:outline-none placeholder:focus:invisible"
+						className="h-28 rounded-lg border bg-slate-200 px-2 py-1 font-normal text-slate-600 placeholder-slate-400 transition-colors ease-in-out focus:bg-slate-200/20 focus:outline-none placeholder:focus:invisible dark:border-cyan-950 dark:bg-cyan-950/50 dark:text-slate-400 dark:placeholder-slate-500 dark:focus:border-cyan-600 dark:focus:bg-transparent"
 						name="message"
 						placeholder={i18n.MESSAGE_PLACEHOLDER}
 					></textarea>
