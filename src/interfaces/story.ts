@@ -1,11 +1,14 @@
 export interface Story {
-	id: number;
-	title: string;
 	author: string;
-	tags: string[];
-	content: string;
+	category: string;
+	content: {
+		title: string;
+		paragraphs: string[];
+	}[];
 	description: string;
-	created_at: string;
-	uuid: string;
 	lang: string;
+	pageTitle: string;
+	tags: string[];
+	timestamp: string;
+	title: string;
 }

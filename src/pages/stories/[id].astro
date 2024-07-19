@@ -1,0 +1,88 @@
+---
+import Contact from "@/components/Contact.astro";
+import SectionContainer from "@/components/SectionContainer.astro";
+import { getI18N } from "@/languages/index";
+import Layout from "@/layouts/Layout.astro";
+import { storiesService } from "@/services/stories";
+
+const { id } = Astro.params;
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+
+const stories = storiesService();
+const story = stories.find((story) => story.pageTitle === id);
+
+if (!story || story === undefined) {
+	return Astro.redirect("/404");
+}
+---
+
+<Layout
+	title=`${story?.title} | RikiRilis' stories`
+	description=`${story?.description} | Author: ${story?.author}`
+>
+	<SectionContainer>
+		<div>
+			<header>
+				<h2 class="text-2xl font-extrabold text-cyan-600" transition:name="story-title-animation">
+					{story?.title}
+				</h2>
+			</header>
+
+			<div
+				class="mt-8 flex w-full flex-col gap-8 text-slate-600 dark:text-slate-400"
+				transition:name="story-content-animation"
+			>
+				{
+					story?.content.map((section) => (
+						<div class="flex flex-col gap-2">
+							<h1 class="text-center text-xl font-bold text-slate-800 dark:text-slate-200">
+								{section.title}
+							</h1>
+
+							<div id="paragraphs" class="flex flex-col gap-4">
+								{section.paragraphs.map((paragraph) => (
+									<p
+										class={`${paragraph.startsWith('"') && paragraph.endsWith('"') ? "text-right" : "text-left"} text-pretty text-slate-600 dark:text-slate-400`}
+									>
+										{paragraph}
+									</p>
+								))}
+							</div>
+						</div>
+					))
+				}
+			</div>
+
+			<footer
+				class="mt-8 flex w-full flex-col items-end justify-center text-xs italic text-slate-400 dark:text-slate-600"
+			>
+				<span>
+					{story?.timestamp}
+				</span>
+
+				<span>
+					{i18n.AUTHOR}: {story?.author} | {i18n.LANGUAGE}: {story?.lang}
+				</span>
+			</footer>
+		</div>
+	</SectionContainer>
+
+	<SectionContainer id="contact">
+		<Contact />
+	</SectionContainer>
+</Layout>
+
+<script>
+	import { $$ } from "@/lib/dom-selector";
+
+	document.addEventListener("astro:page-load", () => {
+		const paragraphs = $$("#paragraphs p");
+
+		paragraphs.forEach((paragraph) => {
+			var text = paragraph.innerHTML;
+			var textItalic = text.replace(/"([^"]*)"/g, '<i>"$1"</i>');
+			paragraph.innerHTML = textItalic;
+		});
+	});
+</script>

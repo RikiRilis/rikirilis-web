@@ -3,9 +3,11 @@ import MainTitle from "@/components/MainTitle.astro";
 import StoryCard from "@/components/StoryCard.astro";
 import Book from "@/icons/Book.astro";
 import { getI18N } from "@/languages/index";
+import { storiesService } from "@/services/stories";
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
+const stories = storiesService();
 ---
 
 <MainTitle>
@@ -14,8 +16,5 @@ const i18n = getI18N({ currentLocale });
 </MainTitle>
 
 <div class="flex w-full flex-col gap-2">
-	<strong class="text-xl text-cyan-600">Coming soon...</strong>
+	{stories.slice(0, 4).map((story) => <StoryCard {...story} />)}
 </div>
-<!-- <div class="flex w-full flex-col gap-2">
-	{stories?.map((story) => <StoryCard {...story} />)}
-</div> -->

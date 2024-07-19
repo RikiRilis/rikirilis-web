@@ -3,28 +3,22 @@ import RightArrow from "@/icons/RightArrow.astro";
 import { getI18N } from "@/languages/index";
 
 interface Props {
-	id: number;
-	title: string;
 	author: string;
-	tags: string[];
-	content: string;
 	description: string;
-	created_at: string;
-	uuid: string;
 	lang: string;
+	pageTitle: string;
+	timestamp: string;
+	title: string;
 }
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
-const { id, title, author, tags, content, description, created_at, uuid, lang } = Astro.props;
-console.log(
-	title.replace("¿", "").replace("?", "").replace("-", "").split(" ").join("-").trim().toLowerCase()
-);
+const { author, description, lang, pageTitle, timestamp, title } = Astro.props;
 ---
 
 <a
-	href=`/stories/${uuid}`
-	data-story-id={uuid}
+	href=`/stories/${pageTitle}`
+	data-story-id={pageTitle}
 	id="div"
 	class="group flex w-full items-center justify-between rounded-xl bg-slate-400/10 px-4 py-2 shadow-md transition-all ease-in-out active:scale-[0.99] active:bg-slate-400/20 dark:bg-slate-400/5 active:dark:bg-slate-400/15 sm:cursor-pointer sm:hover:scale-[0.99] sm:hover:bg-slate-400/20 dark:sm:hover:dark:bg-slate-400/15"
 >
@@ -40,15 +34,12 @@ console.log(
 			{description}
 		</p>
 
-		<p
-			class="text-xs italic text-slate-400 dark:text-slate-600"
-			transition:name="story-author-animation"
-		>
+		<p class="text-xs italic text-slate-400 dark:text-slate-600">
 			{i18n.AUTHOR}: {author} | {i18n.LANGUAGE}: {lang}
 		</p>
 
 		<p class="mt-4 text-xs italic text-slate-400 dark:text-slate-600">
-			{created_at.split(".")[0].split("T").join(" ")}
+			{timestamp}
 		</p>
 	</div>
 
