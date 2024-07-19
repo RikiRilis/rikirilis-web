@@ -1,6 +1,5 @@
 ---
 import { getI18N } from "@/languages/index.ts";
-import Footer from "./Footer.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 
 const { currentLocale } = Astro;
@@ -22,16 +21,6 @@ const navItems = [
 		url: "/portfolio#about",
 	},
 	{
-		title: i18n.EXPERIENCE,
-		label: "experience",
-		url: "/portfolio#experience",
-	},
-	{
-		title: i18n.PROJECTS,
-		label: "projects",
-		url: "/portfolio#projects",
-	},
-	{
 		title: i18n.CONTACT,
 		label: "contact",
 		url: "#contact",
@@ -40,19 +29,16 @@ const navItems = [
 ---
 
 <header class="fixed z-50 flex w-full justify-center">
-	<div
-		id="header"
-		class="animate__animated animate__fadeInDown animate__faster my-4 flex h-auto w-11/12 items-center justify-between gap-x-4 overflow-hidden rounded-2xl pr-3 sm:w-fit sm:scroll-pr-0 sm:justify-normal"
-	>
+	<div id="header" class="my-4 flex h-auto w-fit items-center gap-x-2 overflow-hidden rounded-2xl">
 		<nav
-			class="hidden flex-row items-center justify-center text-center font-semibold text-slate-600 dark:text-slate-400 sm:flex"
+			class="flex flex-row items-center justify-center text-center font-semibold text-slate-600 dark:text-slate-400"
 		>
 			{
 				navItems.map((item) => (
 					<a
 						href={item.url}
 						aria-label={item.label}
-						class="inline-block h-full select-none p-3 transition hover:bg-slate-600/10 hover:text-cyan-600 dark:hover:bg-slate-300/10"
+						class="inline-block h-full select-none p-2 transition hover:bg-slate-600/10 hover:text-cyan-600 dark:hover:bg-slate-300/10"
 					>
 						{item.title}
 					</a>
@@ -61,48 +47,8 @@ const navItems = [
 		</nav>
 
 		<ThemeToggle />
-
-		<label
-			for="check"
-			class="menu group my-2 flex rotate-180 cursor-pointer flex-col-reverse sm:my-0 sm:hidden"
-		>
-			<input type="checkbox" id="check" menu-check-input />
-			<span
-				class="menu__span-1 bg-slate-600 group-active:bg-cyan-600 dark:bg-slate-400 sm:group-hover:bg-cyan-600"
-			></span>
-			<span
-				class="menu__span-2 bg-slate-600 group-active:bg-cyan-600 dark:bg-slate-400 sm:group-hover:bg-cyan-600"
-			></span>
-			<span
-				class="menu__span-3 bg-slate-600 group-active:bg-cyan-600 dark:bg-slate-400 sm:group-hover:bg-cyan-600"
-			></span>
-		</label>
 	</div>
 </header>
-
-<div
-	mobile-menu-modal
-	class="animate__animated animate__faster animate__fadeIn fixed z-40 hidden h-screen w-full justify-center py-4 shadow-lg backdrop-blur-2xl"
->
-	<nav
-		mobile-menu
-		class="animate__animated animate__faster relative mb-4 flex h-fit w-11/12 flex-col justify-center overflow-y-auto rounded-2xl py-16 font-semibold text-slate-600 dark:text-slate-400"
-	>
-		{
-			navItems.map((item) => (
-				<a
-					href={item.url}
-					aria-label={item.label}
-					class="inline-block h-full w-full select-none rounded-lg p-3 text-center transition hover:bg-slate-600/10 hover:text-cyan-600 dark:hover:bg-slate-300/10"
-				>
-					{item.title}
-				</a>
-			))
-		}
-
-		<Footer />
-	</nav>
-</div>
 
 <style>
 	#header {
@@ -117,81 +63,12 @@ const navItems = [
 			@apply shadow-md backdrop-blur-3xl;
 		}
 	}
-
-	#check {
-		display: none;
-	}
-
-	.menu {
-		width: 2em;
-	}
-
-	#check:checked ~ .menu__span-1 {
-		transform-origin: bottom;
-		width: 100%;
-		transform: rotate3d(0, 0, 1, -45deg) translate3d(8px, -6px, 0);
-	}
-
-	#check:checked ~ .menu__span-2 {
-		transform-origin: top;
-		transform: rotate3d(0, 0, 1, 45deg);
-	}
-
-	#check:checked ~ .menu__span-3 {
-		transform-origin: bottom;
-		transform: rotate3d(0, 0, 1, -45deg) translate3d(4px, -19px, 0);
-		opacity: 0;
-	}
-
-	.menu span {
-		margin: auto 0;
-		height: 0.19em;
-		border-radius: 20px;
-		margin: 3px 0;
-		transition: 0.2s cubic-bezier(0.68, -0.6, 0.32, 1.6);
-	}
-
-	.menu__span-1 {
-		width: 50%;
-		will-change: transform;
-	}
-
-	.menu__span-2 {
-		width: 100%;
-		will-change: transform;
-	}
-
-	.menu__span-3 {
-		width: 75%;
-		will-change: transform;
-	}
 </style>
 
 <script>
 	document.addEventListener("astro:page-load", () => {
 		const sections = document.querySelectorAll("section");
 		const navItems = document.querySelectorAll("header nav a");
-		const menuCheckInput = document.querySelector("[menu-check-input]") as HTMLInputElement;
-		const mobileMenuModal = document.querySelector("[mobile-menu-modal]");
-		const mobileMenu = document.querySelector("[mobile-menu]");
-		const mobileNavItems = document.querySelectorAll("[mobile-menu] a");
-
-		menuCheckInput?.addEventListener("change", () => {
-			mobileMenuModal?.classList.toggle("hidden");
-			mobileMenuModal?.classList.toggle("flex");
-			mobileMenu?.classList.toggle("animate__zoomIn");
-			document.body.classList.toggle("overflow-hidden");
-		});
-
-		mobileNavItems.forEach((item) => {
-			item.addEventListener("click", () => {
-				mobileMenuModal?.classList.toggle("hidden");
-				mobileMenuModal?.classList.toggle("flex");
-				mobileMenu?.classList.toggle("animate__slideInDown");
-				document.body.classList.toggle("overflow-hidden");
-				menuCheckInput!!.checked = false;
-			});
-		});
 
 		const callback = (entries: any[]) => {
 			entries.forEach((entry) => {

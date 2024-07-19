@@ -8,6 +8,7 @@ interface Props {
 	author: string;
 	tags: string[];
 	content: string;
+	description: string;
 	created_at: string;
 	uuid: string;
 	lang: string;
@@ -15,25 +16,34 @@ interface Props {
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
-const { id, title, author, tags, content, created_at, uuid, lang } = Astro.props;
+const { id, title, author, tags, content, description, created_at, uuid, lang } = Astro.props;
+console.log(
+	title.replace("¿", "").replace("?", "").replace("-", "").split(" ").join("-").trim().toLowerCase()
+);
 ---
 
-<div
+<a
+	href=`/stories/${uuid}`
 	data-story-id={uuid}
 	id="div"
 	class="group flex w-full items-center justify-between rounded-xl bg-slate-400/10 px-4 py-2 shadow-md transition-all ease-in-out active:scale-[0.99] active:bg-slate-400/20 dark:bg-slate-400/5 active:dark:bg-slate-400/15 sm:cursor-pointer sm:hover:scale-[0.99] sm:hover:bg-slate-400/20 dark:sm:hover:dark:bg-slate-400/15"
 >
 	<div class="overflow-hidden">
-		<h2 class="text-xl font-bold text-cyan-600">
+		<h2 class="text-xl font-bold text-cyan-600" transition:name="story-title-animation">
 			{title}
 		</h2>
 
-		<div
+		<p
 			class="text-md overflow-hidden text-ellipsis whitespace-nowrap text-nowrap text-slate-500 dark:text-slate-400"
-			set:html={content}
-		/>
+			transition:name="story-content-animation"
+		>
+			{description}
+		</p>
 
-		<p class="text-xs italic text-slate-400 dark:text-slate-600">
+		<p
+			class="text-xs italic text-slate-400 dark:text-slate-600"
+			transition:name="story-author-animation"
+		>
 			{i18n.AUTHOR}: {author} | {i18n.LANGUAGE}: {lang}
 		</p>
 
@@ -47,4 +57,4 @@ const { id, title, author, tags, content, created_at, uuid, lang } = Astro.props
 			class="size-8 text-slate-700 transition-colors dark:text-slate-300 sm:group-hover:text-cyan-600"
 		/>
 	</div>
-</div>
+</a>
