@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/serverless";
 import react from "@astrojs/react";
@@ -22,4 +22,11 @@ export default defineConfig({
 			enabled: true,
 		},
 	}),
+	vite: {
+		define: {
+			"import.meta.env.EMAILJS_KEY": JSON.stringify(process.env.EMAILJS_KEY),
+			"import.meta.env.EMAILJS_SERVICE_ID": JSON.stringify(process.env.EMAILJS_SERVICE_ID),
+			"import.meta.env.EMAILJS_TEMPLATE_ID": JSON.stringify(process.env.EMAILJS_TEMPLATE_ID),
+		},
+	},
 });
