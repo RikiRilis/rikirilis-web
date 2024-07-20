@@ -2,6 +2,8 @@
 import Footer from "@/components/Footer.astro";
 import GoToTop from "@/components/GoToTop.astro";
 import Header from "@/components/Header.astro";
+import SEO from "@/components/SEO.astro";
+import type { Preload } from "@/interfaces/preload";
 import "@fontsource-variable/onest";
 import "@fontsource/ubuntu";
 import "animate.css";
@@ -10,45 +12,27 @@ import { ViewTransitions } from "astro:transitions";
 interface Props {
 	title: string;
 	description: string;
+	preload?: Array<Preload>;
+	canonical?: string;
+	image?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, preload, canonical, image } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en" translate="no">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<meta
-			name="keywords"
-			content="astro, html, javascript, js, css, rikirilis, portfolio, angular, rikelvi capellan, republica dominicana, dominican republic, developer, desarrollador web, web developer, blog, rikirilis blog, projects, rikirilis projects, rikelvi capellan projects, ts, typescript, components, anciano, corta, fama, historia, joven, leche, moraleja, relato, riquezas, sueños, vaca, short story"
+		<SEO
+			canonical={canonical}
+			description={description}
+			image={image}
+			preload={preload}
+			title={title}
 		/>
-		<meta name="og:locale" content="en_EN" />
-		<meta name="googlebot" content="index, follow" />
-
-		<script is:inline>
-			document.addEventListener("astro:page-load", () => {
-				window.getThemePreference = () => {
-					const localItem = typeof localStorage !== "undefined" && localStorage.getItem("theme");
-					if (localItem) return localItem;
-					return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-				};
-
-				const isDark = window.getThemePreference() === "dark";
-				document.documentElement.classList.toggle("dark", isDark);
-			});
-		</script>
-
-		<link rel="author" href="https://www.linkedin.com/in/rikirilis" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-		<link rel="canonical" href="https://rikirilis.xyz" />
-		<ViewTransitions fallback="none" />
-		<title>{title}</title>
+		<ViewTransitions />
 	</head>
-	<body class="relative">
+	<body class="relative overflow-x-hidden">
 		<div
 			class="absolute bottom-0 top-0 z-[-2] min-h-screen w-full bg-slate-100 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(203,213,225,0.5),rgba(241,245,249,0.9))] dark:bg-slate-950 dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(34,211,238,0.2),rgba(241,245,249,0))]"
 		>

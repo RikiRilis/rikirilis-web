@@ -1,19 +1,35 @@
 ---
-import About from "@/components/portfolio/About.astro";
 import Contact from "@/components/Contact.astro";
+import About from "@/components/portfolio/About.astro";
 import Experience from "@/components/portfolio/Experience.astro";
 import Projects from "@/components/portfolio/Projects.astro";
 import SectionContainer from "@/components/SectionContainer.astro";
+import type { Preload } from "@/interfaces/preload";
 import { getI18N } from "@/languages/index.ts";
 import Layout from "../layouts/Layout.astro";
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
+const preloadBoxerImage: Preload[] = [
+	{
+		as: "image",
+		href: `https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/src/main-pic.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vc3JjL21haW4tcGljLndlYnAiLCJpYXQiOjE3MTk1MTkxNDIsImV4cCI6MzI5NjMxOTE0Mn0.AfuzV2joKThAdRYAjwaKGsWWyiBu4i1VEjtkazr3RKY&t=2024-06-27T20%3A12%3A28.502Z`,
+		type: "image/webp",
+		rel: "preload",
+	},
+	{
+		as: "image",
+		href: `https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/src/Stop_Trivia.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vc3JjL1N0b3BfVHJpdmlhLndlYnAiLCJpYXQiOjE3MjAxOTY4NjQsImV4cCI6NDg3Mzc5Njg2NH0.Ns0_bYwlbTpcLfgtfAsBMo-w8hwPMWZol4kPSWoFYbI&t=2024-07-05T16%3A27%3A44.948Z`,
+		type: "image/webp",
+		rel: "preload",
+	},
+];
 ---
 
 <Layout
 	title=`${i18n.ABOUT_TEXT_1} | Rikelvi Capellán`
 	description="I build easy-to-use websites and Android apps, with fast technologies and UX/UI standards to improve user experience."
+	preload={preloadBoxerImage}
 >
 	<main>
 		<SectionContainer id="about">
