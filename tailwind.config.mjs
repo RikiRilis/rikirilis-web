@@ -5,6 +5,9 @@ export default {
 	theme: {
 		extend: {
 			colors: {},
+			fontFamily: {
+				ubuntu: ["Ubuntu", "Onest Variable"],
+			},
 		},
 	},
 	plugins: [],

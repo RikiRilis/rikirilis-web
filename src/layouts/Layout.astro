@@ -3,6 +3,8 @@ import Footer from "@/components/Footer.astro";
 import GoToTop from "@/components/GoToTop.astro";
 import Header from "@/components/Header.astro";
 import "@fontsource-variable/onest";
+import "@fontsource/ubuntu";
+import "animate.css";
 import { ViewTransitions } from "astro:transitions";
 
 interface Props {
@@ -43,10 +45,6 @@ const { title, description } = Astro.props;
 		<link rel="author" href="https://www.linkedin.com/in/rikirilis" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 		<link rel="canonical" href="https://rikirilis.xyz" />
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-		/>
 		<ViewTransitions fallback="none" />
 		<title>{title}</title>
 	</head>
@@ -64,7 +62,7 @@ const { title, description } = Astro.props;
 
 		<style is:global>
 			html {
-				font-family: "Onest Variable", system-ui, sans-serif;
+				font-family: "Onest Variable", "Ubuntu", system-ui, sans-serif;
 				background-color: #f1f5f9;
 				scroll-behavior: smooth;
 				scrollbar-gutter: stable;
