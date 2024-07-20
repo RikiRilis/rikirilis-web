@@ -1,98 +1,98 @@
 ---
-import Badge from "@/components/Badge.astro";
-import SocialPill from "@/components/SocialPill.astro";
-import Binoculars from "@/icons/Binoculars.astro";
-import Chat from "@/icons/Chat.astro";
-import Check from "@/icons/Check.astro";
-import GitHub from "@/icons/GitHub.astro";
-import LinkedIn from "@/icons/LinkedIn.astro";
-import { getI18N } from "@/languages/index.ts";
+import Badge from '@/components/Badge.astro'
+import SocialPill from '@/components/SocialPill.astro'
+import Binoculars from '@/icons/Binoculars.astro'
+import Chat from '@/icons/Chat.astro'
+import Check from '@/icons/Check.astro'
+import GitHub from '@/icons/GitHub.astro'
+import LinkedIn from '@/icons/LinkedIn.astro'
+import { getI18N } from '@/languages/index.ts'
 
 const imageUrl: string =
-	"https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/src/main-pic.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vc3JjL21haW4tcGljLndlYnAiLCJpYXQiOjE3MTk1MTkxNDIsImV4cCI6MzI5NjMxOTE0Mn0.AfuzV2joKThAdRYAjwaKGsWWyiBu4i1VEjtkazr3RKY&t=2024-06-27T20%3A12%3A28.502Z";
+	'https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/src/main-pic.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vc3JjL21haW4tcGljLndlYnAiLCJpYXQiOjE3MTk1MTkxNDIsImV4cCI6MzI5NjMxOTE0Mn0.AfuzV2joKThAdRYAjwaKGsWWyiBu4i1VEjtkazr3RKY&t=2024-06-27T20%3A12%3A28.502Z'
 const cvUrl: string =
-	"https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/docs/Rikelvi_Capell_n_CV.pdf?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vZG9jcy9SaWtlbHZpX0NhcGVsbF9uX0NWLnBkZiIsImlhdCI6MTcyMDgxMTE4OCwiZXhwIjoxNzQ4ODgxMTE4OH0.LV3JFGwnZuFpo_kBD6X74xJWQZV4Qfv9XbDgMSuCMdU&t=2024-07-12T19%3A06%3A28.751Z";
-const { currentLocale } = Astro;
-const i18n = getI18N({ currentLocale });
+	'https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/docs/Rikelvi_Capell_n_CV.pdf?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vZG9jcy9SaWtlbHZpX0NhcGVsbF9uX0NWLnBkZiIsImlhdCI6MTcyMDgxMTE4OCwiZXhwIjoxNzQ4ODgxMTE4OH0.LV3JFGwnZuFpo_kBD6X74xJWQZV4Qfv9XbDgMSuCMdU&t=2024-07-12T19%3A06%3A28.751Z'
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
 ---
 
-<div class="flex w-full flex-row items-center gap-4">
+<div class='flex w-full flex-row items-center gap-4'>
 	<a
-		id="img-container"
-		href="https://rikirilis.xyz/portfolio"
-		rel="noopener noreferrer"
-		class="group relative size-20 overflow-hidden rounded-full shadow-lg shadow-black/30 ease-in-out dark:shadow-black/60 sm:size-36"
+		id='img-container'
+		href='https://rikirilis.xyz/portfolio'
+		rel='noopener noreferrer'
+		class='group relative size-20 overflow-hidden rounded-full shadow-lg shadow-black/30 ease-in-out dark:shadow-black/60 sm:size-36'
 	>
 		<img
 			src={imageUrl}
-			class="scale-105 object-cover transition duration-300 ease-in-out active:group-hover:scale-100 sm:group-hover:scale-100"
-			height="1200"
-			width="630"
-			alt="Rikelvi Capellán portfolio picture"
+			class='scale-105 object-cover transition duration-300 ease-in-out active:group-hover:scale-100 sm:group-hover:scale-100'
+			height='1200'
+			width='630'
+			alt='Rikelvi Capellán portfolio picture'
 		/>
 	</a>
 
-	<div class="flex flex-col items-start">
-		<h1 class="text-3xl text-slate-800 dark:text-slate-200 sm:text-4xl md:text-5xl">
+	<div class='flex flex-col items-start'>
+		<h1 class='text-3xl text-slate-800 dark:text-slate-200 sm:text-4xl md:text-5xl'>
 			<strong>Rikelvi Capellán</strong>
 		</h1>
-		<h3 class="text-md text-slate-800 dark:text-slate-200 sm:text-xl">
+		<h3 class='text-md text-slate-800 dark:text-slate-200 sm:text-xl'>
 			<strong>{i18n.ABOUT_TEXT_1}</strong>
 		</h3>
 
-		<a href="https://www.linkedin.com/in/rikirilis/" target="_blank" rel="noopener noreferrer">
+		<a href='https://www.linkedin.com/in/rikirilis/' target='_blank' rel='noopener noreferrer'>
 			<Badge>
-				<Check class="mr-2 h-5 w-5 text-cyan-600" />
-				<h5 class="font-bold text-cyan-600">{i18n.AVAILABLE}</h5>
+				<Check class='mr-2 h-5 w-5 text-cyan-600' />
+				<h5 class='font-bold text-cyan-600'>{i18n.AVAILABLE}</h5>
 			</Badge>
 		</a>
 	</div>
 </div>
 
 <hr
-	class="my-6 h-0.5 w-full border-0 bg-gradient-to-r from-transparent via-cyan-800 to-transparent"
+	class='my-6 h-0.5 w-full border-0 bg-gradient-to-r from-transparent via-cyan-800 to-transparent'
 />
 
-<div class="flex w-full flex-col items-center">
-	<h3 class="text-md font-semibold text-slate-600 dark:text-slate-400 sm:text-balance sm:text-xl">
+<div class='flex w-full flex-col items-center'>
+	<h3 class='text-md font-semibold text-slate-600 dark:text-slate-400 sm:text-balance sm:text-xl'>
 		{i18n.ABOUT_TEXT_2}
-		<strong class="text-cyan-600">{i18n.ABOUT_TEXT_3}</strong>
+		<strong class='text-cyan-600'>{i18n.ABOUT_TEXT_3}</strong>
 		{i18n.ABOUT_TEXT_6}
-		<strong class="text-cyan-600">{i18n.ABOUT_TEXT_4}</strong>
+		<strong class='text-cyan-600'>{i18n.ABOUT_TEXT_4}</strong>
 		{i18n.FOOTER_TXT_2}
-		<strong class="text-cyan-600">{i18n.ABOUT_TEXT_5}</strong>
+		<strong class='text-cyan-600'>{i18n.ABOUT_TEXT_5}</strong>
 		{i18n.ABOUT_TEXT_6}
-		<strong class="text-cyan-600">{i18n.ABOUT_TEXT_7}</strong>
+		<strong class='text-cyan-600'>{i18n.ABOUT_TEXT_7}</strong>
 		{i18n.ABOUT_TEXT_8}
 	</h3>
 
-	<nav class="mb-2 mt-8 flex w-full flex-wrap gap-3">
+	<nav class='mb-2 mt-8 flex w-full flex-wrap gap-3'>
 		<SocialPill
-			target="_blank"
-			rel="noopener noreferrer"
-			href="https://www.linkedin.com/in/rikirilis/"
+			target='_blank'
+			rel='noopener noreferrer'
+			href='https://www.linkedin.com/in/rikirilis/'
 		>
-			<LinkedIn class="size-6" />
+			<LinkedIn class='size-6' />
 			LinkedIn
 		</SocialPill>
 
-		<SocialPill target="_blank" rel="noopener noreferrer" href="https://github.com/RikiRilis">
-			<GitHub class="size-5" />
+		<SocialPill target='_blank' rel='noopener noreferrer' href='https://github.com/RikiRilis'>
+			<GitHub class='size-5' />
 			GitHub
 		</SocialPill>
 
-		<SocialPill target="_blank" rel="noopener noreferrer" href={cvUrl}>
-			<Binoculars class="size-6" />
+		<SocialPill target='_blank' rel='noopener noreferrer' href={cvUrl}>
+			<Binoculars class='size-6' />
 			{i18n.WATCH_CV}
 		</SocialPill>
 
-		<SocialPill href="#contact">
-			<Chat class="size-5" />
+		<SocialPill href='#contact'>
+			<Chat class='size-5' />
 			{i18n.CONTACT}
 		</SocialPill>
 	</nav>
 
 	<hr
-		class="my-6 h-0.5 w-full border-0 bg-gradient-to-r from-transparent via-cyan-800 to-transparent"
+		class='my-6 h-0.5 w-full border-0 bg-gradient-to-r from-transparent via-cyan-800 to-transparent'
 	/>
 </div>

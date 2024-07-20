@@ -1,31 +1,31 @@
 ---
-import Contact from "@/components/Contact.astro";
-import MainTitle from "@/components/MainTitle.astro";
-import SectionContainer from "@/components/SectionContainer.astro";
-import StoryCard from "@/components/StoryCard.astro";
-import Book from "@/icons/Book.astro";
-import { getI18N } from "@/languages/index";
-import { storiesService } from "@/services/stories";
-import Layout from "../layouts/Layout.astro";
+import Contact from '@/components/Contact.astro'
+import MainTitle from '@/components/MainTitle.astro'
+import SectionContainer from '@/components/SectionContainer.astro'
+import StoryCard from '@/components/StoryCard.astro'
+import Book from '@/icons/Book.astro'
+import { getI18N } from '@/languages/index'
+import { storiesService } from '@/services/stories'
+import Layout from '../layouts/Layout.astro'
 
-const { currentLocale } = Astro;
-const i18n = getI18N({ currentLocale });
-const stories = storiesService();
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
+const stories = storiesService()
 ---
 
 <Layout
 	title=`${i18n.STORIES} | RikiRilis`
 	description="The RikiRilis' Website. Read stories and comments about all you want to know. I build easy-to-use websites and Android apps, with fast technologies and UX/UI standards to improve user experience."
-	canonical="https://rikirilis.xyz/stories/"
+	canonical='https://rikirilis.xyz/stories/'
 >
 	<main>
 		<SectionContainer>
 			<MainTitle>
-				<Book class="size-8" />
+				<Book class='size-8' />
 				{i18n.STORIES}
 			</MainTitle>
 
-			<div class="flex w-full flex-col gap-2">
+			<div class='flex w-full flex-col gap-2'>
 				{
 					stories
 						.sort((a, b) => a.title.localeCompare(b.title))
@@ -34,7 +34,7 @@ const stories = storiesService();
 			</div>
 		</SectionContainer>
 
-		<SectionContainer id="contact">
+		<SectionContainer id='contact'>
 			<Contact />
 		</SectionContainer>
 	</main>

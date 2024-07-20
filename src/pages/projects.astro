@@ -1,15 +1,15 @@
 ---
-import { getI18N } from "@/languages/index.ts";
-import Layout from "@/layouts/Layout.astro";
+import { getI18N } from '@/languages/index.ts'
+import Layout from '@/layouts/Layout.astro'
 
-const { currentLocale } = Astro;
-const i18n = getI18N({ currentLocale });
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
 ---
 
 <Layout
 	title=`${i18n.PROJECTS} | RikiRilis`
-	description="All the projects made by RikiRilis with their links if needed."
-	canonical="https://rikirilis.xyz/projects/"
+	description='All the projects made by RikiRilis with their links if needed.'
+	canonical='https://rikirilis.xyz/projects/'
 >
 	<main></main>
 </Layout>

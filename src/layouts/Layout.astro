@@ -1,27 +1,27 @@
 ---
-import Footer from "@/components/Footer.astro";
-import GoToTop from "@/components/GoToTop.astro";
-import Header from "@/components/Header.astro";
-import SEO from "@/components/SEO.astro";
-import type { Preload } from "@/interfaces/preload";
-import "@fontsource-variable/onest";
-import "@fontsource/ubuntu";
-import "animate.css";
-import { ViewTransitions } from "astro:transitions";
+import Footer from '@/components/Footer.astro'
+import GoToTop from '@/components/GoToTop.astro'
+import Header from '@/components/Header.astro'
+import SEO from '@/components/SEO.astro'
+import type { Preload } from '@/interfaces/preload'
+import '@fontsource-variable/onest'
+import '@fontsource/ubuntu'
+import 'animate.css'
+import { ViewTransitions } from 'astro:transitions'
 
 interface Props {
-	title: string;
-	description: string;
-	preload?: Array<Preload>;
-	canonical?: string;
-	image?: string;
+	title: string
+	description: string
+	preload?: Array<Preload>
+	canonical?: string
+	image?: string
 }
 
-const { title, description, preload, canonical, image } = Astro.props;
+const { title, description, preload, canonical, image } = Astro.props
 ---
 
 <!doctype html>
-<html lang="en" translate="no">
+<html lang='en' translate='no'>
 	<head>
 		<SEO
 			canonical={canonical}
@@ -32,9 +32,9 @@ const { title, description, preload, canonical, image } = Astro.props;
 		/>
 		<ViewTransitions />
 	</head>
-	<body class="relative overflow-x-hidden">
+	<body class='relative overflow-x-hidden'>
 		<div
-			class="absolute bottom-0 top-0 z-[-2] min-h-screen w-full bg-slate-100 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(203,213,225,0.5),rgba(241,245,249,0.9))] dark:bg-slate-950 dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(34,211,238,0.2),rgba(241,245,249,0))]"
+			class='absolute bottom-0 top-0 z-[-2] min-h-screen w-full bg-slate-100 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(203,213,225,0.5),rgba(241,245,249,0.9))] dark:bg-slate-950 dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(34,211,238,0.2),rgba(241,245,249,0))]'
 		>
 		</div>
 
@@ -46,7 +46,7 @@ const { title, description, preload, canonical, image } = Astro.props;
 
 		<style is:global>
 			html {
-				font-family: "Onest Variable", "Ubuntu", system-ui, sans-serif;
+				font-family: 'Onest Variable', 'Ubuntu', system-ui, sans-serif;
 				background-color: #f1f5f9;
 				scroll-behavior: smooth;
 				scrollbar-gutter: stable;

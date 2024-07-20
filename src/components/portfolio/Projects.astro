@@ -1,23 +1,23 @@
 ---
-import ProjectsCard from "@/components/ProjectsCard.astro";
-import Code from "@/icons/Code.astro";
-import { type Project } from "@/interfaces/project";
-import { getI18N } from "@/languages/index.ts";
-import { projectsService } from "@/services/projects";
-import MainTitle from "../MainTitle.astro";
-import ProjectsTecnologies from "./ProjectsTecnologies.astro";
+import ProjectsCard from '@/components/ProjectsCard.astro'
+import Code from '@/icons/Code.astro'
+import { type Project } from '@/interfaces/project'
+import { getI18N } from '@/languages/index.ts'
+import { projectsService } from '@/services/projects'
+import MainTitle from '../MainTitle.astro'
+import ProjectsTecnologies from './ProjectsTecnologies.astro'
 
-const { currentLocale } = Astro;
-const i18n = getI18N({ currentLocale });
-const allProjects: Project[] = projectsService(currentLocale).slice(0, 4);
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
+const allProjects: Project[] = projectsService(currentLocale).slice(0, 4)
 ---
 
 <MainTitle>
-	<Code class="size-8" />
+	<Code class='size-8' />
 	{i18n.PROJECTS}
 </MainTitle>
 
-<div class="text- flex flex-col gap-y-16">
+<div class='text- flex flex-col gap-y-16'>
 	{
 		allProjects.map(({ title, description, imgUrl, projectUrl, tags, gitCodeUrl, alt }) => (
 			<ProjectsCard
@@ -34,7 +34,7 @@ const allProjects: Project[] = projectsService(currentLocale).slice(0, 4);
 </div>
 
 <hr
-	class="my-20 h-0.5 w-full border-0 bg-gradient-to-r from-transparent via-cyan-800 to-transparent"
+	class='my-20 h-0.5 w-full border-0 bg-gradient-to-r from-transparent via-cyan-800 to-transparent'
 />
 
 <ProjectsTecnologies />

@@ -1,44 +1,44 @@
 ---
-import { getI18N } from "@/languages/index.ts";
-import ThemeToggle from "./ThemeToggle.astro";
+import { getI18N } from '@/languages/index.ts'
+import ThemeToggle from './ThemeToggle.astro'
 
-const { currentLocale } = Astro;
-const i18n = getI18N({ currentLocale });
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
 const navItems = [
 	{
-		title: "Web",
-		label: "web",
-		url: "/",
+		title: 'Web',
+		label: 'web',
+		url: '/',
 	},
 	{
-		title: "Blog",
-		label: "blog",
-		url: "/blog",
+		title: 'Blog',
+		label: 'blog',
+		url: '/blog',
 	},
 	{
 		title: i18n.PORTFOLIO,
-		label: "about",
-		url: "/portfolio#about",
+		label: 'about',
+		url: '/portfolio#about',
 	},
 	{
 		title: i18n.CONTACT,
-		label: "contact",
-		url: "#contact",
+		label: 'contact',
+		url: '#contact',
 	},
-];
+]
 ---
 
-<header class="fixed z-50 flex w-full justify-center">
-	<div id="header" class="my-4 flex h-auto w-fit items-center gap-x-2 overflow-hidden rounded-2xl">
+<header class='fixed z-50 flex w-full justify-center'>
+	<div id='header' class='my-4 flex h-auto w-fit items-center gap-x-2 overflow-hidden rounded-2xl'>
 		<nav
-			class="flex flex-row items-center justify-center text-center font-semibold text-slate-600 dark:text-slate-400"
+			class='flex flex-row items-center justify-center text-center font-semibold text-slate-600 dark:text-slate-400'
 		>
 			{
 				navItems.map((item) => (
 					<a
 						href={item.url}
 						aria-label={item.label}
-						class="inline-block h-full select-none p-2 transition hover:bg-slate-600/10 hover:text-cyan-600 dark:hover:bg-slate-300/10"
+						class='inline-block h-full select-none p-2 transition hover:bg-slate-600/10 hover:text-cyan-600 dark:hover:bg-slate-300/10'
 					>
 						{item.title}
 					</a>
@@ -66,42 +66,42 @@ const navItems = [
 </style>
 
 <script>
-	document.addEventListener("astro:page-load", () => {
-		const sections = document.querySelectorAll("section");
-		const navItems = document.querySelectorAll("header nav a");
+	document.addEventListener('astro:page-load', () => {
+		const sections = document.querySelectorAll('section')
+		const navItems = document.querySelectorAll('header nav a')
 
 		const callback = (entries: any[]) => {
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
 					navItems.forEach((item) => {
-						if (item.getAttribute("aria-label") == entry.target.id) {
-							item.classList.add("text-cyan-600");
+						if (item.getAttribute('aria-label') == entry.target.id) {
+							item.classList.add('text-cyan-600')
 						} else {
-							item.classList.remove("text-cyan-600");
+							item.classList.remove('text-cyan-600')
 						}
-					});
+					})
 				}
-			});
-		};
+			})
+		}
 
 		const observer = new IntersectionObserver(callback, {
 			root: null,
-			rootMargin: "0px",
+			rootMargin: '0px',
 			threshold: 0.2,
-		});
+		})
 
 		sections.forEach((section) => {
-			observer.observe(section);
-		});
+			observer.observe(section)
+		})
 
 		document.onvisibilitychange = () => {
-			if (document.visibilityState === "hidden") {
-				observer.disconnect();
+			if (document.visibilityState === 'hidden') {
+				observer.disconnect()
 			} else {
 				sections.forEach((section) => {
-					observer.observe(section);
-				});
+					observer.observe(section)
+				})
 			}
-		};
-	});
+		}
+	})
 </script>

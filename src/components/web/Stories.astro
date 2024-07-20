@@ -1,30 +1,30 @@
 ---
-import MainTitle from "@/components/MainTitle.astro";
-import StoryCard from "@/components/StoryCard.astro";
-import Book from "@/icons/Book.astro";
-import UpArrow from "@/icons/UpArrow.astro";
-import { getI18N } from "@/languages/index";
-import { storiesService } from "@/services/stories";
+import MainTitle from '@/components/MainTitle.astro'
+import StoryCard from '@/components/StoryCard.astro'
+import Book from '@/icons/Book.astro'
+import UpArrow from '@/icons/UpArrow.astro'
+import { getI18N } from '@/languages/index'
+import { storiesService } from '@/services/stories'
 
-const { currentLocale } = Astro;
-const i18n = getI18N({ currentLocale });
-const stories = storiesService();
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
+const stories = storiesService()
 ---
 
 <MainTitle>
-	<Book class="size-8" />
+	<Book class='size-8' />
 	{i18n.STORIES}
 </MainTitle>
 
-<div class="flex w-full flex-col gap-2">
+<div class='flex w-full flex-col gap-2'>
 	{stories.slice(0, 4).map((story) => <StoryCard {...story} />)}
 </div>
 
 <a
-	href="/stories"
-	class="mt-6 flex size-4 w-fit select-none gap-2 text-slate-400 transition-all active:text-slate-500 dark:text-slate-600 sm:cursor-pointer sm:hover:gap-1 sm:hover:text-slate-500"
+	href='/stories'
+	class='mt-6 flex size-4 w-fit select-none gap-2 text-slate-400 transition-all active:text-slate-500 dark:text-slate-600 sm:cursor-pointer sm:hover:gap-1 sm:hover:text-slate-500'
 >
 	<span>View all stories</span>
 
-	<UpArrow class="rotate-90" />
+	<UpArrow class='rotate-90' />
 </a>

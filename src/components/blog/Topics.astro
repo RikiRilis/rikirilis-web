@@ -1,17 +1,17 @@
 ---
-import Blog from "@/icons/Blog.astro";
-import { getI18N } from "@/languages/index";
-import MainTitle from "../MainTitle.astro";
+import Blog from '@/icons/Blog.astro'
+import { getI18N } from '@/languages/index'
+import MainTitle from '../MainTitle.astro'
 
-const { currentLocale } = Astro;
-const i18n = getI18N({ currentLocale });
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
 ---
 
 <MainTitle>
-	<Blog class="size-8" />
+	<Blog class='size-8' />
 	{i18n.BLOG_TOPICS}
 </MainTitle>
 
-<div class="flex w-full flex-col gap-2">
-	<strong class="text-xl text-cyan-600">Coming soon...</strong>
+<div class='flex w-full flex-col gap-2'>
+	<strong class='text-xl text-cyan-600'>Coming soon...</strong>
 </div>

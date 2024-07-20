@@ -1,25 +1,25 @@
 ---
-import Topics from "@/components/blog/Topics.astro";
-import Contact from "@/components/Contact.astro";
-import SectionContainer from "@/components/SectionContainer.astro";
-import { getI18N } from "@/languages/index.ts";
-import Layout from "@/layouts/Layout.astro";
+import Topics from '@/components/blog/Topics.astro'
+import Contact from '@/components/Contact.astro'
+import SectionContainer from '@/components/SectionContainer.astro'
+import { getI18N } from '@/languages/index.ts'
+import Layout from '@/layouts/Layout.astro'
 
-const { currentLocale } = Astro;
-const i18n = getI18N({ currentLocale });
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
 ---
 
 <Layout
 	title=`${i18n.BLOG} | RikiRilis`
-	description="View and read all de news from RikiRilis. Here you will find sories about life."
-	canonical="https://rikirilis.xyz/blog/"
+	description='View and read all de news from RikiRilis. Here you will find sories about life.'
+	canonical='https://rikirilis.xyz/blog/'
 >
 	<main>
-		<SectionContainer id="blog">
+		<SectionContainer id='blog'>
 			<Topics />
 		</SectionContainer>
 
-		<SectionContainer id="contact">
+		<SectionContainer id='contact'>
 			<Contact />
 		</SectionContainer>
 	</main>

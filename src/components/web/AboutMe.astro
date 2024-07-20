@@ -1,56 +1,56 @@
 ---
-import MainTitle from "@/components/MainTitle.astro";
-import User from "@/icons/User.astro";
-import { getI18N } from "@/languages/index";
+import MainTitle from '@/components/MainTitle.astro'
+import User from '@/icons/User.astro'
+import { getI18N } from '@/languages/index'
 
-const { currentLocale } = Astro;
-const i18n = getI18N({ currentLocale });
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
 const aboutImage =
-	"https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/src/about_image.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vc3JjL2Fib3V0X2ltYWdlLndlYnAiLCJpYXQiOjE3MjEwMTI3MzMsImV4cCI6MTc0ODkwMTI3MzN9.xUILjnKC-cRjrFuUbU70xQqx2SxT6U-AMgrdlqTMiIA&t=2024-07-15T03%3A05%3A26.995Z";
+	'https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/src/about_image.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vc3JjL2Fib3V0X2ltYWdlLndlYnAiLCJpYXQiOjE3MjEwMTI3MzMsImV4cCI6MTc0ODkwMTI3MzN9.xUILjnKC-cRjrFuUbU70xQqx2SxT6U-AMgrdlqTMiIA&t=2024-07-15T03%3A05%3A26.995Z'
 ---
 
 <MainTitle>
-	<User class="size-8" />
+	<User class='size-8' />
 	{i18n.ABOUT_ME}
 </MainTitle>
 
 <div
-	class="flex w-full flex-col-reverse items-center justify-between gap-6 lg:flex-row lg:items-center"
+	class='flex w-full flex-col-reverse items-center justify-between gap-6 lg:flex-row lg:items-center'
 >
-	<div class="font-ubuntu flex flex-col gap-4 text-pretty text-base sm:text-lg">
-		<p class="text-slate-600 dark:text-slate-400">
+	<div class='flex flex-col gap-4 text-pretty font-ubuntu text-base sm:text-lg'>
+		<p class='text-slate-600 dark:text-slate-400'>
 			{i18n.ABOUT_ME_TEXT_1}
-			<strong class="text-cyan-600">RikiRilis</strong>
+			<strong class='text-cyan-600'>RikiRilis</strong>
 			{i18n.ABOUT_ME_TEXT_2}
 		</p>
 
-		<p class="text-slate-600 dark:text-slate-400">
+		<p class='text-slate-600 dark:text-slate-400'>
 			{i18n.ABOUT_ME_TEXT_3}
-			<strong class="text-cyan-600">{i18n.ABOUT_ME_TEXT_4}</strong>, <strong class="text-cyan-600"
+			<strong class='text-cyan-600'>{i18n.ABOUT_ME_TEXT_4}</strong>, <strong class='text-cyan-600'
 				>{i18n.ABOUT_ME_TEXT_5}</strong
 			>
 			{i18n.ABOUT_ME_TEXT_6}
 		</p>
 
-		<p class="text-slate-600 dark:text-slate-400">
+		<p class='text-slate-600 dark:text-slate-400'>
 			{i18n.ABOUT_ME_TEXT_7}
-			'<strong class="text-cyan-600">STOP!</strong>'
+			'<strong class='text-cyan-600'>STOP!</strong>'
 			{i18n.ABOUT_ME_TEXT_8}
-			<strong class="text-cyan-600">{i18n.ABOUT_ME_TEXT_9}</strong>. {i18n.ABOUT_ME_TEXT_10}
-			<strong class="text-cyan-600">{i18n.ABOUT_ME_TEXT_11}</strong>, <strong class="text-cyan-600"
+			<strong class='text-cyan-600'>{i18n.ABOUT_ME_TEXT_9}</strong>. {i18n.ABOUT_ME_TEXT_10}
+			<strong class='text-cyan-600'>{i18n.ABOUT_ME_TEXT_11}</strong>, <strong class='text-cyan-600'
 				>{i18n.ABOUT_ME_TEXT_12}</strong
 			>
 			{i18n.ABOUT_ME_TEXT_13}
-			<strong class="text-cyan-600">{i18n.ABOUT_ME_TEXT_14}</strong>
+			<strong class='text-cyan-600'>{i18n.ABOUT_ME_TEXT_14}</strong>
 			{i18n.ABOUT_ME_TEXT_15}
 		</p>
 	</div>
 
 	<img
 		src={aboutImage}
-		width="720"
-		height="1280"
-		class="aspect-square h-full w-48 rotate-6 rounded-3xl bg-slate-600 object-cover p-1 shadow-lg shadow-black/30 transition-transform ease-in-out dark:bg-slate-800 dark:shadow-black/60 sm:hover:scale-105 md:w-64 md:p-2"
+		width='720'
+		height='1280'
+		class='aspect-square h-full w-48 rotate-6 rounded-3xl bg-slate-600 object-cover p-1 shadow-lg shadow-black/30 transition-transform ease-in-out dark:bg-slate-800 dark:shadow-black/60 sm:hover:scale-105 md:w-64 md:p-2'
 		alt="About RikiRilis' image, Rikelvi Capellán"
 	/>
 </div>
