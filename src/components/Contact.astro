@@ -62,11 +62,14 @@ const i18n = getI18N({ currentLocale })
 </div>
 
 <script>
+	import { getI18N } from '@/languages/index'
 	import { $ } from '@/lib/dom-selector.ts'
 
 	document.addEventListener('astro:page-load', () => {
 		const copyEmailIcon = $('#copyEmailIcon')
 		const copiedEmailIcon = $('#copiedEmailIcon')
+		const currentLocale = navigator.language.split('-')[0]
+		const i18n = getI18N({ currentLocale })
 
 		copyEmailIcon?.addEventListener('click', () => {
 			copyEmailIcon?.classList.remove('inline-block')
@@ -75,6 +78,14 @@ const i18n = getI18N({ currentLocale })
 			copiedEmailIcon?.classList.remove('hidden')
 
 			navigator.clipboard.writeText('rikelvicapellan15@gmail.com')
+
+			window.toast({
+				dismissible: true,
+				icon: true,
+				location: 'bottom-center',
+				title: i18n.EMAIL_COPIED,
+				type: 'success',
+			})
 
 			setTimeout(() => {
 				copyEmailIcon?.classList.add('inline-block')

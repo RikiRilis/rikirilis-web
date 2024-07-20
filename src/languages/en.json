@@ -112,5 +112,6 @@
   "ERROR_404": "Page not found!",
   "READ": "Read",
   "FORM_SEND_SUCCESS": "Form sent successfully",
-  "FORM_SEND_ERROR": "Error sending email"
+  "FORM_SEND_ERROR": "Error sending email",
+  "EMAIL_COPIED": "Email copied!"
 }
