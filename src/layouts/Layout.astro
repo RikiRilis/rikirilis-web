@@ -3,6 +3,7 @@ import Footer from '@/components/Footer.astro'
 import GoToTop from '@/components/GoToTop.astro'
 import Header from '@/components/Header.astro'
 import SEO from '@/components/SEO.astro'
+import Toast from '@/components/ui/Toast.astro'
 import type { Preload } from '@/interfaces/preload'
 import '@fontsource-variable/onest'
 import '@fontsource/ubuntu'
@@ -39,6 +40,7 @@ const { title, description, preload, canonical, image } = Astro.props
 		</div>
 
 		<GoToTop />
+		<Toast />
 
 		<Header />
 		<slot />

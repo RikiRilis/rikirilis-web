@@ -13,7 +13,7 @@ export const SendForm = ({ currentLocale }) => {
 
 		const { user_name, user_email, message } = Object.fromEntries(new window.FormData(event.target))
 
-		sendEmail({ user_name, user_email, message })
+		sendEmail({ user_name, user_email, message }, currentLocale)
 		form.current.reset()
 	}
 
