@@ -1,7 +1,10 @@
 /// <reference types="astro/client" />
 
+import type { ToastOptions } from './lib/toast'
+
 interface Window {
 	getThemePreference(): 'dark' | 'light'
+	toast({ ToastOptions }: ToastOptions): void
 }
 
 interface ImportMetaEnv {

@@ -1,7 +1,7 @@
 // from: https://github.com/dgtlss/butterup/tree/main
 import { $ } from '@/lib/dom-selector'
 
-interface ToastOptions {
+export interface ToastOptions {
 	dismissible?: boolean
 	message?: string
 	icon?: boolean
