@@ -1,5 +1,9 @@
 # → RikiRilis' Web | Blog | Portfolio ←
 
+<a href="https://github.com/RikiRilis/rikirilis-web">
+  <img width="300px" src="https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/src/embedded-img.avif?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vc3JjL2VtYmVkZGVkLWltZy5hdmlmIiwiaWF0IjoxNzIxNDUyMTE1LCJleHAiOjE3NDg5NDUyMTE1fQ.VbJVUYEZOfDbRGpU04vfA20wllxbYkzICFJv_hk_S24&t=2024-07-20T05%3A08%3A28.369Z" alt="RikiRilis' web embedded image" width="800" />
+</a>
+
 [Visit it →](https://rikirilis.xyz)
 
 ## 📃 Description →
