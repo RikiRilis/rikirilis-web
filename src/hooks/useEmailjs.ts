@@ -7,6 +7,8 @@ export function useEmailjs() {
 	const [error, setError] = useState(false);
 
 	const sendEmail = ({ user_name, user_email, message }: Email) => {
+		if (user_name?.trim() === "" || user_email?.trim() === "" || message?.trim() === "") return;
+
 		setSending(true);
 		setError(false);
 

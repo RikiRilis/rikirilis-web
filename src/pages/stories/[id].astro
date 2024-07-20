@@ -24,14 +24,14 @@ if (!story || story === undefined) {
 	<SectionContainer>
 		<div>
 			<header>
-				<h2 class="text-2xl font-extrabold text-cyan-600" transition:name="story-title-animation">
+				<h2 class="text-2xl font-extrabold text-cyan-600" transition:name=`story-${story?.pageTitle}-title`>
 					{story?.title}
 				</h2>
 			</header>
 
 			<div
 				class="mt-8 flex w-full flex-col gap-8 text-slate-600 dark:text-slate-400"
-				transition:name="story-content-animation"
+				transition:name=`story-${story?.pageTitle}-content`
 			>
 				{
 					story?.content.map((section) => (
