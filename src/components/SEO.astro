@@ -10,10 +10,10 @@ interface Props {
 }
 
 const {
-	title,
-	description,
+	title = 'Web | RikiRilis',
+	description = "The RikiRilis' Website. Read stories and comments about all you want to know. I build easy-to-use websites and Android apps, with fast technologies and UX/UI standards to improve user experience.",
 	preload,
-	canonical,
+	canonical = 'https://rikirilis.xyz/',
 	image = 'https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/src/embedded-img.avif?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vc3JjL2VtYmVkZGVkLWltZy5hdmlmIiwiaWF0IjoxNzIxNDUyMTE1LCJleHAiOjE3NDg5NDUyMTE1fQ.VbJVUYEZOfDbRGpU04vfA20wllxbYkzICFJv_hk_S24&t=2024-07-20T05%3A08%3A28.369Z',
 } = Astro.props as Props
 ---
@@ -66,15 +66,10 @@ const {
 
 <link rel='manifest' href='/manifest.webmanifest' />
 
-<script is:inline>
-	document.addEventListener('astro:page-load', () => {
-		window.getThemePreference = () => {
-			const localItem = typeof localStorage !== 'undefined' && localStorage.getItem('theme')
-			if (localItem) return localItem
-			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-		}
+<script>
+	import { applyTheme } from '@/lib/theme'
 
-		const isDark = window.getThemePreference() === 'dark'
-		document.documentElement.classList.toggle('dark', isDark)
+	document.addEventListener('astro:page-load', () => {
+		applyTheme()
 	})
 </script>

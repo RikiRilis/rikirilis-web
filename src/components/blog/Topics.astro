@@ -1,10 +1,14 @@
 ---
 import Blog from '@/icons/Blog.astro'
+import UpArrow from '@/icons/UpArrow.astro'
 import { getI18N } from '@/languages/index'
+import { articlesService } from '@/services/articles'
+import ArticleCard from '../ArticleCard.astro'
 import MainTitle from '../MainTitle.astro'
 
 const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
+const articles = articlesService()
 ---
 
 <MainTitle>
@@ -13,5 +17,14 @@ const i18n = getI18N({ currentLocale })
 </MainTitle>
 
 <div class='flex w-full flex-col gap-2'>
-	<strong class='text-xl text-cyan-600'>Coming soon...</strong>
+	{articles.slice(0, 8).map((article) => <ArticleCard {...article} />)}
 </div>
+
+<a
+	href='/articles'
+	class='mt-6 flex size-4 w-fit select-none gap-2 text-slate-400 transition-all active:text-slate-500 dark:text-slate-600 sm:cursor-pointer sm:hover:gap-1 sm:hover:text-slate-500'
+>
+	<span>{i18n.VIEW_ALL_ARTICLES}</span>
+
+	<UpArrow class='rotate-90' />
+</a>

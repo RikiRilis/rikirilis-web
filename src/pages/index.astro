@@ -6,7 +6,7 @@ import Stories from '@/components/web/Stories.astro'
 import type { Preload } from '@/interfaces/preload'
 import Layout from '../layouts/Layout.astro'
 
-const preloadBoxerImage: Preload[] = [
+const preloadImages: Preload[] = [
 	{
 		as: 'image',
 		href: `https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/src/about_image.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vc3JjL2Fib3V0X2ltYWdlLndlYnAiLCJpYXQiOjE3MjEwMTI3MzMsImV4cCI6MTc0ODkwMTI3MzN9.xUILjnKC-cRjrFuUbU70xQqx2SxT6U-AMgrdlqTMiIA&t=2024-07-15T03%3A05%3A26.995Z`,
@@ -20,7 +20,7 @@ const preloadBoxerImage: Preload[] = [
 	title='Web | RikiRilis'
 	description="The RikiRilis' Website. Read stories and comments about all you want to know. I build easy-to-use websites and Android apps, with fast technologies and UX/UI standards to improve user experience."
 	canonical='https://rikirilis.xyz/'
-	preload={preloadBoxerImage}
+	preload={preloadImages}
 >
 	<main>
 		<SectionContainer id='web'>

@@ -1,50 +1,68 @@
 ---
 import Contact from '@/components/Contact.astro'
 import SectionContainer from '@/components/SectionContainer.astro'
+import type { Preload } from '@/interfaces/preload'
 import { getI18N } from '@/languages/index'
 import Layout from '@/layouts/Layout.astro'
-import { storiesService } from '@/services/stories'
+import { articlesService } from '@/services/articles'
 
 const { id } = Astro.params
 const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
 
-const stories = storiesService()
-const story = stories.find((story) => story.pageTitle === id)
+const stories = articlesService()
+const article = stories.find((article) => article.pageTitle === id)
 
-if (!story || story === undefined) {
+if (!article || article === undefined) {
 	return Astro.redirect('/404')
 }
+
+const preloadImages: Preload[] = [
+	{
+		as: 'image',
+		href: article.cover,
+		type: 'image/webp',
+		rel: 'preload',
+	},
+]
 ---
 
 <Layout
-	title=`${story?.title} | RikiRilis' stories`
-	description=`${story?.description} | Author: ${story?.author}`
-	canonical=`https://rikirilis.xyz/stories/${story?.pageTitle}/`
+	title=`${article?.title} | RikiRilis' articles`
+	description=`${article?.description} | Author: ${article?.author}`
+	canonical=`https://rikirilis.xyz/articles/${article?.pageTitle}/`
+	preload={preloadImages}
 >
+	<img
+		width='1280'
+		height='720'
+		class='absolute left-0 right-0 top-0 z-[-1] aspect-video min-w-full opacity-10'
+		src={article?.cover}
+		alt=`RikiRilis' article ${article?.title}`
+		style='mask-image: linear-gradient(black 20%, transparent 80%);'
+	/>
+
 	<SectionContainer>
 		<div>
 			<header>
 				<h2
 					class='text-xl font-extrabold text-cyan-600 sm:text-3xl'
-					transition:name=`story-${story?.pageTitle}-title`
+					transition:name=`article-${article?.pageTitle}-title`
 				>
-					{story?.title}
+					{article?.title}
 				</h2>
 			</header>
 
 			<div
 				class='mt-8 flex w-full flex-col gap-8 text-slate-600 dark:text-slate-400'
-				transition:name=`story-${story?.pageTitle}-content`
+				transition:name=`article-${article?.pageTitle}-content`
 			>
 				{
-					story?.content.map((section) => (
+					article?.content.map((section) => (
 						<div class='flex flex-col gap-2'>
-							<h1 class='text-center text-xl font-bold text-slate-800 dark:text-slate-200'>
-								{section.title}
-							</h1>
+							<h1 class='text-xl font-bold text-slate-800 dark:text-slate-200'>{section.title}</h1>
 
-							<div id='stories-paragraphs' class='flex flex-col gap-4'>
+							<div id='articles-paragraphs' class='flex flex-col gap-4'>
 								{section.paragraphs.map((paragraph) => (
 									<p
 										class={`${paragraph.startsWith('"') && paragraph.endsWith('"') ? 'text-right' : 'text-left'} text-pretty text-slate-600 dark:text-slate-400`}
@@ -62,11 +80,11 @@ if (!story || story === undefined) {
 				class='mt-8 flex w-full flex-col items-end justify-center text-xs italic text-slate-400 dark:text-slate-600'
 			>
 				<span>
-					{story?.timestamp}
+					{article?.timestamp}
 				</span>
 
 				<span>
-					{i18n.AUTHOR}: {story?.author} | {i18n.LANGUAGE}: {story?.lang}
+					{i18n.AUTHOR}: {article?.author} | {i18n.LANGUAGE}: {article?.lang}
 				</span>
 			</footer>
 		</div>
@@ -81,7 +99,7 @@ if (!story || story === undefined) {
 	import { $$ } from '@/lib/dom-selector'
 
 	document.addEventListener('astro:page-load', () => {
-		const paragraphs = $$('#stories-paragraphs p')
+		const paragraphs = $$('#articles-paragraphs p')
 
 		paragraphs.forEach((paragraph) => {
 			var text = paragraph.innerHTML

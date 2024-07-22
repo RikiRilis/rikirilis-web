@@ -1,0 +1,67 @@
+---
+import LinkButton from '@/components/LinkButton.astro'
+import Book from '@/icons/Book.astro'
+import { getI18N } from '@/languages/index'
+import Badge from './Badge.astro'
+
+interface Props {
+	cover: string
+	description: string
+	pageTitle: string
+	tags: string[]
+	title: string
+}
+
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
+const { cover, description, pageTitle, tags, title } = Astro.props
+---
+
+<article class='group flex flex-col space-x-0 space-y-8 md:flex-row md:space-x-8 md:space-y-0'>
+	<div class='md:1/2 w-full'>
+		<div
+			class='relative col-span-6 row-span-5 flex transform flex-col items-center gap-8 overflow-clip rounded-xl border shadow-xl transition duration-500 ease-in-out dark:border-slate-800 sm:hover:border-slate-300 sm:hover:bg-slate-300/50 sm:group-hover:-translate-y-1 sm:group-hover:translate-x-1 sm:group-hover:shadow-2xl dark:sm:hover:border-slate-700 dark:sm:hover:bg-slate-800/50'
+		>
+			<img
+				src={cover}
+				alt=`RikiRilis' article ${title}`
+				width='1280'
+				height='720'
+				class='h-56 w-full object-cover object-top opacity-70 transition duration-500 sm:h-full sm:scale-110 sm:group-hover:scale-105'
+			/>
+		</div>
+	</div>
+
+	<div class='flex w-full flex-col gap-2 overflow-hidden md:max-w-lg'>
+		<h1
+			class='text-2xl font-bold text-slate-800 dark:text-slate-200'
+			transition:name=`article-${pageTitle}-title`
+		>
+			{title}
+		</h1>
+
+		<ul class='mb-2 flex flex-row gap-x-2'>
+			{
+				tags.map((tag) => (
+					<li class='text-cyan-600'>
+						<Badge>{tag}</Badge>
+					</li>
+				))
+			}
+		</ul>
+
+		<h2
+			class='mt-2 h-full overflow-hidden text-ellipsis whitespace-nowrap text-pretty text-sm text-slate-500 dark:text-slate-400 sm:text-base'
+			transition:name=`article-${pageTitle}-content`
+		>
+			{description}
+		</h2>
+
+		<footer class='mt-4 flex h-fit w-full items-end justify-start gap-x-4'>
+			<LinkButton target='_self' href=`/articles/${pageTitle}`>
+				<Book class='size-6' />
+				{i18n.READ}
+			</LinkButton>
+		</footer>
+	</div>
+</article>

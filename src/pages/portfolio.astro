@@ -10,7 +10,7 @@ import Layout from '../layouts/Layout.astro'
 
 const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
-const preloadBoxerImage: Preload[] = [
+const preloadImages: Preload[] = [
 	{
 		as: 'image',
 		href: `https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/src/main-pic.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vc3JjL21haW4tcGljLndlYnAiLCJpYXQiOjE3MTk1MTkxNDIsImV4cCI6MzI5NjMxOTE0Mn0.AfuzV2joKThAdRYAjwaKGsWWyiBu4i1VEjtkazr3RKY&t=2024-06-27T20%3A12%3A28.502Z`,
@@ -30,7 +30,7 @@ const preloadBoxerImage: Preload[] = [
 	title=`${i18n.ABOUT_TEXT_1} | Rikelvi Capellán`
 	description='I build easy-to-use websites and Android apps, with fast technologies and UX/UI standards to improve user experience.'
 	canonical='https://rikirilis.xyz/portfolio/'
-	preload={preloadBoxerImage}
+	preload={preloadImages}
 >
 	<main>
 		<SectionContainer id='about'>

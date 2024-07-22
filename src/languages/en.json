@@ -113,5 +113,8 @@
   "READ": "Read",
   "FORM_SEND_SUCCESS": "Form sent successfully",
   "FORM_SEND_ERROR": "Error sending email",
-  "EMAIL_COPIED": "Email copied!"
+  "EMAIL_COPIED": "Email copied!",
+  "EMAIL_WRONG": "Email wrong!",
+  "VIEW_ALL_STORIES": "View all stories",
+  "VIEW_ALL_ARTICLES": "View all articles"
 }

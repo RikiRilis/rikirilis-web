@@ -1,0 +1,37 @@
+---
+import ArticleCard from '@/components/ArticleCard.astro'
+import Contact from '@/components/Contact.astro'
+import MainTitle from '@/components/MainTitle.astro'
+import SectionContainer from '@/components/SectionContainer.astro'
+import Book from '@/icons/Book.astro'
+import { getI18N } from '@/languages/index'
+import { articlesService } from '@/services/articles'
+import Layout from '../layouts/Layout.astro'
+
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
+const articles = articlesService()
+---
+
+<Layout
+	title=`${i18n.ARTICLES} | RikiRilis`
+	description="The RikiRilis' Website. Read stories and comments about all you want to know. I build easy-to-use websites and Android apps, with fast technologies and UX/UI standards to improve user experience."
+	canonical='https://rikirilis.xyz/articles/'
+>
+	<main>
+		<SectionContainer>
+			<MainTitle>
+				<Book class='size-8' />
+				{i18n.ARTICLES}
+			</MainTitle>
+
+			<div class='flex w-full flex-col gap-2'>
+				{articles.map((article) => <ArticleCard {...article} />)}
+			</div>
+		</SectionContainer>
+
+		<SectionContainer id='contact'>
+			<Contact />
+		</SectionContainer>
+	</main>
+</Layout>
