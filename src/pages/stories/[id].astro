@@ -19,7 +19,7 @@ if (!story || story === undefined) {
 
 <Layout
 	title=`${story?.title} | RikiRilis' stories`
-	description=`${story?.description} | Author: ${story?.author}`
+	description=`${story?.description} | Author: ${story?.author} | Tags: ${story?.tags.join(' ')}`
 	canonical=`https://rikirilis.xyz/stories/${story?.pageTitle}/`
 >
 	<SectionContainer>

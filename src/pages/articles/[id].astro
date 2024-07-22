@@ -29,7 +29,7 @@ const preloadImages: Preload[] = [
 
 <Layout
 	title=`${article?.title} | RikiRilis' articles`
-	description=`${article?.description} | Author: ${article?.author}`
+	description=`${article?.description} | Author: ${article?.author} | Tags: ${article?.tags.join(' ')}`
 	canonical=`https://rikirilis.xyz/articles/${article?.pageTitle}/`
 	preload={preloadImages}
 >
