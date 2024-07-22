@@ -7,10 +7,27 @@ export function useEmailjs() {
 	const [sending, setSending] = useState(false)
 	const [error, setError] = useState(false)
 
-	const sendEmail = ({ user_name, user_email, message }: Email, currentLocale: string) => {
-		if (user_name?.trim() === '' || user_email?.trim() === '' || message?.trim() === '') return
-
+	const sendEmail = ({ user_name, user_email, message }: Email, currentLocale: string): boolean => {
 		const i18n = getI18N({ currentLocale })
+
+		if (user_name?.trim() === '' || user_email?.trim() === '' || message?.trim() === '')
+			return false
+		if (
+			user_email === 'rikirilis15@gmail.com' ||
+			user_email === 'rikirilis@gmail.com' ||
+			user_email === 'thewhitzip@gmail.com' ||
+			user_email === 'rikelvicapellan15@gmail.com' ||
+			user_email === 'rrgnetflix@gmail.com'
+		) {
+			window.toast({
+				dismissible: true,
+				title: i18n.EMAIL_WRONG,
+				location: 'bottom-center',
+				type: 'error',
+				icon: true,
+			})
+			return false
+		}
 
 		setSending(true)
 		setError(false)
@@ -42,6 +59,7 @@ export function useEmailjs() {
 						type: 'success',
 						icon: true,
 					})
+					return true
 				})
 				.catch(() => {
 					setSending(false)
@@ -53,7 +71,7 @@ export function useEmailjs() {
 						type: 'error',
 						icon: true,
 					})
-					throw new Error('Error sending form.')
+					return false
 				})
 		} catch (e) {
 			setSending(false)
@@ -67,6 +85,8 @@ export function useEmailjs() {
 			})
 			throw new Error('Error sending form.')
 		}
+
+		return false
 	}
 
 	return { sending, setSending, error, setError, sendEmail }
