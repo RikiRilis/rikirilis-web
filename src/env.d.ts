@@ -19,6 +19,7 @@ interface ImportMeta {
 
 declare global {
 	interface Window {
+		getThemePreference: function
 		toast: function
 	}
 }
