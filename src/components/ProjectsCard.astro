@@ -46,7 +46,7 @@ const i18n = getI18N({ currentLocale })
 			{title}
 		</h3>
 
-		<ul class='mb-2 flex flex-row gap-x-2'>
+		<ul data-aos='fade-up' class='mb-2 flex flex-row gap-x-2'>
 			{
 				tags.map((tag) => (
 					<li>
@@ -59,11 +59,11 @@ const i18n = getI18N({ currentLocale })
 			}
 		</ul>
 
-		<p class='mt-2 h-full text-pretty text-slate-600 dark:text-slate-400'>
+		<p data-aos='fade-up' class='mt-2 h-full text-pretty text-slate-600 dark:text-slate-400'>
 			{description}
 		</p>
 
-		<footer class='mt-4 flex h-fit w-full items-end justify-start gap-x-4'>
+		<footer data-aos='fade-up' class='mt-4 flex h-fit w-full items-end justify-start gap-x-4'>
 			<LinkButton href={projectUrl}>
 				<Send class='size-6' />
 				{i18n.SQUINT}

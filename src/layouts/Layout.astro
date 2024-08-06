@@ -8,6 +8,7 @@ import type { Preload } from '@/interfaces/preload'
 import '@fontsource-variable/onest'
 import '@fontsource/ubuntu'
 import 'animate.css'
+import 'aos/dist/aos.css'
 import { ViewTransitions } from 'astro:transitions'
 
 interface Props {
@@ -42,9 +43,21 @@ const { title, description, preload, canonical, image } = Astro.props
 		<GoToTop />
 		<Toast />
 
-		<Header />
-		<slot />
-		<Footer />
+		<main>
+			<Header />
+			<slot />
+			<Footer />
+		</main>
+
+		<script>
+			import AOS from 'aos'
+			AOS.init({
+				offset: 20,
+				duration: 200,
+				easing: 'ease-in-out',
+				once: true,
+			})
+		</script>
 
 		<style is:global>
 			:root {

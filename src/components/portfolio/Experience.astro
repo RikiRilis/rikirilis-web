@@ -18,7 +18,7 @@ const EXPERIENCE = experiencesService(currentLocale)
 <ol class='relative ml-3 w-11/12 border-s border-cyan-600 dark:border-slate-800'>
 	{
 		EXPERIENCE.map((experience) => (
-			<li class='mb-10 ms-6'>
+			<li data-aos='fade-up' class='mb-10 ms-6'>
 				<ExperienceItem {...experience} />
 			</li>
 		))

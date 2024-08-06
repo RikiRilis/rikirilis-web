@@ -23,7 +23,7 @@ const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
 ---
 
-<div class='flex w-full flex-col'>
+<div data-aos='fade-up' class='flex w-full flex-col'>
 	<MainTitle>
 		<CodePlus class='size-8' />
 		{i18n.TECNOLOGIES}

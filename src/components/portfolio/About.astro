@@ -33,14 +33,22 @@ const i18n = getI18N({ currentLocale })
 	</a>
 
 	<div class='flex flex-col items-start'>
-		<h1 class='text-3xl text-slate-800 dark:text-slate-200 sm:text-4xl md:text-5xl'>
+		<h1
+			data-aos='fade-up'
+			class='text-3xl text-slate-800 dark:text-slate-200 sm:text-4xl md:text-5xl'
+		>
 			<strong>Rikelvi Capellán</strong>
 		</h1>
-		<h3 class='text-md text-slate-800 dark:text-slate-200 sm:text-xl'>
+		<h3 data-aos='fade-up' class='text-md text-slate-800 dark:text-slate-200 sm:text-xl'>
 			<strong>{i18n.ABOUT_TEXT_1}</strong>
 		</h3>
 
-		<a href='https://www.linkedin.com/in/rikirilis/' target='_blank' rel='noopener noreferrer'>
+		<a
+			data-aos='fade-up'
+			href='https://www.linkedin.com/in/rikirilis/'
+			target='_blank'
+			rel='noopener noreferrer'
+		>
 			<Badge>
 				<Check class='mr-2 h-5 w-5 text-cyan-600' />
 				<h5 class='font-bold text-cyan-600'>{i18n.AVAILABLE}</h5>
@@ -53,7 +61,7 @@ const i18n = getI18N({ currentLocale })
 	class='my-6 h-0.5 w-full border-0 bg-gradient-to-r from-transparent via-cyan-800 to-transparent'
 />
 
-<div class='flex w-full flex-col items-center'>
+<div data-aos='fade-up' class='flex w-full flex-col items-center'>
 	<h3 class='text-md font-semibold text-slate-600 dark:text-slate-400 sm:text-balance sm:text-xl'>
 		{i18n.ABOUT_TEXT_2}
 		<strong class='text-cyan-600'>{i18n.ABOUT_TEXT_3}</strong>
@@ -66,7 +74,7 @@ const i18n = getI18N({ currentLocale })
 		{i18n.ABOUT_TEXT_8}
 	</h3>
 
-	<nav class='mb-2 mt-8 flex w-full flex-wrap gap-3'>
+	<nav data-aos='fade-up' class='mb-2 mt-8 flex w-full flex-wrap gap-3'>
 		<SocialPill
 			target='_blank'
 			rel='noopener noreferrer'
