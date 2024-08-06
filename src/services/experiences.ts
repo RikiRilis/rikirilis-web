@@ -17,7 +17,7 @@ export const experiencesService = (currentLocale?: string): Experience[] => {
 		},
 		{
 			title: i18n.EXPERIENCE_TITLE_1,
-			date: 'Feb 2021',
+			date: 'Feb 2019',
 			description: i18n.EXPERIENCE_DESC_1,
 		},
 	]
