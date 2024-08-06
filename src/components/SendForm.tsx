@@ -1,11 +1,16 @@
 import { getI18N } from '@/languages/index'
 import { useEmailjs } from '@/hooks/useEmailjs'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-export const SendForm = ({ currentLocale }: { currentLocale: string }) => {
+export const SendForm = () => {
 	const { sending, sendEmail } = useEmailjs()
 	const formRef = useRef<HTMLFormElement | null>(null)
-	const i18n = getI18N({ currentLocale })
+	const [locale, setlocale] = useState('en')
+	const i18n = getI18N({ currentLocale: locale })
+
+	useEffect(() => {
+		setlocale(window.navigator.language.split('-')[0])
+	}, [])
 
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
@@ -22,7 +27,7 @@ export const SendForm = ({ currentLocale }: { currentLocale: string }) => {
 				user_email: userEmailInput.value,
 				message: messageInput.value,
 			},
-			currentLocale,
+			locale,
 			() => {
 				if (formRef.current) {
 					formRef.current.reset()
