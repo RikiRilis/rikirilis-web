@@ -7,11 +7,28 @@ export function useEmailjs() {
 	const [sending, setSending] = useState(false)
 	const [error, setError] = useState(false)
 
-	const sendEmail = ({ user_name, user_email, message }: Email, currentLocale: string): boolean => {
+	const sendEmail = (
+		{ user_name, user_email, message }: Email,
+		currentLocale: string,
+		callback: () => void
+	) => {
 		const i18n = getI18N({ currentLocale })
 
-		if (user_name?.trim() === '' || user_email?.trim() === '' || message?.trim() === '')
-			return false
+		setSending(true)
+		setError(false)
+
+		if (user_name?.trim() === '' || user_email?.trim() === '' || message?.trim() === '') {
+			window.toast({
+				dismissible: true,
+				title: 'Fill the spaces!',
+				location: 'bottom-center',
+				type: 'warning',
+				icon: true,
+			})
+			setSending(false)
+			return
+		}
+
 		if (
 			user_email === 'rikirilis15@gmail.com' ||
 			user_email === 'rikirilis@gmail.com' ||
@@ -26,11 +43,9 @@ export function useEmailjs() {
 				type: 'error',
 				icon: true,
 			})
-			return false
+			setSending(false)
+			return
 		}
-
-		setSending(true)
-		setError(false)
 
 		try {
 			emailjs.init({
@@ -51,7 +66,6 @@ export function useEmailjs() {
 					message: message,
 				})
 				.then(() => {
-					setSending(false)
 					window.toast({
 						dismissible: true,
 						title: i18n.FORM_SEND_SUCCESS,
@@ -59,11 +73,11 @@ export function useEmailjs() {
 						type: 'success',
 						icon: true,
 					})
-					return true
-				})
-				.catch(() => {
 					setSending(false)
-					setError(true)
+					setError(false)
+					callback()
+				})
+				.catch((e) => {
 					window.toast({
 						dismissible: true,
 						title: i18n.FORM_SEND_ERROR,
@@ -71,7 +85,9 @@ export function useEmailjs() {
 						type: 'error',
 						icon: true,
 					})
-					return false
+					setSending(false)
+					setError(true)
+					console.log(e)
 				})
 		} catch (e) {
 			setSending(false)
@@ -83,10 +99,11 @@ export function useEmailjs() {
 				type: 'error',
 				icon: true,
 			})
+			setSending(false)
+			setError(true)
+			console.log(e)
 			throw new Error('Error sending form.')
 		}
-
-		return false
 	}
 
 	return { sending, setSending, error, setError, sendEmail }

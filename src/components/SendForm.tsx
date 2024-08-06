@@ -2,22 +2,37 @@ import { getI18N } from '@/languages/index'
 import { useEmailjs } from '@/hooks/useEmailjs'
 import { useRef } from 'react'
 
-export const SendForm = ({ currentLocale }) => {
-	const i18n = getI18N({ currentLocale })
+export const SendForm = ({ currentLocale }: { currentLocale: string }) => {
 	const { sending, sendEmail } = useEmailjs()
-	const form = useRef()
+	const formRef = useRef<HTMLFormElement | null>(null)
+	const i18n = getI18N({ currentLocale })
 
-	const handleClick = (event) => {
+	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault()
 		if (sending) return
 
-		const { user_name, user_email, message } = Object.fromEntries(new window.FormData(event.target))
+		const { elements } = event.currentTarget
+		const userNameInput = elements.namedItem('user_name') as HTMLInputElement
+		const userEmailInput = elements.namedItem('user_email') as HTMLInputElement
+		const messageInput = elements.namedItem('message') as HTMLInputElement
 
-		if (sendEmail({ user_name, user_email, message }, currentLocale)) form.current.reset()
+		sendEmail(
+			{
+				user_name: userNameInput.value,
+				user_email: userEmailInput.value,
+				message: messageInput.value,
+			},
+			currentLocale,
+			() => {
+				if (formRef.current) {
+					formRef.current.reset()
+				}
+			}
+		)
 	}
 
 	return (
-		<form ref={form} onSubmit={handleClick} className='flex-1 pt-6 sm:w-full sm:pt-0'>
+		<form ref={formRef} onSubmit={handleSubmit} className='flex-1 pt-6 sm:w-full sm:pt-0'>
 			<span className='text-sm italic text-slate-400'>{i18n.CONTACT_TXT_6}</span>
 
 			<div className='mt-4 flex flex-col gap-2'>
