@@ -5,7 +5,7 @@ import Tailwind from '@/icons/Tailwind.astro'
 import Kotlin from '@/icons/Kotlin.astro'
 import Firebase from '@/icons/Firebase.astro'
 import Android from '@/icons/Android.astro'
-import { getI18N } from '@/languages/index.ts'
+import { getI18N } from '@/languages/index'
 
 const TAGS = {
 	ASTRO: {
@@ -60,14 +60,14 @@ export const projectsService = (currentLocale?: string): Project[] => {
 			alt: 'Easy Short Url shortener Website',
 		},
 		{
-			id: 'ng-pipelines',
-			title: 'NG Pipelines',
-			description: i18n.NG_PIPELINES_DESCRIPTION,
-			imgUrl: 'https://rikirilis.xyz/assets/ng-pipelines.webp',
-			projectUrl: 'https://rikirilis.xyz/projects/ng-pipelines',
-			tags: [TAGS.ANGULAR, TAGS.TAILWIND],
-			gitCodeUrl: 'https://github.com/RikiRilis/ng-pipelines',
-			alt: 'NG Pipelines Website',
+			id: 'fire-reservations',
+			title: 'Fire Reservations',
+			description: i18n.FIRE_RESERVATIONS_DESCRIPTION,
+			imgUrl: 'https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/src/Fire_Reservations.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vc3JjL0ZpcmVfUmVzZXJ2YXRpb25zLndlYnAiLCJpYXQiOjE3MjMzNzc0NTYsImV4cCI6MTc0OTEzNzc0NTZ9.thU9DiGzTXkT-zU2Y6fXj2Ye_UE2qFtgKvjdi-Ccblc&t=2024-08-11T11%3A56%3A53.272Z',
+			projectUrl: 'https://firereservations.com/',
+			tags: [TAGS.ASTRO, TAGS.TAILWIND],
+			gitCodeUrl: 'https://firereservations.com/',
+			alt: 'Fire Reservations website image',
 		},
 		{
 			id: 'stop-trivia',
