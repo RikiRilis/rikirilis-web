@@ -7,8 +7,6 @@ import Toast from '@/components/ui/Toast.astro'
 import type { Preload } from '@/interfaces/preload'
 import '@fontsource-variable/onest'
 import '@fontsource/ubuntu'
-import 'animate.css'
-import 'aos/dist/aos.css'
 import { ViewTransitions } from 'astro:transitions'
 
 interface Props {
@@ -43,74 +41,122 @@ const { title, description, preload, canonical, image } = Astro.props
 		<GoToTop />
 		<Toast />
 
+		<Header />
+
 		<main>
-			<Header />
 			<slot />
-			<Footer />
 		</main>
 
-		<script>
-			import AOS from 'aos'
-			AOS.init({
-				offset: 20,
-				duration: 200,
-				easing: 'ease-in-out',
-				once: true,
-			})
-		</script>
-
-		<style is:global>
-			:root {
-				color-scheme: light dark;
-			}
-
-			html {
-				font-family: 'Onest Variable', 'Ubuntu', system-ui, sans-serif;
-				background-color: #f1f5f9;
-				scroll-behavior: smooth;
-				scrollbar-gutter: stable;
-			}
-
-			code {
-				font-family:
-					Menlo,
-					Monaco,
-					Lucida Console,
-					Liberation Mono,
-					DejaVu Sans Mono,
-					Bitstream Vera Sans Mono,
-					Courier New,
-					monospace;
-			}
-
-			::-webkit-scrollbar-thumb {
-				background-color: #0891b2;
-				background-clip: content-box;
-				border: 2px solid #0000;
-				border-radius: 10px;
-			}
-
-			::-webkit-scrollbar {
-				width: 10px;
-			}
-
-			::-webkit-scrollbar-track {
-				background: #f1f5f9;
-			}
-
-			.dark {
-				background-color: #020617;
-
-				::-webkit-scrollbar-track {
-					background: #020617;
-				}
-			}
-
-			@media (prefers-reduced-motion: reduce) {
-				html {
-					scroll-behavior: auto;
-				}
-			}
-		</style>
+		<Footer />
 	</body>
 </html>
+<style is:global>
+	:root {
+		color-scheme: light dark;
+	}
+
+	html {
+		font-family: 'Onest Variable', 'Ubuntu', system-ui, sans-serif;
+		background-color: #f1f5f9;
+		scroll-behavior: smooth;
+		scrollbar-gutter: stable;
+	}
+
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background-color: #0891b2;
+	}
+
+	::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: #f1f5f9;
+	}
+
+	.dark {
+		background-color: #020617;
+
+		::-webkit-scrollbar-track {
+			background: #020617;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+	}
+
+	.fade-up-anim {
+		animation: fade-up-animation linear both;
+		animation-timeline: view();
+		animation-range: entry 10% cover 20%;
+	}
+
+	@keyframes fade-up-animation {
+		0% {
+			opacity: 0;
+			translate: 0 50px;
+			scale: 0.7;
+		}
+
+		100% {
+			opacity: 1;
+			translate: 0 0;
+			scale: 1;
+		}
+	}
+
+	.fade-left-anim {
+		animation: fade-left-animation linear both;
+		animation-timeline: view();
+		animation-range: entry 10% cover 20%;
+	}
+
+	@keyframes fade-left-animation {
+		0% {
+			opacity: 0;
+			translate: 50px 0;
+			scale: 0.7;
+		}
+
+		100% {
+			opacity: 1;
+			translate: 0 0;
+			scale: 1;
+		}
+	}
+
+	.fade-right-anim {
+		animation: fade-right-animation linear both;
+		animation-timeline: view();
+		animation-range: entry 10% cover 20%;
+	}
+
+	@keyframes fade-right-animation {
+		0% {
+			opacity: 0;
+			translate: -50px 0;
+			scale: 0.7;
+		}
+
+		100% {
+			opacity: 1;
+			translate: 0 0;
+			scale: 1;
+		}
+	}
+</style>

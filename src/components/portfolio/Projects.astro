@@ -12,29 +12,31 @@ const i18n = getI18N({ currentLocale })
 const allProjects: Project[] = projectsService(currentLocale).slice(0, 4)
 ---
 
-<MainTitle>
-	<Code class='size-8' />
-	{i18n.PROJECTS}
-</MainTitle>
+<div class='flex w-full max-w-4xl flex-col sm:w-11/12 md:w-8/12'>
+	<MainTitle>
+		<Code class='size-8' />
+		{i18n.PROJECTS}
+	</MainTitle>
 
-<div class='text- flex flex-col gap-y-16'>
-	{
-		allProjects.map(({ title, description, imgUrl, projectUrl, tags, gitCodeUrl, alt }) => (
-			<ProjectsCard
-				title={title}
-				description={description}
-				imgUrl={imgUrl}
-				projectUrl={projectUrl}
-				tags={tags}
-				gitCodeUrl={gitCodeUrl}
-				alt={alt}
-			/>
-		))
-	}
+	<div class='text- flex flex-col gap-y-16'>
+		{
+			allProjects.map(({ title, description, imgUrl, projectUrl, tags, gitCodeUrl, alt }) => (
+				<ProjectsCard
+					title={title}
+					description={description}
+					imgUrl={imgUrl}
+					projectUrl={projectUrl}
+					tags={tags}
+					gitCodeUrl={gitCodeUrl}
+					alt={alt}
+				/>
+			))
+		}
+	</div>
+
+	<hr
+		class='my-20 h-0.5 w-full border-0 bg-gradient-to-r from-transparent via-cyan-800 to-transparent'
+	/>
+
+	<ProjectsTecnologies />
 </div>
-
-<hr
-	class='my-20 h-0.5 w-full border-0 bg-gradient-to-r from-transparent via-cyan-800 to-transparent'
-/>
-
-<ProjectsTecnologies />

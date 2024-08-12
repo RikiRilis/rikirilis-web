@@ -10,17 +10,19 @@ const i18n = getI18N({ currentLocale })
 const EXPERIENCE = experiencesService(currentLocale)
 ---
 
-<MainTitle>
-	<Timeline class='size-8' />
-	{i18n.WORK_EXPERIENCE}
-</MainTitle>
+<div class='flex w-full max-w-4xl flex-col sm:w-11/12 md:w-8/12'>
+	<MainTitle>
+		<Timeline class='size-8' />
+		{i18n.WORK_EXPERIENCE}
+	</MainTitle>
 
-<ol class='relative ml-3 w-11/12 border-s border-cyan-600 dark:border-slate-800'>
-	{
-		EXPERIENCE.map((experience) => (
-			<li class='mb-10 ms-6'>
-				<ExperienceItem {...experience} />
-			</li>
-		))
-	}
-</ol>
+	<ol class='relative ml-3 w-11/12 border-s border-cyan-600 dark:border-slate-800'>
+		{
+			EXPERIENCE.map((experience) => (
+				<li class='mb-10 ms-6'>
+					<ExperienceItem {...experience} />
+				</li>
+			))
+		}
+	</ol>
+</div>

@@ -61,7 +61,7 @@ export const SendForm = () => {
 						className='h-10 rounded-lg border bg-slate-200 px-2 font-normal text-slate-600 placeholder-slate-400 transition-colors ease-in-out autofill:!bg-yellow-200 focus:bg-slate-200/20 focus:outline-none placeholder:focus:invisible dark:border-cyan-950 dark:bg-cyan-950/50 dark:text-slate-400 dark:placeholder-slate-500 dark:focus:border-cyan-600 dark:focus:bg-transparent'
 						type='email'
 						name='user_email'
-						placeholder='example@example.com'
+						placeholder='your@email.com'
 					/>
 				</label>
 
