@@ -63,10 +63,11 @@ export const projectsService = (currentLocale?: string): Project[] => {
 			id: 'fire-reservations',
 			title: 'Fire Reservations',
 			description: i18n.FIRE_RESERVATIONS_DESCRIPTION,
-			imgUrl: 'https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/src/Fire_Reservations.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vc3JjL0ZpcmVfUmVzZXJ2YXRpb25zLndlYnAiLCJpYXQiOjE3MjMzNzc0NTYsImV4cCI6MTc0OTEzNzc0NTZ9.thU9DiGzTXkT-zU2Y6fXj2Ye_UE2qFtgKvjdi-Ccblc&t=2024-08-11T11%3A56%3A53.272Z',
-			projectUrl: 'https://firereservations.com/',
+			imgUrl:
+				'https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/src/Fire_Reservations.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vc3JjL0ZpcmVfUmVzZXJ2YXRpb25zLndlYnAiLCJpYXQiOjE3MjMzNzc0NTYsImV4cCI6MTc0OTEzNzc0NTZ9.thU9DiGzTXkT-zU2Y6fXj2Ye_UE2qFtgKvjdi-Ccblc&t=2024-08-11T11%3A56%3A53.272Z',
+			projectUrl: 'https://firereservations.vercel.app/',
 			tags: [TAGS.ASTRO, TAGS.TAILWIND],
-			gitCodeUrl: 'https://firereservations.com/',
+			gitCodeUrl: 'https://github.com/RikiRilis/firereservations-official',
 			alt: 'Fire Reservations website image',
 		},
 		{
@@ -75,7 +76,8 @@ export const projectsService = (currentLocale?: string): Project[] => {
 			description: i18n.STOPT_TRIVIA_DESCRIPTION,
 			imgUrl:
 				'https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/src/Stop_Trivia.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vc3JjL1N0b3BfVHJpdmlhLndlYnAiLCJpYXQiOjE3MjAxOTY4NjQsImV4cCI6NDg3Mzc5Njg2NH0.Ns0_bYwlbTpcLfgtfAsBMo-w8hwPMWZol4kPSWoFYbI&t=2024-07-05T16%3A27%3A44.948Z',
-			projectUrl: 'https://rikirilis.xyz/projects/stop-trivia',
+			projectUrl:
+				'https://play.google.com/store/apps/details?id=com.rilisentertainment.stoptriviaonline',
 			tags: [TAGS.KOTLIN, TAGS.FIREBASE, TAGS.ANDROID],
 			gitCodeUrl: 'https://github.com/RikiRilis/stop-trivia',
 			alt: 'Stop Trivia Android Game',
