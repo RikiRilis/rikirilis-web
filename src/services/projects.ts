@@ -50,13 +50,14 @@ export const projectsService = (currentLocale?: string): Project[] => {
 	const i18n = getI18N({ currentLocale })
 	return [
 		{
-			id: 'easy-short',
-			title: 'Easy Short',
-			description: i18n.EASY_SHORT_DESCRIPTION,
-			imgUrl: 'https://rikirilis.xyz/assets/easy-short.webp',
-			projectUrl: 'https://rikirilis.xyz/projects/easy-short',
+			id: 'el-chevere-web',
+			title: 'El Chévere | Official Web',
+			description: i18n.EL_CHEVERE_WEB_DESCRIPTION,
+			imgUrl:
+				'https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/el-chevere-web/statics/page-presentation.avif?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJlbC1jaGV2ZXJlLXdlYi9zdGF0aWNzL3BhZ2UtcHJlc2VudGF0aW9uLmF2aWYiLCJpYXQiOjE3NDEyMjcwNjAsImV4cCI6MzMyNDU2OTEwNjB9.6jqEWgnSG7TWmQtwFsdj6NDmpuh17Gv0gTGUVuxbVlQ',
+			projectUrl: 'https://fotoestudioelchevere.com/',
 			tags: [TAGS.ASTRO, TAGS.TAILWIND],
-			gitCodeUrl: 'https://github.com/RikiRilis/easy-short',
+			gitCodeUrl: 'https://github.com/RikiRilis/el-chevere-web',
 			alt: 'Easy Short Url shortener Website',
 		},
 		{
