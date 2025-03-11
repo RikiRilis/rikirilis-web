@@ -17,7 +17,7 @@ if (!story || story === undefined) {
 ---
 
 <Layout
-	title=`${story?.title} | RikiRilis' stories`
+	title=`${story?.title} - RikiRilis' stories`
 	description=`${story?.description} | Author: ${story?.author} | Tags: ${story?.tags.join(' ')}`
 	canonical=`https://rikirilis.com/stories/${story?.pageTitle}/`
 >
@@ -25,7 +25,7 @@ if (!story || story === undefined) {
 		<div class='flex w-full max-w-4xl flex-col sm:w-11/12 md:w-8/12'>
 			<header>
 				<h2
-					class='text-accent text-xl font-extrabold sm:text-3xl'
+					class='text-xl font-extrabold text-accent sm:text-3xl'
 					transition:name=`story-${story?.pageTitle}-title`
 				>
 					{story?.title}
@@ -39,12 +39,12 @@ if (!story || story === undefined) {
 				{
 					story?.content.map((section) => (
 						<div class='flex flex-col gap-2'>
-							<h1 class='text-primary text-center text-xl font-bold'>{section.title}</h1>
+							<h1 class='text-center text-xl font-bold text-primary'>{section.title}</h1>
 
 							<div id='stories-paragraphs' class='flex flex-col gap-4'>
 								{section.paragraphs.map((paragraph) => (
 									<p
-										class={`${paragraph.startsWith('"') && paragraph.endsWith('"') ? 'text-right' : 'text-left'} text-primary/80 text-pretty`}
+										class={`${paragraph.startsWith('"') && paragraph.endsWith('"') ? 'text-right' : 'text-left'} text-pretty text-primary/80`}
 									>
 										{paragraph}
 									</p>
@@ -56,7 +56,7 @@ if (!story || story === undefined) {
 			</div>
 
 			<footer
-				class='text-secondary mt-8 flex w-full flex-col items-end justify-center text-xs italic'
+				class='mt-8 flex w-full flex-col items-end justify-center text-xs italic text-secondary'
 			>
 				<span>
 					{story?.timestamp}
