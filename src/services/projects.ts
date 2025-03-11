@@ -51,7 +51,7 @@ export const projectsService = (currentLocale?: string): Project[] => {
 	return [
 		{
 			id: 'el-chevere-web',
-			title: 'El Chévere | Official Web',
+			title: 'El Chévere - Official Web',
 			description: i18n.EL_CHEVERE_WEB_DESCRIPTION,
 			imgUrl:
 				'https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/el-chevere-web/statics/page-presentation.avif?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJlbC1jaGV2ZXJlLXdlYi9zdGF0aWNzL3BhZ2UtcHJlc2VudGF0aW9uLmF2aWYiLCJpYXQiOjE3NDEyMjcwNjAsImV4cCI6MzMyNDU2OTEwNjB9.6jqEWgnSG7TWmQtwFsdj6NDmpuh17Gv0gTGUVuxbVlQ',
@@ -87,7 +87,7 @@ export const projectsService = (currentLocale?: string): Project[] => {
 			id: 'anjocc-oficial',
 			title: 'ANJOCC Oficial',
 			description: i18n.ANJOCC_OFICIAL_DESCRIPTION,
-			imgUrl: 'https://rikirilis.xyz/assets/anjocc-oficial.webp',
+			imgUrl: 'https://rikirilis.com/assets/anjocc-oficial.webp',
 			projectUrl: 'https://anjocc.com',
 			tags: [TAGS.ASTRO, TAGS.TAILWIND],
 			gitCodeUrl: 'https://github.com/RikiRilis/anjocc-oficial',

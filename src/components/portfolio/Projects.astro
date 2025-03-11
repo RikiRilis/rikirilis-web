@@ -1,4 +1,5 @@
 ---
+import Divider from '@/components/Divider.astro'
 import ProjectsCard from '@/components/ProjectsCard.astro'
 import Code from '@/icons/Code.astro'
 import { type Project } from '@/interfaces/project'
@@ -34,9 +35,7 @@ const allProjects: Project[] = projectsService(currentLocale).slice(0, 4)
 		}
 	</div>
 
-	<hr
-		class='my-20 h-0.5 w-full border-0 bg-gradient-to-r from-transparent via-cyan-800 to-transparent'
-	/>
+	<Divider />
 
 	<ProjectsTecnologies />
 </div>

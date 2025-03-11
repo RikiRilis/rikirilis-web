@@ -1,6 +1,9 @@
 ---
+import Blog from '@/icons/Blog.astro'
+import Chat from '@/icons/Chat.astro'
+import Timeline from '@/icons/Timeline.astro'
+import WWW from '@/icons/WWW.astro'
 import { getI18N } from '@/languages/index.ts'
-import ThemeToggle from './ThemeToggle.astro'
 
 const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
@@ -9,44 +12,50 @@ const navItems = [
 		title: 'Web',
 		label: 'web',
 		url: '/',
+		icon: WWW,
 	},
 	{
 		title: 'Blog',
 		label: 'blog',
 		url: '/blog',
+		icon: Blog,
 	},
 	{
 		title: i18n.PORTFOLIO,
 		label: 'about',
 		url: '/portfolio#about',
+		icon: Timeline,
 	},
 	{
 		title: i18n.CONTACT,
 		label: 'contact',
 		url: '#contact',
+		icon: Chat,
 	},
 ]
 ---
 
 <header class='fixed z-50 flex w-full justify-center'>
-	<div id='header' class='my-4 flex h-auto w-fit items-center gap-x-2 overflow-hidden rounded-2xl'>
+	<div
+		id='header'
+		class='flex h-auto w-full items-center justify-center overflow-hidden border border-transparent py-6 transition-transform'
+	>
 		<nav
-			class='flex flex-row items-center justify-center text-center font-semibold text-slate-600 dark:text-slate-400'
+			class='text-primary flex flex-row items-center justify-center gap-2 text-center font-semibold md:gap-4'
 		>
 			{
 				navItems.map((item) => (
 					<a
 						href={item.url}
 						aria-label={item.label}
-						class='inline-block h-full select-none p-2 transition hover:bg-slate-600/10 hover:text-cyan-600 dark:hover:bg-slate-300/10'
+						class='hover:bg-secondary/5 md:hover:border-secondary/10 inline-flex h-full select-none items-center justify-center gap-2 rounded-3xl border border-transparent p-2 text-center transition-colors md:p-4'
 					>
+						<item.icon class='hidden size-6 md:block' />
 						{item.title}
 					</a>
 				))
 			}
 		</nav>
-
-		<ThemeToggle />
 	</div>
 </header>
 
@@ -59,8 +68,7 @@ const navItems = [
 
 	@keyframes bgBlur {
 		to {
-			background-color: rgb(148 163 184 / 0.1);
-			@apply shadow-md backdrop-blur-3xl;
+			@apply border-b-main/30 shadow-main/5 bg-black/30 py-4 shadow-xl backdrop-blur-lg;
 		}
 	}
 </style>
@@ -75,9 +83,9 @@ const navItems = [
 				if (entry.isIntersecting) {
 					navItems.forEach((item) => {
 						if (item.getAttribute('aria-label') == entry.target.id) {
-							item.classList.add('text-cyan-600')
+							item.classList.add('text-accent')
 						} else {
-							item.classList.remove('text-cyan-600')
+							item.classList.remove('text-accent')
 						}
 					})
 				}

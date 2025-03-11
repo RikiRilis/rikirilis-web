@@ -53,7 +53,7 @@ export const storiesService = (): Story[] => {
 						'—Tú también puedes, joven —le contesta el anciano—. Anda, toma los $5,000 dólares, inviértelos en algo y sácale provecho. ¡Que Dios te acompañe!',
 						'Y así se despidió el anciano del joven. El joven se fue a su casa y lo pensó bastante.',
 						'...',
-						'7 años después, a los 26 años del joven, él regresa donde el anciano, ya más mayor, montado en un hermoso auto BMW V3 del año y vestido como aquel joven de 19 años tanto quería. El anciano le abre y sin pretextos lo deja pasar. Sin entrar bien a la mansión, el joven abraza fuertemente al anciano y solamente le dice... "¡gracias!" con lágrimas en los ojos...',
+						'7 años después, a los 26 años del joven, él regresa donde el anciano, ya más mayor, montado en un hermoso auto BMW M4 del año y vestido como aquel joven de 19 años tanto quería. El anciano le abre y sin pretextos lo deja pasar. Sin entrar bien a la mansión, el joven abraza fuertemente al anciano y solamente le dice... "¡gracias!" con lágrimas en los ojos...',
 					],
 				},
 			],

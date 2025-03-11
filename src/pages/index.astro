@@ -1,5 +1,4 @@
 ---
-import Contact from '@/components/Contact.astro'
 import SectionContainer from '@/components/SectionContainer.astro'
 import AboutMe from '@/components/web/AboutMe.astro'
 import Stories from '@/components/web/Stories.astro'
@@ -19,7 +18,7 @@ const preloadImages: Preload[] = [
 <Layout
 	title='Web | RikiRilis'
 	description="The RikiRilis' Website. Read stories and comments about all you want to know. I build easy-to-use websites and Android apps, with fast technologies and UX/UI standards to improve user experience."
-	canonical='https://rikirilis.xyz/'
+	canonical='https://rikirilis.com/'
 	preload={preloadImages}
 >
 	<main>
@@ -29,10 +28,6 @@ const preloadImages: Preload[] = [
 
 		<SectionContainer>
 			<AboutMe />
-		</SectionContainer>
-
-		<SectionContainer id='contact'>
-			<Contact />
 		</SectionContainer>
 	</main>
 </Layout>

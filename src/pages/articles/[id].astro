@@ -1,5 +1,4 @@
 ---
-import Contact from '@/components/Contact.astro'
 import SectionContainer from '@/components/SectionContainer.astro'
 import type { Preload } from '@/interfaces/preload'
 import { getI18N } from '@/languages/index'
@@ -30,13 +29,11 @@ const preloadImages: Preload[] = [
 <Layout
 	title=`${article?.title} | RikiRilis' articles`
 	description=`${article?.description} | Author: ${article?.author} | Tags: ${article?.tags.join(' ')}`
-	canonical=`https://rikirilis.xyz/articles/${article?.pageTitle}/`
+	canonical=`https://rikirilis.com/articles/${article?.pageTitle}/`
 	preload={preloadImages}
 >
 	<img
-		width='1280'
-		height='720'
-		class='absolute left-0 right-0 top-0 z-[-1] aspect-video min-w-full opacity-10'
+		class='parallax absolute top-0 w-full translate-y-0 bg-cover bg-fixed bg-center opacity-5'
 		src={article?.cover}
 		alt=`RikiRilis' article ${article?.title}`
 		style='mask-image: linear-gradient(black 20%, transparent 80%);'
@@ -46,7 +43,7 @@ const preloadImages: Preload[] = [
 		<div class='flex w-full max-w-4xl flex-col sm:w-11/12 md:w-8/12'>
 			<header>
 				<h2
-					class='text-xl font-extrabold text-cyan-600 sm:text-3xl'
+					class='text-accent text-xl font-extrabold sm:text-3xl'
 					transition:name=`article-${article?.pageTitle}-title`
 				>
 					{article?.title}
@@ -54,18 +51,18 @@ const preloadImages: Preload[] = [
 			</header>
 
 			<div
-				class='mt-8 flex w-full flex-col gap-8 text-slate-600 dark:text-slate-400'
+				class='mt-8 flex w-full flex-col gap-8'
 				transition:name=`article-${article?.pageTitle}-content`
 			>
 				{
 					article?.content.map((section) => (
 						<div class='flex flex-col gap-2'>
-							<h1 class='text-xl font-bold text-slate-800 dark:text-slate-200'>{section.title}</h1>
+							<h1 class='text-primary text-xl font-bold'>{section.title}</h1>
 
 							<div id='articles-paragraphs' class='flex flex-col gap-4'>
 								{section.paragraphs.map((paragraph) => (
 									<p
-										class={`${paragraph.startsWith('"') && paragraph.endsWith('"') ? 'text-right' : 'text-left'} text-pretty text-slate-600 dark:text-slate-400`}
+										class={`${paragraph.startsWith('"') && paragraph.endsWith('"') ? 'text-right' : 'text-left'} text-primary/80 text-pretty`}
 									>
 										{paragraph}
 									</p>
@@ -77,7 +74,7 @@ const preloadImages: Preload[] = [
 			</div>
 
 			<footer
-				class='mt-8 flex w-full flex-col items-end justify-center text-xs italic text-slate-400 dark:text-slate-600'
+				class='text-secondary mt-8 flex w-full flex-col items-end justify-center text-xs italic'
 			>
 				<span>
 					{article?.timestamp}
@@ -89,14 +86,10 @@ const preloadImages: Preload[] = [
 			</footer>
 		</div>
 	</SectionContainer>
-
-	<SectionContainer id='contact'>
-		<Contact />
-	</SectionContainer>
 </Layout>
 
 <script>
-	import { $$ } from '@/lib/dom-selector'
+	import { $, $$ } from '@/lib/dom-selector'
 
 	document.addEventListener('astro:page-load', () => {
 		const paragraphs = $$('#articles-paragraphs p')
@@ -105,6 +98,12 @@ const preloadImages: Preload[] = [
 			var text = paragraph.innerHTML
 			var textItalic = text.replace(/"([^"]*)"/g, '<b><i>"$1"</i></b>')
 			paragraph.innerHTML = textItalic
+		})
+
+		window.addEventListener('scroll', () => {
+			const parallax = $('.parallax')
+			const offset = window.scrollY
+			if (parallax) parallax.style.transform = `translateY(${offset * 0.5}px)`
 		})
 	})
 </script>

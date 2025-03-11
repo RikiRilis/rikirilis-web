@@ -1,5 +1,4 @@
 ---
-import Contact from '@/components/Contact.astro'
 import MainTitle from '@/components/MainTitle.astro'
 import SectionContainer from '@/components/SectionContainer.astro'
 import StoryCard from '@/components/StoryCard.astro'
@@ -16,7 +15,7 @@ const stories = storiesService()
 <Layout
 	title=`${i18n.STORIES} | RikiRilis`
 	description="The RikiRilis' Website. Read stories and comments about all you want to know. I build easy-to-use websites and Android apps, with fast technologies and UX/UI standards to improve user experience."
-	canonical='https://rikirilis.xyz/stories/'
+	canonical='https://rikirilis.com/stories/'
 >
 	<main>
 		<SectionContainer>
@@ -34,10 +33,6 @@ const stories = storiesService()
 						.map((story) => <StoryCard {...story} />)
 				}
 			</div>
-		</SectionContainer>
-
-		<SectionContainer id='contact'>
-			<Contact />
 		</SectionContainer>
 	</main>
 </Layout>

@@ -20,35 +20,33 @@ const { author, description, lang, pageTitle, timestamp, title } = Astro.props
 	href=`/stories/${pageTitle}`
 	data-story-id={pageTitle}
 	title=`${i18n.READ} → ${title}`
-	class='group flex w-full items-center justify-between gap-2 rounded-xl bg-slate-400/10 px-4 py-2 transition-all ease-in-out active:scale-[0.99] active:bg-slate-400/20 active:shadow-md dark:bg-slate-400/5 active:dark:bg-slate-400/15 sm:cursor-pointer sm:hover:scale-[0.99] sm:hover:bg-slate-400/20 sm:hover:shadow-md dark:sm:hover:dark:bg-slate-400/15'
+	class='bg-primary/5 active:bg-primary/15 sm:hover:dark:bg-primary/15 group flex w-full items-center justify-between gap-2 rounded-xl px-4 py-2 transition-all ease-in-out active:scale-[0.99] active:shadow-md sm:cursor-pointer sm:hover:scale-[0.99] sm:hover:shadow-md'
 >
 	<div class='overflow-hidden'>
 		<h1
-			class='text-base font-bold text-cyan-600 sm:text-lg'
+			class='text-accent text-base font-bold sm:text-lg'
 			transition:name=`story-${pageTitle}-title`
 		>
 			{title}
 		</h1>
 
 		<h2
-			class='overflow-hidden text-ellipsis whitespace-nowrap text-nowrap text-xs text-slate-500 dark:text-slate-400 sm:text-sm'
+			class='text-primary overflow-hidden text-ellipsis whitespace-nowrap text-nowrap text-xs sm:text-sm'
 			transition:name=`story-${pageTitle}-content`
 		>
 			{description}
 		</h2>
 
-		<p class='mt-4 text-[10px] italic text-slate-400 dark:text-slate-600 sm:text-xs'>
+		<p class='text-secondary mt-4 text-[10px] italic sm:text-xs'>
 			{timestamp}
 		</p>
 
-		<p class='text-[10px] italic text-slate-400 dark:text-slate-600 sm:text-xs'>
+		<p class='text-secondary text-[10px] italic sm:text-xs'>
 			{i18n.AUTHOR}: {author} | {i18n.LANGUAGE}: {lang}
 		</p>
 	</div>
 
 	<div>
-		<RightArrow
-			class='size-8 text-slate-700 transition-colors dark:text-slate-300 sm:group-hover:text-cyan-600'
-		/>
+		<RightArrow class='sm:group-hover:text-accent text-primary size-8 transition-colors' />
 	</div>
 </a>

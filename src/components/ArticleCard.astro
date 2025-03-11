@@ -43,7 +43,7 @@ const { cover, description, pageTitle, tags, title } = Astro.props
 		<ul class='mb-2 flex flex-row gap-x-2'>
 			{
 				tags.map((tag) => (
-					<li class='text-cyan-600'>
+					<li class='text-accent'>
 						<Badge>{tag}</Badge>
 					</li>
 				))
@@ -51,7 +51,7 @@ const { cover, description, pageTitle, tags, title } = Astro.props
 		</ul>
 
 		<h2
-			class='mt-2 h-full overflow-hidden text-ellipsis whitespace-nowrap text-pretty text-sm text-slate-500 dark:text-slate-400 sm:text-base'
+			class='dark:text-primary text-secondary mt-2 h-full overflow-hidden text-ellipsis whitespace-nowrap text-pretty text-sm sm:text-base'
 			transition:name=`article-${pageTitle}-content`
 		>
 			{description}

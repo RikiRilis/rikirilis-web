@@ -1,5 +1,4 @@
 ---
-import Contact from '@/components/Contact.astro'
 import SectionContainer from '@/components/SectionContainer.astro'
 import { getI18N } from '@/languages/index'
 import Layout from '@/layouts/Layout.astro'
@@ -20,13 +19,13 @@ if (!story || story === undefined) {
 <Layout
 	title=`${story?.title} | RikiRilis' stories`
 	description=`${story?.description} | Author: ${story?.author} | Tags: ${story?.tags.join(' ')}`
-	canonical=`https://rikirilis.xyz/stories/${story?.pageTitle}/`
+	canonical=`https://rikirilis.com/stories/${story?.pageTitle}/`
 >
 	<SectionContainer>
 		<div class='flex w-full max-w-4xl flex-col sm:w-11/12 md:w-8/12'>
 			<header>
 				<h2
-					class='text-xl font-extrabold text-cyan-600 sm:text-3xl'
+					class='text-accent text-xl font-extrabold sm:text-3xl'
 					transition:name=`story-${story?.pageTitle}-title`
 				>
 					{story?.title}
@@ -34,20 +33,18 @@ if (!story || story === undefined) {
 			</header>
 
 			<div
-				class='mt-8 flex w-full flex-col gap-8 text-slate-600 dark:text-slate-400'
+				class='mt-8 flex w-full flex-col gap-8'
 				transition:name=`story-${story?.pageTitle}-content`
 			>
 				{
 					story?.content.map((section) => (
 						<div class='flex flex-col gap-2'>
-							<h1 class='text-center text-xl font-bold text-slate-800 dark:text-slate-200'>
-								{section.title}
-							</h1>
+							<h1 class='text-primary text-center text-xl font-bold'>{section.title}</h1>
 
 							<div id='stories-paragraphs' class='flex flex-col gap-4'>
 								{section.paragraphs.map((paragraph) => (
 									<p
-										class={`${paragraph.startsWith('"') && paragraph.endsWith('"') ? 'text-right' : 'text-left'} text-pretty text-slate-600 dark:text-slate-400`}
+										class={`${paragraph.startsWith('"') && paragraph.endsWith('"') ? 'text-right' : 'text-left'} text-primary/80 text-pretty`}
 									>
 										{paragraph}
 									</p>
@@ -59,7 +56,7 @@ if (!story || story === undefined) {
 			</div>
 
 			<footer
-				class='mt-8 flex w-full flex-col items-end justify-center text-xs italic text-slate-400 dark:text-slate-600'
+				class='text-secondary mt-8 flex w-full flex-col items-end justify-center text-xs italic'
 			>
 				<span>
 					{story?.timestamp}
@@ -70,10 +67,6 @@ if (!story || story === undefined) {
 				</span>
 			</footer>
 		</div>
-	</SectionContainer>
-
-	<SectionContainer id='contact'>
-		<Contact />
 	</SectionContainer>
 </Layout>
 

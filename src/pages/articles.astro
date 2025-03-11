@@ -1,6 +1,5 @@
 ---
 import ArticleCard from '@/components/ArticleCard.astro'
-import Contact from '@/components/Contact.astro'
 import MainTitle from '@/components/MainTitle.astro'
 import SectionContainer from '@/components/SectionContainer.astro'
 import Book from '@/icons/Book.astro'
@@ -16,7 +15,7 @@ const articles = articlesService()
 <Layout
 	title=`${i18n.ARTICLES} | RikiRilis`
 	description="The RikiRilis' Website. Read stories and comments about all you want to know. I build easy-to-use websites and Android apps, with fast technologies and UX/UI standards to improve user experience."
-	canonical='https://rikirilis.xyz/articles/'
+	canonical='https://rikirilis.com/articles/'
 >
 	<main>
 		<SectionContainer>
@@ -30,10 +29,6 @@ const articles = articlesService()
 			<div class='flex w-full max-w-4xl flex-col gap-2 sm:w-11/12 md:w-8/12'>
 				{articles.map((article) => <ArticleCard {...article} />)}
 			</div>
-		</SectionContainer>
-
-		<SectionContainer id='contact'>
-			<Contact />
 		</SectionContainer>
 	</main>
 </Layout>

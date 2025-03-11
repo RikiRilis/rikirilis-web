@@ -1,9 +1,12 @@
 ---
+import Contact from '@/components/Contact.astro'
 import Footer from '@/components/Footer.astro'
-import GoToTop from '@/components/GoToTop.astro'
-import Header from '@/components/Header.astro'
+import SectionContainer from '@/components/SectionContainer.astro'
 import SEO from '@/components/SEO.astro'
+import GoToTop from '@/components/ui/GoToTop.astro'
+import Header from '@/components/ui/Header.astro'
 import Toast from '@/components/ui/Toast.astro'
+import WhatsAppButton from '@/components/ui/WhatsAppButton.astro'
 import type { Preload } from '@/interfaces/preload'
 import '@fontsource-variable/onest'
 import '@fontsource/ubuntu'
@@ -38,6 +41,7 @@ const { title, description, preload, canonical, image } = Astro.props
 		>
 		</div>
 
+		<WhatsAppButton />
 		<GoToTop />
 		<Toast />
 
@@ -45,19 +49,22 @@ const { title, description, preload, canonical, image } = Astro.props
 
 		<main>
 			<slot />
+
+			<SectionContainer
+				id='contact'
+				class='section relative w-full bg-black/30 px-4 py-20 pt-28 sm:px-6 lg:px-8'
+			>
+				<Contact />
+			</SectionContainer>
 		</main>
 
 		<Footer />
 	</body>
 </html>
 <style is:global>
-	:root {
-		color-scheme: light dark;
-	}
-
 	html {
 		font-family: 'Onest Variable', 'Ubuntu', system-ui, sans-serif;
-		background-color: #f1f5f9;
+		background-color: #020617;
 		scroll-behavior: smooth;
 		scrollbar-gutter: stable;
 	}
@@ -83,15 +90,7 @@ const { title, description, preload, canonical, image } = Astro.props
 	}
 
 	::-webkit-scrollbar-track {
-		background: #f1f5f9;
-	}
-
-	.dark {
-		background-color: #020617;
-
-		::-webkit-scrollbar-track {
-			background: #020617;
-		}
+		background: #020617;
 	}
 
 	@media (prefers-reduced-motion: reduce) {

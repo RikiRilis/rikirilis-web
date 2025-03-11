@@ -1,5 +1,6 @@
 ---
 import Badge from '@/components/Badge.astro'
+import Divider from '@/components/Divider.astro'
 import SocialPill from '@/components/SocialPill.astro'
 import Binoculars from '@/icons/Binoculars.astro'
 import Chat from '@/icons/Chat.astro'
@@ -20,7 +21,7 @@ const i18n = getI18N({ currentLocale })
 	<div class='flex w-full flex-row items-center gap-4'>
 		<a
 			id='img-container'
-			href='https://rikirilis.xyz/portfolio'
+			href='https://rikirilis.com/portfolio'
 			rel='noopener noreferrer'
 			class='group relative size-20 overflow-hidden rounded-full shadow-lg shadow-black/30 ease-in-out dark:shadow-black/60 sm:size-36'
 		>
@@ -43,27 +44,25 @@ const i18n = getI18N({ currentLocale })
 
 			<a href='https://www.linkedin.com/in/rikirilis/' target='_blank' rel='noopener noreferrer'>
 				<Badge>
-					<Check class='mr-2 h-5 w-5 text-cyan-600' />
-					<h5 class='font-bold text-cyan-600'>{i18n.AVAILABLE}</h5>
+					<Check class='text-accent mr-2 h-5 w-5' />
+					<h5 class='text-accent font-bold'>{i18n.AVAILABLE}</h5>
 				</Badge>
 			</a>
 		</div>
 	</div>
 
-	<hr
-		class='my-6 h-0.5 w-full border-0 bg-gradient-to-r from-transparent via-cyan-800 to-transparent'
-	/>
+	<Divider />
 
 	<div class='flex w-full flex-col items-center'>
-		<h3 class='text-md font-semibold text-slate-600 dark:text-slate-400 sm:text-balance sm:text-xl'>
+		<h3 class='text-md dark:text-primary font-semibold text-slate-600 sm:text-balance sm:text-xl'>
 			{i18n.ABOUT_TEXT_2}
-			<strong class='text-cyan-600'>{i18n.ABOUT_TEXT_3}</strong>
+			<strong class='text-accent'>{i18n.ABOUT_TEXT_3}</strong>
 			{i18n.ABOUT_TEXT_6}
-			<strong class='text-cyan-600'>{i18n.ABOUT_TEXT_4}</strong>
+			<strong class='text-accent'>{i18n.ABOUT_TEXT_4}</strong>
 			{i18n.FOOTER_TXT_2}
-			<strong class='text-cyan-600'>{i18n.ABOUT_TEXT_5}</strong>
+			<strong class='text-accent'>{i18n.ABOUT_TEXT_5}</strong>
 			{i18n.ABOUT_TEXT_6}
-			<strong class='text-cyan-600'>{i18n.ABOUT_TEXT_7}</strong>
+			<strong class='text-accent'>{i18n.ABOUT_TEXT_7}</strong>
 			{i18n.ABOUT_TEXT_8}
 		</h3>
 
@@ -93,8 +92,6 @@ const i18n = getI18N({ currentLocale })
 			</SocialPill>
 		</nav>
 
-		<hr
-			class='my-6 h-0.5 w-full border-0 bg-gradient-to-r from-transparent via-cyan-800 to-transparent'
-		/>
+		<Divider />
 	</div>
 </div>
