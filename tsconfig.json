@@ -12,7 +12,7 @@
       "@/interfaces": ["src/interfaces/*"],
       "@/languages": ["src/languages/*"],
       "@/db": ["src/db/*"],
-      "@/lib": ["src/lib/*"],
+      "@/libs": ["src/libs/*"],
       "@/hooks": ["src/hooks/*"],
       "@/functions": ["src/functions/*"]
     }
