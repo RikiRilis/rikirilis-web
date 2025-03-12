@@ -1,13 +1,11 @@
 ---
-import Discord from '@/icons/Discord.astro'
-import GitHub from '@/icons/GitHub.astro'
-import Instagram from '@/icons/Instagram.astro'
-import X from '@/icons/X.astro'
 import { getI18N } from '@/languages/index.ts'
+import { footerLinks } from '@/libs/consts'
 import Divider from './Divider.astro'
 
 const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
+const links = footerLinks()
 ---
 
 <footer class='flex w-full items-center justify-center bg-black'>
@@ -30,13 +28,13 @@ const i18n = getI18N({ currentLocale })
 				/>
 			</a>
 			<p
-				class='dark:text-primary max-w-md text-pretty text-center text-sm text-slate-600 lg:text-start'
+				class='max-w-md text-pretty text-center text-sm text-slate-600 lg:text-start dark:text-primary'
 			>
 				&#169; 2025 RikiRilis. {i18n.FOOTER_TXT_1}
 				<a
 					rel='noopener noreferrer'
 					href='https://rikirilis.com'
-					class='text-accent font-bold transition-colors active:text-slate-700 active:underline dark:active:text-slate-300 sm:hover:text-slate-700 sm:hover:underline dark:sm:hover:text-slate-300'
+					class='font-bold text-accent transition-colors active:text-slate-700 active:underline sm:hover:text-slate-700 sm:hover:underline dark:active:text-slate-300 dark:sm:hover:text-slate-300'
 					>RikiRilis</a
 				>
 				(Rikelvi Capellán García) {i18n.FOOTER_TXT_2}
@@ -44,13 +42,13 @@ const i18n = getI18N({ currentLocale })
 					rel='noopener noreferrer'
 					href='https://astro.build'
 					target='_blank'
-					class='text-accent font-bold transition-colors active:text-slate-700 active:underline dark:active:text-slate-300 sm:hover:text-slate-700 sm:hover:underline dark:sm:hover:text-slate-300'
+					class='font-bold text-accent transition-colors active:text-slate-700 active:underline sm:hover:text-slate-700 sm:hover:underline dark:active:text-slate-300 dark:sm:hover:text-slate-300'
 					>Astro</a
 				>, <a
 					rel='noopener noreferrer'
 					href='https://tailwindcss.com'
 					target='_blank'
-					class='text-accent font-bold transition-colors active:text-slate-700 active:underline dark:active:text-slate-300 sm:hover:text-slate-700 sm:hover:underline dark:sm:hover:text-slate-300'
+					class='font-bold text-accent transition-colors active:text-slate-700 active:underline sm:hover:text-slate-700 sm:hover:underline dark:active:text-slate-300 dark:sm:hover:text-slate-300'
 					>Tailwind CSS</a
 				>
 				{i18n.FOOTER_TXT_3}
@@ -58,63 +56,50 @@ const i18n = getI18N({ currentLocale })
 					rel='noopener noreferrer'
 					href='https://vercel.com'
 					target='_blank'
-					class='text-accent font-bold transition-colors active:text-slate-700 active:underline dark:active:text-slate-300 sm:hover:text-slate-700 sm:hover:underline dark:sm:hover:text-slate-300'
+					class='font-bold text-accent transition-colors active:text-slate-700 active:underline sm:hover:text-slate-700 sm:hover:underline dark:active:text-slate-300 dark:sm:hover:text-slate-300'
 					>Vercel</a
 				>.
 			</p>
 
 			<ul class='flex flex-row items-center gap-x-6'>
+				{
+					links.map((link) => (
+						<li>
+							<a
+								target='_blank'
+								href={link.href}
+								rel='noopener noreferrer'
+								class='inline-block size-8 text-secondary transition-colors hover:scale-125 active:text-accent motion-safe:transition motion-reduce:hover:scale-100 sm:hover:text-accent'
+							>
+								<link.icon class='size-full motion-reduce:duration-0' />
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+
+		<Divider />
+
+		<div class='w-full'>
+			<ul class='flex w-full flex-row items-center justify-center gap-x-2'>
 				<li>
 					<a
-						target='_blank'
-						href='https://github.com/RikiRilis'
+						href='https://rikirilis.com/privacy/'
 						rel='noopener noreferrer'
-						aria-label="Rikelvi's GitHub brand logo will open in a new window"
-						class='inline-block hover:scale-125 motion-safe:transition motion-reduce:hover:scale-100'
+						target='_blank'
+						class='text-sm text-secondary/70 transition-colors hover:text-secondary'
+						>{i18n.PRIVACY}</a
 					>
-						<GitHub
-							class='active:text-accent sm:hover:text-accent dark:text-primary size-8 text-slate-600 transition-colors motion-reduce:duration-0'
-						/>
-					</a>
 				</li>
+				<li class='text-sm text-secondary/70'>|</li>
 				<li>
 					<a
-						target='_blank'
-						href='https://instagram.com/rikirilis'
+						href='https://rikirilis.com/terms/'
 						rel='noopener noreferrer'
-						aria-label="Rikelvi's Instagram brand logo will open in a new window"
-						class='inline-block hover:scale-125 motion-safe:transition motion-reduce:hover:scale-100'
-					>
-						<Instagram
-							class='active:text-accent sm:hover:text-accent dark:text-primary size-10 text-slate-600 transition-colors motion-reduce:duration-0'
-						/>
-					</a>
-				</li>
-				<li>
-					<a
 						target='_blank'
-						href='https://twitter.com/rikirilis_'
-						rel='noopener noreferrer'
-						aria-label="Rikelvi's X brand logo will open in a new window"
-						class='inline-block hover:scale-125 motion-safe:transition motion-reduce:hover:scale-100'
+						class='text-sm text-secondary/70 transition-colors hover:text-secondary'>{i18n.TERMS}</a
 					>
-						<X
-							class='active:text-accent sm:hover:text-accent dark:text-primary size-8 text-slate-600 transition-colors motion-reduce:duration-0'
-						/>
-					</a>
-				</li>
-				<li>
-					<a
-						target='_blank'
-						href='https://discord.gg/VDk8tprcH2'
-						rel='noopener noreferrer'
-						aria-label="Rikelvi's Discord brand logo will open in a new window"
-						class='inline-block hover:scale-125 motion-safe:transition motion-reduce:hover:scale-100'
-					>
-						<Discord
-							class='active:text-accent sm:hover:text-accent dark:text-primary size-10 text-slate-600 transition-colors motion-reduce:duration-0'
-						/>
-					</a>
 				</li>
 			</ul>
 		</div>
