@@ -19,14 +19,14 @@ const i18n = getI18N({ currentLocale })
 
 	<div class='mt-4 flex w-full flex-col gap-4 sm:flex-row sm:justify-between'>
 		<div class='flex-1'>
-			<p class='dark:text-primary mb-6 text-pretty text-slate-600'>
+			<p class='mb-6 text-pretty text-slate-600 dark:text-primary'>
 				<strong class='text-accent'>{i18n.CONTACT_TXT_1}</strong>
 				{i18n.CONTACT_TXT_2}
 				<a
 					rel='noopener noreferrer'
 					href='https://instagram.com/rikirilis'
 					target='_blank'
-					class='text-accent font-bold transition-colors active:text-slate-700 active:underline dark:active:text-slate-300 sm:hover:text-slate-700 sm:hover:underline dark:sm:hover:text-slate-300'
+					class='font-bold text-accent transition-colors active:text-slate-700 active:underline sm:hover:text-slate-700 sm:hover:underline dark:active:text-slate-300 dark:sm:hover:text-slate-300'
 					>Instagram</a
 				>
 				{i18n.OR}
@@ -34,28 +34,28 @@ const i18n = getI18N({ currentLocale })
 					rel='noopener noreferrer'
 					href='https://twitter.com/rikirilis_'
 					target='_blank'
-					class='text-accent font-bold transition-colors active:text-slate-700 active:underline dark:active:text-slate-300 sm:hover:text-slate-700 sm:hover:underline dark:sm:hover:text-slate-300'
+					class='font-bold text-accent transition-colors active:text-slate-700 active:underline sm:hover:text-slate-700 sm:hover:underline dark:active:text-slate-300 dark:sm:hover:text-slate-300'
 					>X</a
 				>.
 			</p>
 
-			<p class='dark:text-primary mb-6 text-pretty text-slate-600'>
+			<p class='mb-6 text-pretty text-slate-600 dark:text-primary'>
 				{i18n.CONTACT_TXT_3}
 				<strong class='text-accent'>{i18n.CONTACT_TXT_4}</strong>
 				{i18n.CONTACT_TXT_5}
 			</p>
 
 			<div
-				class='text-accent bg-main flex h-fit w-fit flex-row items-center justify-center gap-2 rounded-xl bg-opacity-20 px-2'
+				class='flex h-fit w-fit flex-row items-center justify-center gap-2 rounded-xl bg-main bg-opacity-20 px-2 text-accent'
 			>
-				<h5 id='email' class='text-accent font-bold'>{email}</h5>
+				<h5 id='email' class='font-bold text-accent'>{email}</h5>
 
 				<Copy
 					id='copyEmailIcon'
-					class='dark:hover:text-primary inline-block h-5 w-5 cursor-pointer transition-transform hover:scale-105 hover:text-slate-600'
+					class='inline-block h-5 w-5 cursor-pointer transition-transform hover:scale-105 hover:text-slate-600 dark:hover:text-primary'
 				/>
 
-				<Check id='copiedEmailIcon' class='text-accent hidden h-5 w-5' />
+				<Check id='copiedEmailIcon' class='hidden h-5 w-5 text-accent' />
 			</div>
 		</div>
 
@@ -65,7 +65,7 @@ const i18n = getI18N({ currentLocale })
 
 <script>
 	import { getI18N } from '@/languages/index'
-	import { $ } from '@/lib/dom-selector.ts'
+	import { $ } from '@/libs/dom-selector.ts'
 
 	document.addEventListener('astro:page-load', () => {
 		const copyEmailIcon = $('#copyEmailIcon')
