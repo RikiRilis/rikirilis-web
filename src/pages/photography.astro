@@ -3,14 +3,14 @@ import LazyImage from '@/components/LazyImage.astro'
 import MainTitle from '@/components/MainTitle.astro'
 import SectionContainer from '@/components/SectionContainer.astro'
 import { Loading } from '@/icons/Loading'
-import Photography from '@/icons/Photography.astro'
+import PhotographyIcon from '@/icons/Photography.astro'
 import { getI18N } from '@/languages/index'
 import { getImages } from '@/services/images'
 import Layout from '../layouts/Layout.astro'
 
 const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
-const images = getImages(currentLocale)
+const images = getImages()
 ---
 
 <Layout
@@ -22,7 +22,7 @@ const images = getImages(currentLocale)
 		<SectionContainer>
 			<div class='flex w-full max-w-4xl flex-col gap-2 sm:w-11/12 md:w-8/12'>
 				<MainTitle>
-					<Photography class='size-8' />
+					<PhotographyIcon class='size-8' />
 					{i18n.PHOTOGRAPHY}
 				</MainTitle>
 			</div>
