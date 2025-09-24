@@ -1,29 +1,83 @@
 ---
+import LazyImage from '@/components/LazyImage.astro'
 import MainTitle from '@/components/MainTitle.astro'
 import SectionContainer from '@/components/SectionContainer.astro'
-import Book from '@/icons/Book.astro'
+import { Loading } from '@/icons/Loading'
+import Photography from '@/icons/Photography.astro'
 import { getI18N } from '@/languages/index'
+import { getImages } from '@/services/images'
 import Layout from '../layouts/Layout.astro'
 
 const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
+const images = getImages(currentLocale)
 ---
 
 <Layout
-	title=`${i18n.STORIES} - RikiRilis`
+	title=`${i18n.PHOTOGRAPHY} - RikiRilis`
 	description="The RikiRilis' Website. Read stories and comments about all you want to know. I build easy-to-use websites and Android apps, with fast technologies and UX/UI standards to improve user experience."
-	canonical='https://rikirilis.com/stories/'
+	canonical='https://rikirilis.com/photography/'
 >
 	<main>
 		<SectionContainer>
 			<div class='flex w-full max-w-4xl flex-col gap-2 sm:w-11/12 md:w-8/12'>
 				<MainTitle>
-					<Book class='size-8' />
-					{i18n.STORIES}
+					<Photography class='size-8' />
+					{i18n.PHOTOGRAPHY}
 				</MainTitle>
 			</div>
 
-			<div class='flex w-full max-w-4xl flex-col gap-2 sm:w-11/12 md:w-8/12'></div>
+			<!-- Masonry with Grid -->
+			<div id='gallery' style='column-gap: 1rem; column-width: 250px;'>
+				{
+					images.length > 0 &&
+						images.map((image, index) => (
+							<a
+								href={`${image.src}`}
+								data-pswp-width={image.width}
+								data-pswp-height={image.height}
+								target='_blank'
+								class={`hoverZoomLink group relative mb-4 block cursor-zoom-in break-inside-avoid overflow-hidden rounded-lg transition`}
+							>
+								<LazyImage
+									src={`https://www.rikirilis.com/portraits/${image.src}`}
+									alt={`Image ${index + 1}`}
+									width={image.width}
+									height={image.height}
+									className='w-full group-active:scale-105 md:group-hover:scale-105 duration-[.4s] transition opacity-0 ease-in-out'
+								/>
+
+								<Loading
+									client:visible
+									classes='-z-20 inset-0 absolute m-auto size-5 text-primary'
+								/>
+							</a>
+						))
+				}
+			</div>
 		</SectionContainer>
 	</main>
 </Layout>
+
+<script>
+	import { $ } from '@/libs/dom-selector'
+	import PhotoSwipeLightbox from 'photoswipe/lightbox'
+
+	document.addEventListener('astro:page-load', () => {
+		const lightbox = new PhotoSwipeLightbox({
+			gallery: '#gallery',
+			children: 'a',
+			showAnimationDuration: 200,
+			hideAnimationDuration: 200,
+			zoomAnimationDuration: 200,
+			showHideAnimationType: 'zoom',
+			pswpModule: () => import('photoswipe'),
+		})
+		lightbox.init()
+
+		const backButton = $('.back-button')
+		backButton?.addEventListener('click', () => {
+			history.back()
+		})
+	})
+</script>
