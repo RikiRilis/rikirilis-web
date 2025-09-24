@@ -5,8 +5,6 @@ import { getI18N } from '@/languages/index'
 
 const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
-const aboutImage =
-	'https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/src/about-image.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV85NTBmYzA4Ni1jZGYzLTRkNGItYTNlYy1jYjViMTRlMmZhODMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJwb3J0Zm9saW8vc3JjL2Fib3V0LWltYWdlLndlYnAiLCJpYXQiOjE3NTM0MTg2MDgsImV4cCI6MTgwNTI1ODYwOH0.w5tNn1CDh-hImwjo0-Xp7tpxNqs61aoVZq2tYFv_Fd8'
 ---
 
 <div class='flex w-full max-w-4xl flex-col sm:w-11/12 md:w-8/12'>
@@ -48,7 +46,7 @@ const aboutImage =
 		</div>
 
 		<img
-			src={aboutImage}
+			src='https://rikirilis.com/images/about-image.webp'
 			width='720'
 			height='1280'
 			class='aspect-square h-full w-48 rotate-6 rounded-3xl bg-slate-800 object-cover p-1 shadow-lg shadow-black/60 transition-transform ease-in-out sm:hover:scale-105 md:w-64 md:p-2'

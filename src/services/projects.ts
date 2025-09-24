@@ -53,8 +53,7 @@ export const projectsService = (currentLocale?: string): Project[] => {
 			id: 'el-chevere-web',
 			title: 'El Chévere - Official Web',
 			description: i18n.EL_CHEVERE_WEB_DESCRIPTION,
-			imgUrl:
-				'https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/el-chevere-web/statics/page-presentation.avif?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJlbC1jaGV2ZXJlLXdlYi9zdGF0aWNzL3BhZ2UtcHJlc2VudGF0aW9uLmF2aWYiLCJpYXQiOjE3NDEyMjcwNjAsImV4cCI6MzMyNDU2OTEwNjB9.6jqEWgnSG7TWmQtwFsdj6NDmpuh17Gv0gTGUVuxbVlQ',
+			imgUrl: 'https://rikirilis.com/images/page-presentation.avif',
 			projectUrl: 'https://fotoestudioelchevere.com/',
 			tags: [TAGS.ASTRO, TAGS.TAILWIND],
 			gitCodeUrl: 'https://github.com/RikiRilis/el-chevere-web',
@@ -64,8 +63,7 @@ export const projectsService = (currentLocale?: string): Project[] => {
 			id: 'fire-reservations',
 			title: 'Fire Reservations',
 			description: i18n.FIRE_RESERVATIONS_DESCRIPTION,
-			imgUrl:
-				'https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/src/Fire_Reservations.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vc3JjL0ZpcmVfUmVzZXJ2YXRpb25zLndlYnAiLCJpYXQiOjE3MjMzNzc0NTYsImV4cCI6MTc0OTEzNzc0NTZ9.thU9DiGzTXkT-zU2Y6fXj2Ye_UE2qFtgKvjdi-Ccblc&t=2024-08-11T11%3A56%3A53.272Z',
+			imgUrl: 'https://rikirilis.com/images/embedded-img.webp',
 			projectUrl: 'https://firereservations.vercel.app/',
 			tags: [TAGS.ASTRO, TAGS.TAILWIND],
 			gitCodeUrl: 'https://github.com/RikiRilis/firereservations-official',
@@ -75,8 +73,7 @@ export const projectsService = (currentLocale?: string): Project[] => {
 			id: 'stop-trivia',
 			title: 'Stop Trivia',
 			description: i18n.STOPT_TRIVIA_DESCRIPTION,
-			imgUrl:
-				'https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/src/Stop_Trivia.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vc3JjL1N0b3BfVHJpdmlhLndlYnAiLCJpYXQiOjE3MjAxOTY4NjQsImV4cCI6NDg3Mzc5Njg2NH0.Ns0_bYwlbTpcLfgtfAsBMo-w8hwPMWZol4kPSWoFYbI&t=2024-07-05T16%3A27%3A44.948Z',
+			imgUrl: 'https://rikirilis.com/images/stop-trivia.webp',
 			projectUrl:
 				'https://play.google.com/store/apps/details?id=com.rilisentertainment.stoptriviaonline',
 			tags: [TAGS.KOTLIN, TAGS.FIREBASE, TAGS.ANDROID],
@@ -87,7 +84,7 @@ export const projectsService = (currentLocale?: string): Project[] => {
 			id: 'anjocc-oficial',
 			title: 'ANJOCC Oficial',
 			description: i18n.ANJOCC_OFICIAL_DESCRIPTION,
-			imgUrl: 'https://rikirilis.com/assets/anjocc-oficial.webp',
+			imgUrl: 'https://rikirilis.com/images/anjocc-oficial.webp',
 			projectUrl: 'https://anjocc.com',
 			tags: [TAGS.ASTRO, TAGS.TAILWIND],
 			gitCodeUrl: 'https://github.com/RikiRilis/anjocc-oficial',
