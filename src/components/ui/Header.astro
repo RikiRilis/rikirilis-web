@@ -1,38 +1,9 @@
 ---
-import Blog from '@/icons/Blog.astro'
-import Chat from '@/icons/Chat.astro'
-import Timeline from '@/icons/Timeline.astro'
-import WWW from '@/icons/WWW.astro'
 import { getI18N } from '@/languages/index.ts'
+import { navItems } from '@/libs/consts'
 
 const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
-const navItems = [
-	{
-		title: 'Web',
-		label: 'web',
-		url: '/',
-		icon: WWW,
-	},
-	{
-		title: 'Blog',
-		label: 'blog',
-		url: '/blog',
-		icon: Blog,
-	},
-	{
-		title: i18n.PORTFOLIO,
-		label: 'about',
-		url: '/portfolio#about',
-		icon: Timeline,
-	},
-	{
-		title: i18n.CONTACT,
-		label: 'contact',
-		url: '#contact',
-		icon: Chat,
-	},
-]
 ---
 
 <header class='fixed z-50 flex w-full justify-center'>
@@ -41,14 +12,14 @@ const navItems = [
 		class='flex h-auto w-full items-center justify-center overflow-hidden border border-transparent py-6 transition-transform'
 	>
 		<nav
-			class='text-primary flex flex-row items-center justify-center gap-2 text-center font-semibold md:gap-4'
+			class='flex flex-row items-center justify-center gap-2 text-center font-semibold text-primary md:gap-4'
 		>
 			{
-				navItems.map((item) => (
+				navItems(currentLocale).map((item) => (
 					<a
 						href={item.url}
 						aria-label={item.label}
-						class='hover:bg-secondary/5 md:hover:border-secondary/10 inline-flex h-full select-none items-center justify-center gap-2 rounded-3xl border border-transparent p-2 text-center transition-colors md:p-4'
+						class='inline-flex h-full select-none items-center justify-center gap-2 rounded-3xl border border-transparent p-2 text-center transition-colors hover:bg-secondary/5 md:p-4 md:hover:border-secondary/10'
 					>
 						<item.icon class='hidden size-6 md:block' />
 						{item.title}
@@ -68,7 +39,7 @@ const navItems = [
 
 	@keyframes bgBlur {
 		to {
-			@apply border-b-main/30 shadow-main/5 bg-black/30 py-4 shadow-xl backdrop-blur-lg;
+			@apply border-b-main/30 bg-black/30 py-4 shadow-xl shadow-main/5 backdrop-blur-lg;
 		}
 	}
 </style>
