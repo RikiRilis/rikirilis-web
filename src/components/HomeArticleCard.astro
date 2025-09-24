@@ -1,0 +1,52 @@
+---
+import RightArrow from '@/icons/RightArrow.astro'
+import { getI18N } from '@/languages/index'
+
+interface Props {
+	author: string
+	description: string
+	lang: string
+	pageTitle: string
+	timestamp: string
+	title: string
+}
+
+const { currentLocale } = Astro
+const i18n = getI18N({ currentLocale })
+const { author, description, lang, pageTitle, timestamp, title } = Astro.props
+---
+
+<a
+	href=`/articles/${pageTitle}`
+	data-story-id={pageTitle}
+	title=`${i18n.READ} → ${title}`
+	class='group flex w-full items-center justify-between gap-2 rounded-xl bg-primary/5 px-4 py-2 transition-all ease-in-out active:scale-[0.99] active:bg-primary/15 active:shadow-md sm:cursor-pointer sm:hover:scale-[0.99] sm:hover:shadow-md sm:hover:dark:bg-primary/15'
+>
+	<div class='overflow-hidden'>
+		<h1
+			class='text-base font-bold text-accent sm:text-lg'
+			transition:name=`article-${pageTitle}-title`
+		>
+			{title}
+		</h1>
+
+		<h2
+			class='overflow-hidden text-ellipsis whitespace-nowrap text-nowrap text-xs text-primary sm:text-sm'
+			transition:name=`article-${pageTitle}-content`
+		>
+			{description}
+		</h2>
+
+		<p class='mt-4 text-[10px] italic text-secondary sm:text-xs'>
+			{timestamp}
+		</p>
+
+		<p class='text-[10px] italic text-secondary sm:text-xs'>
+			{i18n.AUTHOR}: {author} | {i18n.LANGUAGE}: {lang}
+		</p>
+	</div>
+
+	<div>
+		<RightArrow class='size-8 text-primary transition-colors sm:group-hover:text-accent' />
+	</div>
+</a>

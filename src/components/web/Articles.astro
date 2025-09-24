@@ -1,31 +1,31 @@
 ---
+import HomeArticleCard from '@/components/HomeArticleCard.astro'
 import MainTitle from '@/components/MainTitle.astro'
-import StoryCard from '@/components/StoryCard.astro'
 import Book from '@/icons/Book.astro'
 import UpArrow from '@/icons/UpArrow.astro'
 import { getI18N } from '@/languages/index'
-import { storiesService } from '@/services/stories'
+import { articlesService } from '@/services/articles'
 
 const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
-const stories = storiesService()
+const articles = articlesService()
 ---
 
 <div class='flex w-full max-w-4xl flex-col sm:w-11/12 md:w-8/12'>
 	<MainTitle>
 		<Book class='size-8' />
-		{i18n.STORIES}
+		{i18n.ARTICLES}
 	</MainTitle>
 
 	<div class='flex w-full flex-col gap-2'>
-		{stories.slice(0, 4).map((story) => <StoryCard {...story} />)}
+		{articles.slice(0, 4).map((story) => <HomeArticleCard {...story} />)}
 	</div>
 
 	<a
-		href='/stories'
-		class='active:text-primary sm:hover:text-primary text-secondary mt-6 flex size-4 w-fit select-none gap-2 transition-all sm:cursor-pointer sm:hover:gap-1'
+		href='/articles'
+		class='mt-6 flex size-4 w-fit select-none gap-2 text-secondary transition-all active:text-primary sm:cursor-pointer sm:hover:gap-1 sm:hover:text-primary'
 	>
-		<span>{i18n.VIEW_ALL_STORIES}</span>
+		<span>{i18n.VIEW_ALL_ARTICLES}</span>
 
 		<UpArrow class='rotate-90' />
 	</a>

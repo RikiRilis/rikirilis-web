@@ -1,8 +1,8 @@
-import Blog from '@/icons/Blog.astro'
 import Chat from '@/icons/Chat.astro'
 import Discord from '@/icons/Discord.astro'
 import GitHub from '@/icons/GitHub.astro'
 import Instagram from '@/icons/Instagram.astro'
+import Photography from '@/icons/Photography.astro'
 import Timeline from '@/icons/Timeline.astro'
 import WhatsApp from '@/icons/WhatsApp.astro'
 import WWW from '@/icons/WWW.astro'
@@ -42,10 +42,10 @@ export const navItems = (currentLocale: string = 'en'): Header[] => {
 			icon: WWW,
 		},
 		{
-			title: 'Blog',
-			label: 'blog',
-			url: '/blog',
-			icon: Blog,
+			title: i18n.PHOTOGRAPHY,
+			label: 'photography',
+			url: '/photography',
+			icon: Photography,
 		},
 		{
 			title: i18n.PORTFOLIO,

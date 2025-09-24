@@ -1,15 +1,12 @@
 ---
 import MainTitle from '@/components/MainTitle.astro'
 import SectionContainer from '@/components/SectionContainer.astro'
-import StoryCard from '@/components/StoryCard.astro'
 import Book from '@/icons/Book.astro'
 import { getI18N } from '@/languages/index'
-import { storiesService } from '@/services/stories'
 import Layout from '../layouts/Layout.astro'
 
 const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
-const stories = storiesService()
 ---
 
 <Layout
@@ -26,13 +23,7 @@ const stories = storiesService()
 				</MainTitle>
 			</div>
 
-			<div class='flex w-full max-w-4xl flex-col gap-2 sm:w-11/12 md:w-8/12'>
-				{
-					stories
-						.sort((a, b) => a.title.localeCompare(b.title))
-						.map((story) => <StoryCard {...story} />)
-				}
-			</div>
+			<div class='flex w-full max-w-4xl flex-col gap-2 sm:w-11/12 md:w-8/12'></div>
 		</SectionContainer>
 	</main>
 </Layout>
