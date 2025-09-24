@@ -89,6 +89,8 @@
   "EXPERIENCE_DESC_2": "I was lead programmer and supporter in the creation of a private application to manage the inputs and outputs of a chicken farm called Granjas Viloria. The application was developed in Kotlin and had a record of invoices, their proper printing in PDF and a simple TODO. Due to privacy and the lack of publication in stores, the project cannot be shown at the momment.",
   "EXPERIENCE_TITLE_3": "Free to work",
   "EXPERIENCE_DESC_3": "I am currently working as a free programmer, expanding the website and blog of this website, studying and getting deeper and deeper into the world of programming.",
+  "EXPERIENCE_TITLE_4": "Foto Estudio El Chévere",
+  "EXPERIENCE_DESC_4": "I spent one year at the company Foto Estudio El Chévere, where I was the main web developer and the person in charge of creating their official website. The website was developed using Astro, Tailwind CSS and deployed on Vercel. In addition, I provided my services as a professional photographer and photo editor.",
   "BLOG_TOPICS": "Topics",
   "AUTHOR": "Author",
   "LANGUAGE": "Language",

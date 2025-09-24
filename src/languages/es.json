@@ -89,6 +89,8 @@
   "EXPERIENCE_DESC_2": "Fui el programador principal y colaborador en la creación de una aplicación privada para gestionar las entradas y salidas de una granja de pollos llamada Granjas Viloria. La aplicación fue desarrollada en Kotlin y tenía un registro de facturas, su correcta impresión en PDF y un simple TODO. Por privacidad y la falta de publicación en las tiendas, no se podrá enseñar el proyecto por el momento.",
   "EXPERIENCE_TITLE_3": "Libre para trabajar",
   "EXPERIENCE_DESC_3": "Actualmente trabajo como programador freelance, ampliando el sitio web y el blog de este sitio, estudiando y profundizando cada vez más en el mundo de la programación.",
+  "EXPERIENCE_TITLE_4": "Foto Estudio El Chévere",
+  "EXPERIENCE_DESC_4": "Duré un año en la empresa Foto Estudio El Chévere, donde fui el desarrollador web principal y el encargado de crear su sitio web oficial. El sitio web fue desarrollado usando Astro, Tailwind CSS y desplegado en Vercel. Además, brindé mis servicios profesionales como fotógrafo y editor de fotografías.",
   "BLOG_TOPICS": "Tópicos",
   "AUTHOR": "Autor",
   "LANGUAGE": "Lenguaje",
