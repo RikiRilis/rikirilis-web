@@ -35,8 +35,7 @@ export const articlesService = (): Article[] => {
 					],
 				},
 			],
-			cover:
-				'https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/src/el-lider-nace-o-se-hace.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vc3JjL2VsLWxpZGVyLW5hY2Utby1zZS1oYWNlLndlYnAiLCJpYXQiOjE3MjE2NzM3NzcsImV4cCI6MTc0ODk2NzM3Nzd9.mcN9De9i7SemyN0bnw_eR1VxeRmb19AAr5a9pf1RgaM&t=2024-07-22T18%3A42%3A48.326Z',
+			cover: 'https://www.rikirilis.com/images/el-lider-nace-o-se-hace.webp',
 			description:
 				'Esa es una pregunta muy polémica en el mundo que vivimos. Podríamos decir tanto que un líder nace, como que se hace...',
 			lang: 'es',

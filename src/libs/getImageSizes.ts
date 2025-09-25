@@ -19,7 +19,7 @@ export function getImagesWithSize(relativeFolderPath: string) {
 			const dimensions = sizeOf(fullPath)
 			return [
 				{
-					src: `/${relativeFolderPath}/${filename}`,
+					src: `${relativeFolderPath}/${filename}`,
 					width: dimensions.width ?? 0,
 					height: dimensions.height ?? 0,
 				},

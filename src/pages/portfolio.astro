@@ -12,13 +12,25 @@ const i18n = getI18N({ currentLocale })
 const preloadImages: Preload[] = [
 	{
 		as: 'image',
-		href: `https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/src/main-pic.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vc3JjL21haW4tcGljLndlYnAiLCJpYXQiOjE3MTk1MTkxNDIsImV4cCI6MzI5NjMxOTE0Mn0.AfuzV2joKThAdRYAjwaKGsWWyiBu4i1VEjtkazr3RKY&t=2024-06-27T20%3A12%3A28.502Z`,
+		href: `https://rikirilis.com/images/page-presentation.avif`,
+		type: 'image/avif',
+		rel: 'preload',
+	},
+	{
+		as: 'image',
+		href: `https://rikirilis.com/images/embedded-img.webp`,
 		type: 'image/webp',
 		rel: 'preload',
 	},
 	{
 		as: 'image',
-		href: `https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/src/Stop_Trivia.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vc3JjL1N0b3BfVHJpdmlhLndlYnAiLCJpYXQiOjE3MjAxOTY4NjQsImV4cCI6NDg3Mzc5Njg2NH0.Ns0_bYwlbTpcLfgtfAsBMo-w8hwPMWZol4kPSWoFYbI&t=2024-07-05T16%3A27%3A44.948Z`,
+		href: `https://rikirilis.com/images/stop-trivia.webp`,
+		type: 'image/webp',
+		rel: 'preload',
+	},
+	{
+		as: 'image',
+		href: `https://rikirilis.com/images/anjocc-oficial.webp`,
 		type: 'image/webp',
 		rel: 'preload',
 	},
@@ -31,17 +43,15 @@ const preloadImages: Preload[] = [
 	canonical='https://rikirilis.com/portfolio/'
 	preload={preloadImages}
 >
-	<main>
-		<SectionContainer id='about'>
-			<About />
-		</SectionContainer>
+	<SectionContainer id='about'>
+		<About />
+	</SectionContainer>
 
-		<SectionContainer id='experience'>
-			<Experience />
-		</SectionContainer>
+	<SectionContainer id='experience'>
+		<Experience />
+	</SectionContainer>
 
-		<SectionContainer id='projects'>
-			<Projects />
-		</SectionContainer>
-	</main>
+	<SectionContainer id='projects'>
+		<Projects />
+	</SectionContainer>
 </Layout>

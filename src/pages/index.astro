@@ -8,7 +8,7 @@ import Layout from '../layouts/Layout.astro'
 const preloadImages: Preload[] = [
 	{
 		as: 'image',
-		href: `https://ynbjmptmmmbaspzfxzdu.supabase.co/storage/v1/object/sign/portfolio/src/about_image.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vc3JjL2Fib3V0X2ltYWdlLndlYnAiLCJpYXQiOjE3MjEwMTI3MzMsImV4cCI6MTc0ODkwMTI3MzN9.xUILjnKC-cRjrFuUbU70xQqx2SxT6U-AMgrdlqTMiIA&t=2024-07-15T03%3A05%3A26.995Z`,
+		href: `https://rikirilis.com/images/about-image.webp`,
 		type: 'image/webp',
 		rel: 'preload',
 	},
@@ -21,13 +21,11 @@ const preloadImages: Preload[] = [
 	canonical='https://rikirilis.com/'
 	preload={preloadImages}
 >
-	<main>
-		<SectionContainer id='web'>
-			<Articles />
-		</SectionContainer>
+	<SectionContainer id='web'>
+		<Articles />
+	</SectionContainer>
 
-		<SectionContainer>
-			<AboutMe />
-		</SectionContainer>
-	</main>
+	<SectionContainer>
+		<AboutMe />
+	</SectionContainer>
 </Layout>

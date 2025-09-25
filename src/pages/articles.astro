@@ -17,18 +17,16 @@ const articles = articlesService()
 	description="The RikiRilis' Website. Read articles, stories and comments about all you want to know. I build easy-to-use websites and Android apps, with fast technologies and UX/UI standards to improve user experience."
 	canonical='https://rikirilis.com/articles/'
 >
-	<main>
-		<SectionContainer>
-			<div class='flex w-full max-w-4xl flex-col gap-2 sm:w-11/12 md:w-8/12'>
-				<MainTitle>
-					<Book class='size-8' />
-					{i18n.ARTICLES}
-				</MainTitle>
-			</div>
+	<SectionContainer>
+		<div class='flex w-full max-w-4xl flex-col gap-2 sm:w-11/12 md:w-8/12'>
+			<MainTitle>
+				<Book class='size-8' />
+				{i18n.ARTICLES}
+			</MainTitle>
+		</div>
 
-			<div class='flex w-full max-w-4xl flex-col gap-2 sm:w-11/12 md:w-8/12'>
-				{articles.map((article) => <ArticleCard {...article} />)}
-			</div>
-		</SectionContainer>
-	</main>
+		<div class='flex w-full max-w-4xl flex-col gap-2 sm:w-11/12 md:w-8/12'>
+			{articles.map((article) => <ArticleCard {...article} />)}
+		</div>
+	</SectionContainer>
 </Layout>

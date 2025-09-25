@@ -2,10 +2,11 @@
 import LazyImage from '@/components/LazyImage.astro'
 import MainTitle from '@/components/MainTitle.astro'
 import SectionContainer from '@/components/SectionContainer.astro'
-import { Loading } from '@/icons/Loading'
+import Loading from '@/icons/Loading.astro'
 import PhotographyIcon from '@/icons/Photography.astro'
 import { getI18N } from '@/languages/index'
 import { getImages } from '@/services/images'
+import 'photoswipe/style.css'
 import Layout from '../layouts/Layout.astro'
 
 const { currentLocale } = Astro
@@ -15,11 +16,11 @@ const images = getImages()
 
 <Layout
 	title=`${i18n.PHOTOGRAPHY} - RikiRilis`
-	description="The RikiRilis' Website. Read stories and comments about all you want to know. I build easy-to-use websites and Android apps, with fast technologies and UX/UI standards to improve user experience."
+	description="The RikiRilis' Website. This is my photography portfolio, where I show some of my best works as a professional photographer and photo editor."
 	canonical='https://rikirilis.com/photography/'
 >
-	<main>
-		<SectionContainer>
+	<SectionContainer>
+		<div class='flex w-full max-w-5xl flex-col md:w-11/12 lg:w-8/12'>
 			<div class='flex w-full max-w-4xl flex-col gap-2 sm:w-11/12 md:w-8/12'>
 				<MainTitle>
 					<PhotographyIcon class='size-8' />
@@ -27,36 +28,37 @@ const images = getImages()
 				</MainTitle>
 			</div>
 
+			<p class='mb-6 text-pretty text-slate-400'>{i18n.PHOTOGRAPHY_DESCRIPTION}</p>
+
 			<!-- Masonry with Grid -->
-			<div id='gallery' style='column-gap: 1rem; column-width: 250px;'>
+			<div id='gallery' style='column-gap: 1rem; column-width: 231px;'>
 				{
 					images.length > 0 &&
-						images.map((image, index) => (
-							<a
-								href={`${image.src}`}
-								data-pswp-width={image.width}
-								data-pswp-height={image.height}
-								target='_blank'
-								class={`hoverZoomLink group relative mb-4 block cursor-zoom-in break-inside-avoid overflow-hidden rounded-lg transition`}
-							>
-								<LazyImage
-									src={`https://www.rikirilis.com/portraits/${image.src}`}
-									alt={`Image ${index + 1}`}
-									width={image.width}
-									height={image.height}
-									className='w-full group-active:scale-105 md:group-hover:scale-105 duration-[.4s] transition opacity-0 ease-in-out'
-								/>
+						images
+							.sort(() => Math.random() - 0.5)
+							.map((image, index) => (
+								<a
+									href={`https://www.rikirilis.com/${image.src}`}
+									data-pswp-width={image.width}
+									data-pswp-height={image.height}
+									target='_blank'
+									class={`hoverZoomLink group relative mb-4 block cursor-zoom-in break-inside-avoid overflow-hidden rounded-lg transition`}
+								>
+									<LazyImage
+										src={`https://www.rikirilis.com/${image.src}`}
+										alt={`Image ${index + 1}`}
+										width={image.width}
+										height={image.height}
+										className='w-full group-active:scale-105 md:group-hover:scale-105 duration-[.4s] transition opacity-0 ease-in-out'
+									/>
 
-								<Loading
-									client:visible
-									classes='-z-20 inset-0 absolute m-auto size-5 text-primary'
-								/>
-							</a>
-						))
+									<Loading class='absolute inset-0 -z-20 m-auto size-6 text-slate-200' />
+								</a>
+							))
 				}
 			</div>
-		</SectionContainer>
-	</main>
+		</div>
+	</SectionContainer>
 </Layout>
 
 <script>

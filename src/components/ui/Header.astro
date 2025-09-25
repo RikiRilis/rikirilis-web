@@ -20,6 +20,7 @@ const i18n = getI18N({ currentLocale })
 						href={item.url}
 						aria-label={item.label}
 						class='inline-flex h-full select-none items-center justify-center gap-2 rounded-3xl border border-transparent p-2 text-center transition-colors hover:bg-secondary/5 md:p-4 md:hover:border-secondary/10'
+						{...(item.url === '/photography' && { 'data-astro-reload': true })}
 					>
 						<item.icon class='hidden size-6 md:block' />
 						{item.title}
