@@ -8,6 +8,7 @@ import Check from '@/icons/Check.astro'
 import GitHub from '@/icons/GitHub.astro'
 import LinkedIn from '@/icons/LinkedIn.astro'
 import { getI18N } from '@/languages/index.ts'
+import PhotographyCard from '../PhotographyCard.astro'
 
 const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
@@ -80,7 +81,7 @@ const i18n = getI18N({ currentLocale })
 			<SocialPill
 				target='_blank'
 				rel='noopener noreferrer'
-				href='https://rikirilis.com/archives/web-cv.pdf'
+				href='https://www.rikirilis.com/archives/web-cv.pdf'
 			>
 				<Binoculars class='size-6' />
 				{i18n.WATCH_CV}
@@ -93,5 +94,9 @@ const i18n = getI18N({ currentLocale })
 		</nav>
 
 		<Divider />
+	</div>
+
+	<div class='flex w-full flex-col items-center'>
+		<PhotographyCard />
 	</div>
 </div>

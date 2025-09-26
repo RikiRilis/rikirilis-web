@@ -1,9 +1,15 @@
 ---
+import MainTitle from '@/components/MainTitle.astro'
+import PhotographyCard from '@/components/PhotographyCard.astro'
 import SectionContainer from '@/components/SectionContainer.astro'
 import AboutMe from '@/components/web/AboutMe.astro'
 import Articles from '@/components/web/Articles.astro'
+import Photography from '@/icons/Photography.astro'
 import type { Preload } from '@/interfaces/preload'
+import { getI18N } from '@/languages/index'
 import Layout from '../layouts/Layout.astro'
+
+const i18n = getI18N({ currentLocale: Astro.currentLocale })
 
 const preloadImages: Preload[] = [
 	{
@@ -23,6 +29,17 @@ const preloadImages: Preload[] = [
 >
 	<SectionContainer id='web'>
 		<Articles />
+	</SectionContainer>
+
+	<SectionContainer>
+		<div class='flex w-full max-w-4xl flex-col sm:w-11/12 md:w-8/12'>
+			<MainTitle>
+				<Photography class='size-8' />
+				{i18n.PHOTOGRAPHY}
+			</MainTitle>
+
+			<PhotographyCard />
+		</div>
 	</SectionContainer>
 
 	<SectionContainer>
