@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.2.1",
-    "@emailjs/browser": "^4.3.3",
     "@fontsource-variable/onest": "^5.0.4",
     "@fontsource/ubuntu": "^5.0.13",
     "@supabase/supabase-js": "^2.45.1",

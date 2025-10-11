@@ -25,9 +25,7 @@ export default defineConfig({
 	}),
 	vite: {
 		define: {
-			'import.meta.env.EMAILJS_KEY': JSON.stringify(process.env.EMAILJS_KEY),
-			'import.meta.env.EMAILJS_SERVICE_ID': JSON.stringify(process.env.EMAILJS_SERVICE_ID),
-			'import.meta.env.EMAILJS_TEMPLATE_ID': JSON.stringify(process.env.EMAILJS_TEMPLATE_ID),
+			'import.meta.env.RESEND_API_KEY': JSON.stringify(process.env.RESEND_API_KEY),
 		},
 	},
 })
