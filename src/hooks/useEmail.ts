@@ -1,14 +1,12 @@
 import type { Email } from '@/interfaces/email'
-import emailjs from '@emailjs/browser'
 import { useState } from 'react'
 import { getI18N } from '@/languages/index'
-import { server } from '@/actions'
 
-export function useEmailjs() {
+export function useEmail() {
 	const [sending, setSending] = useState(false)
 	const [error, setError] = useState(false)
 
-	const sendEmail = (
+	const sendEmail = async (
 		{ user_name, user_email, message }: Email,
 		currentLocale: string,
 		callback: () => void
@@ -49,49 +47,28 @@ export function useEmailjs() {
 		}
 
 		try {
-			server.send
-
-			emailjs.init({
-				publicKey: import.meta.env.EMAILJS_KEY,
-				blockHeadless: true,
-				limitRate: {
-					id: 'app',
-					throttle: 120000,
+			const response = await fetch('/api/email/send', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
 				},
+				body: JSON.stringify({ user_name, user_email, message }),
 			})
 
-			emailjs
-				.send(import.meta.env.EMAILJS_SERVICE_ID, import.meta.env.EMAILJS_TEMPLATE_ID, {
-					from_name: user_name,
-					to_name: 'RikiRilis',
-					from_email: user_email,
-					subject: 'Email from contact form | RikiRilis',
-					message: message,
+			if (response.ok) {
+				setSending(false)
+				setError(true)
+				window.toast({
+					dismissible: true,
+					title: i18n.FORM_SEND_SUCCESS,
+					location: 'bottom-center',
+					type: 'success',
+					icon: true,
 				})
-				.then(() => {
-					window.toast({
-						dismissible: true,
-						title: i18n.FORM_SEND_SUCCESS,
-						location: 'bottom-center',
-						type: 'success',
-						icon: true,
-					})
-					setSending(false)
-					setError(false)
-					callback()
-				})
-				.catch((e) => {
-					window.toast({
-						dismissible: true,
-						title: i18n.FORM_SEND_ERROR,
-						location: 'bottom-center',
-						type: 'error',
-						icon: true,
-					})
-					setSending(false)
-					setError(true)
-					console.log(e)
-				})
+				setSending(false)
+				setError(true)
+				callback()
+			}
 		} catch (e) {
 			setSending(false)
 			setError(true)

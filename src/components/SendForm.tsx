@@ -1,10 +1,10 @@
 import { getI18N } from '@/languages/index'
-import { useEmailjs } from '@/hooks/useEmailjs'
+import { useEmail } from '@/hooks/useEmail'
 import { useEffect, useRef, useState } from 'react'
 import { Loading } from '@/icons/Loading'
 
 export const SendForm = () => {
-	const { sending, sendEmail } = useEmailjs()
+	const { sending, sendEmail } = useEmail()
 	const formRef = useRef<HTMLFormElement | null>(null)
 	const [locale, setlocale] = useState('en')
 	const i18n = getI18N({ currentLocale: locale })
@@ -39,7 +39,7 @@ export const SendForm = () => {
 
 	return (
 		<form ref={formRef} onSubmit={handleSubmit} className='flex-1 pt-6 sm:w-full sm:pt-0'>
-			<span className='text-secondary text-sm font-light italic'>{i18n.CONTACT_TXT_6}</span>
+			<span className='text-sm font-light italic text-secondary'>{i18n.CONTACT_TXT_6}</span>
 
 			<div className='mt-2 flex flex-col gap-2'>
 				<label className='mb-1 inline-flex flex-col text-slate-400'>
@@ -47,7 +47,7 @@ export const SendForm = () => {
 					<input
 						required
 						autoComplete='name'
-						className='focus:outline-main bg-accent/10 text-primary h-10 rounded-lg p-2 outline-none transition-all placeholder:text-slate-500 focus:outline-1'
+						className='h-10 rounded-lg bg-accent/10 p-2 text-primary outline-none transition-all placeholder:text-slate-500 focus:outline-1 focus:outline-main'
 						type='text'
 						name='user_name'
 						placeholder='Jane Doe'
@@ -59,7 +59,7 @@ export const SendForm = () => {
 					<input
 						required
 						autoComplete='email'
-						className='focus:outline-main bg-accent/10 text-primary h-10 rounded-lg p-2 outline-none transition-all placeholder:text-slate-500 focus:outline-1'
+						className='h-10 rounded-lg bg-accent/10 p-2 text-primary outline-none transition-all placeholder:text-slate-500 focus:outline-1 focus:outline-main'
 						type='email'
 						name='user_email'
 						placeholder='your@email.com'
@@ -70,7 +70,7 @@ export const SendForm = () => {
 					{i18n.MESSAGE}*
 					<textarea
 						required
-						className='focus:outline-main bg-accent/10 text-primary h-28 rounded-lg p-2 outline-none transition-all placeholder:text-slate-500 focus:outline-1'
+						className='h-28 rounded-lg bg-accent/10 p-2 text-primary outline-none transition-all placeholder:text-slate-500 focus:outline-1 focus:outline-main'
 						name='message'
 						placeholder={i18n.MESSAGE_PLACEHOLDER}
 					></textarea>
@@ -80,7 +80,7 @@ export const SendForm = () => {
 			<button
 				type='submit'
 				{...(!sending ? {} : { disabled: true })}
-				className={`mt-4 flex w-full flex-row items-center justify-center gap-2 ${!sending ? 'bg-accent text-primary cursor-pointer' : 'bg-main text-secondary cursor-not-allowed'} ${sending ? '' : 'active:text-main sm:hover:border-main sm:hover:text-accent active:border-accent active:bg-transparent sm:hover:bg-transparent'} rounded-xl border border-transparent px-3 py-2 text-lg font-bold transition`}
+				className={`mt-4 flex w-full flex-row items-center justify-center gap-2 ${!sending ? 'cursor-pointer bg-accent text-primary' : 'cursor-not-allowed bg-main text-secondary'} ${sending ? '' : 'active:border-accent active:bg-transparent active:text-main sm:hover:border-main sm:hover:bg-transparent sm:hover:text-accent'} rounded-xl border border-transparent px-3 py-2 text-lg font-bold transition`}
 			>
 				{!sending ? (
 					<svg
