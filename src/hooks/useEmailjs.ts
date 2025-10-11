@@ -2,6 +2,7 @@ import type { Email } from '@/interfaces/email'
 import emailjs from '@emailjs/browser'
 import { useState } from 'react'
 import { getI18N } from '@/languages/index'
+import { server } from '@/actions'
 
 export function useEmailjs() {
 	const [sending, setSending] = useState(false)
@@ -48,6 +49,8 @@ export function useEmailjs() {
 		}
 
 		try {
+			server.send
+
 			emailjs.init({
 				publicKey: import.meta.env.EMAILJS_KEY,
 				blockHeadless: true,
