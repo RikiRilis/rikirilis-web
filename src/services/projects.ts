@@ -90,5 +90,15 @@ export const projectsService = (currentLocale?: string): Project[] => {
 			gitCodeUrl: 'https://github.com/RikiRilis/anjocc-oficial',
 			alt: 'ANJOCC Oficial Web Page',
 		},
+		{
+			id: 'gdn-style',
+			title: 'GDN Style',
+			description: i18n.GDN_STYLE_DESCRIPTION,
+			imgUrl: 'https://rikirilis.com/images/gdn-style.webp',
+			projectUrl: 'https://gdnstyle.com',
+			tags: [TAGS.ASTRO, TAGS.TAILWIND],
+			gitCodeUrl: 'https://github.com/RikiRilis',
+			alt: 'GDN Style Oficial Web Page',
+		},
 	]
 }
