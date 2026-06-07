@@ -11,29 +11,36 @@ const locale = getActiveLocale(Astro)
 const i18n = getI18N({ currentLocale: locale })
 ---
 
-<div class="relative flex w-full max-w-6xl flex-col items-center gap-12 sm:w-11/12 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
+<div
+	class="relative flex w-full min-w-0 max-w-6xl flex-col items-center gap-12 sm:w-11/12 lg:flex-row lg:items-center lg:justify-between lg:gap-16"
+>
 	<div
-		class="pointer-events-none absolute -left-32 top-0 size-72 rounded-full bg-accent/10 blur-3xl"
+		class="pointer-events-none absolute -left-16 top-0 size-48 rounded-full bg-accent/10 blur-3xl lg:-left-32 lg:size-72"
 		aria-hidden="true"
 	>
 	</div>
 	<div
-		class="pointer-events-none absolute -right-20 bottom-0 size-56 rounded-full bg-main/20 blur-3xl"
+		class="pointer-events-none absolute -right-8 bottom-0 size-40 rounded-full bg-main/20 blur-3xl lg:-right-20 lg:size-56"
 		aria-hidden="true"
 	>
 	</div>
 
-	<div class="fade-up-anim relative z-10 flex max-w-2xl flex-col items-center text-center lg:items-start lg:text-left">
-		<p class="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-sm font-medium text-accent">
-			<span class="relative flex size-2">
-				<span class="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-60"></span>
+	<div
+		class="fade-up-anim relative z-10 flex w-full min-w-0 max-w-2xl flex-col items-center text-center lg:items-start lg:text-left"
+	>
+		<p
+			class="mb-4 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-sm font-medium text-accent"
+		>
+			<span class="relative flex size-2 overflow-hidden rounded-full">
+				<span class="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-60"
+				></span>
 				<span class="relative inline-flex size-2 rounded-full bg-accent"></span>
 			</span>
 			{i18n.HOME_HERO_GREETING}
 		</p>
 
 		<h1
-			class="bg-gradient-to-br from-white via-slate-200 to-slate-400 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl md:text-6xl lg:text-7xl"
+			class="text-balance bg-gradient-to-br from-white via-slate-200 to-slate-400 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl md:text-6xl lg:text-7xl"
 		>
 			Rikelvi Capellán
 		</h1>
@@ -72,28 +79,30 @@ const i18n = getI18N({ currentLocale: locale })
 	</div>
 
 	<div class="fade-up-anim relative z-10 shrink-0">
-		<div
-			class="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-accent/30 via-transparent to-main/30 opacity-60 blur-2xl"
-			aria-hidden="true"
-		>
-		</div>
+		<div class="relative max-lg:mx-auto max-lg:max-w-[17.5rem] max-lg:overflow-hidden max-lg:px-1">
+			<div
+				class="pointer-events-none absolute inset-0 rounded-[2rem] bg-gradient-to-br from-accent/30 via-transparent to-main/30 opacity-60 blur-2xl lg:-inset-4"
+				aria-hidden="true"
+			>
+			</div>
 
-		<div
-			class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-slate-800/50 to-slate-900/80 p-1.5 shadow-2xl shadow-black/50 backdrop-blur-sm"
-		>
-			<img
-				src="https://rixel.dev/images/main-pic.webp"
-				width="630"
-				height="1200"
-				alt="Rikelvi Capellán"
-				class="size-56 rounded-[1.6rem] object-cover sm:size-64 md:size-72 lg:size-80"
-			/>
-		</div>
+			<div
+				class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-slate-800/50 to-slate-900/80 p-1.5 shadow-2xl shadow-black/50 backdrop-blur-sm"
+			>
+				<img
+					src="https://rixel.dev/images/main-pic.webp"
+					width="630"
+					height="1200"
+					alt="Rikelvi Capellán"
+					class="aspect-[4/5] w-56 rounded-[1.6rem] object-cover object-center sm:w-64 md:w-72 lg:w-80"
+				/>
+			</div>
 
-		<div
-			class="absolute -bottom-3 -right-3 rounded-2xl border border-accent/20 bg-slate-900/90 px-4 py-2 shadow-xl backdrop-blur-md"
-		>
-			<p class="text-xs font-medium text-secondary">{i18n.ABOUT_TEXT_2}</p>
+			<div
+				class="absolute bottom-2 left-1/2 z-10 -translate-x-1/2 rounded-2xl border border-accent/20 bg-slate-900/90 px-4 py-2 shadow-xl backdrop-blur-md lg:-bottom-3 lg:-right-3 lg:left-auto lg:translate-x-0"
+			>
+				<p class="whitespace-nowrap text-xs font-medium text-secondary">{i18n.ABOUT_TEXT_2}</p>
+			</div>
 		</div>
 	</div>
 </div>

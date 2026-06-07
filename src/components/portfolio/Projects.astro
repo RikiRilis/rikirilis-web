@@ -3,14 +3,14 @@ import Divider from "@/components/Divider.astro"
 import ProjectsCard from "@/components/ProjectsCard.astro"
 import Code from "@/icons/Code.astro"
 import { type Project } from "@/interfaces/project"
-import { getI18N } from "@/locales/index.ts"
+import { getActiveLocale, getI18N } from "@/locales/index.ts"
 import { projectsService } from "@/services/projects"
 import MainTitle from "../MainTitle.astro"
 import ProjectsTecnologies from "./ProjectsTecnologies.astro"
 
-const { currentLocale } = Astro
-const i18n = getI18N({ currentLocale })
-const allProjects: Project[] = projectsService(currentLocale).slice(0, 4)
+const locale = getActiveLocale(Astro)
+const i18n = getI18N({ currentLocale: locale })
+const allProjects: Project[] = projectsService(locale).slice(0, 4)
 ---
 
 <div class="flex w-full max-w-4xl flex-col sm:w-11/12 md:w-8/12">

@@ -41,12 +41,12 @@ const preloadImages: Preload[] = [
 	</SectionContainer>
 
 	<SectionContainer class="!py-16">
-		<div class="grid w-full max-w-6xl gap-10 sm:w-11/12 lg:grid-cols-5 lg:gap-8">
-			<div class="fade-up-anim lg:col-span-3">
+		<div class="grid w-full min-w-0 max-w-6xl gap-10 sm:w-11/12 lg:grid-cols-5 lg:gap-8">
+			<div class="fade-up-anim min-w-0 lg:col-span-3">
 				<Articles />
 			</div>
 
-			<div class="fade-up-anim flex flex-col lg:col-span-2">
+			<div class="fade-up-anim flex min-w-0 flex-col lg:col-span-2">
 				<MainTitle>
 					<Photography class="size-7 text-accent" />
 					{i18n.PHOTOGRAPHY}

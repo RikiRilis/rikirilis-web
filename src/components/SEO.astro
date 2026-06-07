@@ -8,6 +8,8 @@ interface Props {
 	canonical?: string
 	image?: string
 	locale?: string
+	keywords?: string
+	jsonLd?: Record<string, unknown> | Record<string, unknown>[]
 }
 
 const {
@@ -17,6 +19,8 @@ const {
 	canonical = "https://rixel.dev/",
 	image = "https://rixel.dev/images/embedded-img.avif",
 	locale = "en",
+	keywords,
+	jsonLd,
 } = Astro.props as Props
 
 const ogLocale = locale === "es" ? "es_ES" : "en_US"
@@ -41,7 +45,8 @@ const ogLocale = locale === "es" ? "es_ES" : "en_US"
 
 <meta
 	name="keywords"
-	content="astro, html, javascript, js, css, Rixel, portfolio, angular, rikelvi capellan, republica dominicana, dominican republic, developer, desarrollador web, web developer, blog, Rixel's blog, projects, Rixel's projects, rikelvi capellan projects, ts, typescript, components, anciano, corta, fama, historia, joven, leche, moraleja, relato, riquezas, sueños, vaca, short story"
+	content={keywords ??
+		"astro, html, javascript, js, css, Rixel, portfolio, angular, rikelvi capellan, republica dominicana, dominican republic, developer, desarrollador web, web developer, blog, Rixel's blog, projects, Rixel's projects, rikelvi capellan projects, ts, typescript, components, anciano, corta, fama, historia, joven, leche, moraleja, relato, riquezas, sueños, vaca, short story"}
 />
 
 <meta name="twitter:card" content="summary_large_image" />
@@ -69,3 +74,9 @@ const ogLocale = locale === "es" ? "es_ES" : "en_US"
 <meta name="msapplication-config" content="/browserconfig.xml" />
 
 <link rel="manifest" href="/manifest.webmanifest" />
+
+{
+	jsonLd ? (
+		<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+	) : null
+}

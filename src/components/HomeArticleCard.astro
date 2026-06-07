@@ -1,6 +1,11 @@
 ---
 import RightArrow from "@/icons/RightArrow.astro"
-import { getActiveLocale, getI18N, resolveLocalizedHref } from "@/locales/index"
+import {
+	getActiveLocale,
+	getI18N,
+	getLanguageLabel,
+	resolveLocalizedHref,
+} from "@/locales/index"
 
 interface Props {
 	author: string
@@ -15,6 +20,7 @@ const locale = getActiveLocale(Astro)
 const i18n = getI18N({ currentLocale: locale })
 const { author, description, lang, pageTitle, timestamp, title } = Astro.props
 const articleHref = resolveLocalizedHref(`/articles/${pageTitle}`, locale)
+const languageLabel = getLanguageLabel(lang, i18n)
 ---
 
 <a
@@ -24,7 +30,7 @@ const articleHref = resolveLocalizedHref(`/articles/${pageTitle}`, locale)
 	class="group relative flex h-full w-full flex-col justify-between gap-4 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-slate-800/30 via-slate-900/50 to-slate-950/60 p-5 shadow-lg shadow-black/20 backdrop-blur-md transition-all duration-300 ease-out active:scale-[0.98] sm:cursor-pointer sm:hover:border-accent/25 sm:hover:shadow-xl sm:hover:shadow-accent/5"
 >
 	<div
-		class="pointer-events-none absolute -right-8 -top-8 size-24 rounded-full bg-accent/5 transition-all duration-500 sm:group-hover:bg-accent/10"
+		class="pointer-events-none absolute -right-4 -top-4 size-20 rounded-full bg-accent/5 transition-all duration-500 sm:-right-8 sm:-top-8 sm:size-24 sm:group-hover:bg-accent/10"
 		aria-hidden="true"
 	>
 	</div>
@@ -51,7 +57,7 @@ const articleHref = resolveLocalizedHref(`/articles/${pageTitle}`, locale)
 				{timestamp}
 			</p>
 			<p class="text-[10px] text-secondary/70 sm:text-xs">
-				{author} · {lang}
+				{author} · {languageLabel}
 			</p>
 		</div>
 

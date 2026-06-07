@@ -1,7 +1,7 @@
 ---
 import GitHub from "@/icons/GitHub.astro"
 import Send from "@/icons/Send.astro"
-import { getI18N } from "@/locales/index.ts"
+import { getActiveLocale, getI18N } from "@/locales/index.ts"
 import LinkButton from "./LinkButton.astro"
 
 interface Props {
@@ -20,8 +20,8 @@ interface Props {
 }
 
 const { title, description, imgUrl, projectUrl, tags, gitCodeUrl, alt } = Astro.props
-const { currentLocale } = Astro
-const i18n = getI18N({ currentLocale })
+const locale = getActiveLocale(Astro)
+const i18n = getI18N({ currentLocale: locale })
 ---
 
 <article

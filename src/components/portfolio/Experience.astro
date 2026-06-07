@@ -1,13 +1,13 @@
 ---
 import ExperienceItem from "@/components/ExperienceItem.astro"
 import Timeline from "@/icons/Timeline.astro"
-import { getI18N } from "@/locales/index.ts"
+import { getActiveLocale, getI18N } from "@/locales/index.ts"
 import { experiencesService } from "@/services/experiences"
 import MainTitle from "../MainTitle.astro"
 
-const { currentLocale } = Astro
-const i18n = getI18N({ currentLocale })
-const EXPERIENCE = experiencesService(currentLocale)
+const locale = getActiveLocale(Astro)
+const i18n = getI18N({ currentLocale: locale })
+const EXPERIENCE = experiencesService(locale)
 ---
 
 <div class="flex w-full max-w-4xl flex-col sm:w-11/12 md:w-8/12">

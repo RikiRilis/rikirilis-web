@@ -1,13 +1,13 @@
 ---
 import MainTitle from "@/components/MainTitle.astro"
 import User from "@/icons/User.astro"
-import { getI18N } from "@/locales/index"
+import { getActiveLocale, getI18N } from "@/locales/index"
 
-const { currentLocale } = Astro
-const i18n = getI18N({ currentLocale })
+const locale = getActiveLocale(Astro)
+const i18n = getI18N({ currentLocale: locale })
 ---
 
-<div class="fade-up-anim flex w-full max-w-6xl flex-col sm:w-11/12">
+<div class="fade-up-anim flex w-full min-w-0 max-w-6xl flex-col sm:w-11/12">
 	<MainTitle>
 		<User class="size-7 text-accent" />
 		{i18n.ABOUT_ME}
@@ -45,9 +45,9 @@ const i18n = getI18N({ currentLocale })
 			</p>
 		</div>
 
-		<div class="relative shrink-0">
+		<div class="relative shrink-0 max-lg:overflow-hidden max-lg:px-1 lg:px-0">
 			<div
-				class="absolute -inset-3 rounded-3xl bg-gradient-to-br from-accent/20 to-main/20 opacity-50 blur-xl"
+				class="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-accent/20 to-main/20 opacity-50 blur-xl lg:-inset-3"
 				aria-hidden="true"
 			>
 			</div>
@@ -55,7 +55,7 @@ const i18n = getI18N({ currentLocale })
 				src="https://rixel.dev/images/about-image.webp"
 				width="720"
 				height="1280"
-				class="relative aspect-square w-44 rounded-2xl border border-white/10 object-cover shadow-2xl shadow-black/40 transition-transform duration-500 sm:w-52 md:w-60 lg:w-64 sm:hover:scale-[1.02]"
+				class="relative aspect-square w-44 rounded-2xl border border-white/10 object-cover object-center shadow-2xl shadow-black/40 transition-transform duration-500 sm:w-52 md:w-60 lg:w-64 sm:hover:scale-[1.02]"
 				alt="About Rixel's image, Rikelvi Capellán"
 			/>
 		</div>

@@ -7,11 +7,11 @@ import Chat from "@/icons/Chat.astro"
 import Check from "@/icons/Check.astro"
 import GitHub from "@/icons/GitHub.astro"
 import LinkedIn from "@/icons/LinkedIn.astro"
-import { getI18N } from "@/locales/index"
+import { getActiveLocale, getI18N } from "@/locales/index"
 import PhotographyCard from "../PhotographyCard.astro"
 
-const { currentLocale } = Astro
-const i18n = getI18N({ currentLocale })
+const locale = getActiveLocale(Astro)
+const i18n = getI18N({ currentLocale: locale })
 ---
 
 <div class="flex w-full max-w-4xl flex-col sm:w-11/12 md:w-8/12">

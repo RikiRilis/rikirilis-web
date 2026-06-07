@@ -16,11 +16,11 @@ import ReactNative from "@/icons/ReactNative.astro"
 import SQL from "@/icons/SQL.astro"
 import Tailwind from "@/icons/Tailwind.astro"
 import TS from "@/icons/TS.astro"
-import { getI18N } from "@/locales/index.ts"
+import { getActiveLocale, getI18N } from "@/locales/index.ts"
 import MainTitle from "../MainTitle.astro"
 
-const { currentLocale } = Astro
-const i18n = getI18N({ currentLocale })
+const locale = getActiveLocale(Astro)
+const i18n = getI18N({ currentLocale: locale })
 ---
 
 <div class="flex w-full flex-col">

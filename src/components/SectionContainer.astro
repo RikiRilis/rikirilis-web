@@ -6,7 +6,7 @@ const { class: className, ...rest } = Astro.props
 	{...rest}
 	class:list={["section relative w-full px-4 py-20 md:px-6 md:pt-32 lg:px-8", className]}
 >
-	<div class="flex w-full flex-col items-center justify-center">
+	<div class="flex w-full min-w-0 flex-col items-center justify-center max-lg:overflow-x-clip">
 		<slot />
 	</div>
 </section>

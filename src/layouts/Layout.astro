@@ -21,9 +21,11 @@ interface Props {
 	preload?: Array<Preload>
 	canonical?: string
 	image?: string
+	keywords?: string
+	jsonLd?: Record<string, unknown> | Record<string, unknown>[]
 }
 
-const { title, description, preload, canonical, image } = Astro.props
+const { title, description, preload, canonical, image, keywords, jsonLd } = Astro.props
 const locale = getActiveLocale(Astro)
 ---
 
@@ -35,12 +37,14 @@ const locale = getActiveLocale(Astro)
 			canonical={canonical}
 			description={description}
 			image={image}
+			jsonLd={jsonLd}
+			keywords={keywords}
 			preload={preload}
 			title={title}
 		/>
 		<ClientRouter />
 	</head>
-	<body class="relative overflow-x-hidden">
+	<body class="relative w-full overflow-x-hidden">
 		<SpeedInsights />
 
 		<BackgroundGradient />
@@ -51,7 +55,7 @@ const locale = getActiveLocale(Astro)
 
 		<Header locale={locale} />
 
-		<main>
+		<main class="w-full min-w-0 overflow-x-hidden">
 			<slot />
 
 			<SectionContainer
@@ -70,7 +74,15 @@ const locale = getActiveLocale(Astro)
 		font-family: "Onest Variable", "Ubuntu", system-ui, sans-serif;
 		background-color: #020617;
 		scroll-behavior: smooth;
-		scrollbar-gutter: stable;
+		overflow-x: hidden;
+		max-width: 100%;
+		scrollbar-gutter: auto;
+	}
+
+	@media (min-width: 1024px) {
+		html {
+			scrollbar-gutter: stable;
+		}
 	}
 
 	code {

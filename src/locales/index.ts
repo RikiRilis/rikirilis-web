@@ -24,6 +24,11 @@ export const getI18N = ({ currentLocale }: { currentLocale?: string }) => {
 	return english
 }
 
+export const getLanguageLabel = (langCode: string | undefined, i18n: ReturnType<typeof getI18N>) => {
+	const locale = normalizeLocale(langCode)
+	return locale === LANG.SPANISH ? i18n.SPANISH : i18n.ENGLISH
+}
+
 type CookieSetParams = Parameters<AstroGlobal["cookies"]["set"]>
 type AstroCookies = {
 	get: AstroGlobal["cookies"]["get"]
