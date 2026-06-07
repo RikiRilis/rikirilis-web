@@ -12,13 +12,13 @@ const i18n = getI18N({ currentLocale: locale })
 const articles = (await getCollection("articles")).slice(0, 4)
 ---
 
-<div class="flex w-full max-w-4xl flex-col sm:w-11/12 md:w-8/12">
+<div class="flex w-full flex-col">
 	<MainTitle>
-		<Book class="size-8" />
+		<Book class="size-7 text-accent" />
 		{i18n.ARTICLES}
 	</MainTitle>
 
-	<div class="flex w-full flex-col gap-3">
+	<div class="grid w-full gap-3 sm:grid-cols-2">
 		{
 			articles.map((article) => {
 				const { data } = article
@@ -40,10 +40,9 @@ const articles = (await getCollection("articles")).slice(0, 4)
 
 	<a
 		href={resolveLocalizedHref("/articles", locale)}
-		class="mt-6 flex size-4 w-fit select-none gap-2 text-secondary transition-all active:text-primary sm:cursor-pointer sm:hover:gap-1 sm:hover:text-primary"
+		class="group mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-secondary/20 bg-secondary/5 px-5 py-2.5 text-sm font-medium text-secondary transition-all active:border-accent/30 active:text-accent sm:cursor-pointer sm:hover:border-accent/30 sm:hover:bg-accent/10 sm:hover:text-accent"
 	>
 		<span>{i18n.VIEW_ALL_ARTICLES}</span>
-
-		<UpArrow class="rotate-90" />
+		<UpArrow class="size-4 rotate-90 transition-transform group-hover:translate-x-0.5" />
 	</a>
 </div>

@@ -21,41 +21,46 @@ const articleHref = resolveLocalizedHref(`/articles/${pageTitle}`, locale)
 	href={articleHref}
 	data-story-id={pageTitle}
 	title={`${i18n.READ} → ${title}`}
-	class="group relative flex w-full items-center justify-between gap-4 overflow-hidden rounded-2xl border-primary/20 bg-gradient-to-br from-primary/10 to-primary/5 px-5 py-4 shadow-sm backdrop-blur-sm transition-all duration-300 ease-in-out active:scale-[0.98] active:shadow-lg sm:cursor-pointer sm:hover:scale-[0.98] sm:hover:border-accent/30 sm:hover:bg-gradient-to-br sm:hover:from-accent/15 sm:hover:to-primary/20 sm:hover:shadow-lg sm:hover:shadow-accent/5"
+	class="group relative flex h-full w-full flex-col justify-between gap-4 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-slate-800/30 via-slate-900/50 to-slate-950/60 p-5 shadow-lg shadow-black/20 backdrop-blur-md transition-all duration-300 ease-out active:scale-[0.98] sm:cursor-pointer sm:hover:border-accent/25 sm:hover:shadow-xl sm:hover:shadow-accent/5"
 >
-	<div class="flex-1 overflow-hidden">
-		<h1
-			class="text-base font-bold text-accent transition-colors duration-300 sm:text-lg sm:group-hover:text-accent/90"
+	<div
+		class="pointer-events-none absolute -right-8 -top-8 size-24 rounded-full bg-accent/5 transition-all duration-500 sm:group-hover:bg-accent/10"
+		aria-hidden="true"
+	>
+	</div>
+
+	<div class="relative flex-1 overflow-hidden">
+		<h3
+			class="line-clamp-2 text-base font-bold leading-snug text-slate-100 transition-colors duration-300 sm:group-hover:text-accent"
 			transition:name={`article-${pageTitle}-title`}
 		>
 			{title}
-		</h1>
+		</h3>
 
-		<h2
-			class="mt-1 overflow-hidden text-ellipsis whitespace-nowrap text-nowrap text-xs text-primary transition-colors duration-300 sm:text-sm sm:group-hover:text-primary/90"
+		<p
+			class="mt-2 line-clamp-2 text-sm leading-relaxed text-primary/80 transition-colors duration-300"
 			transition:name={`article-${pageTitle}-content`}
 		>
 			{description}
-		</h2>
-
-		<div class="mt-3 flex flex-col gap-1">
-			<p
-				class="text-[10px] italic text-secondary/80 transition-colors duration-300 sm:text-xs sm:group-hover:text-secondary"
-			>
-				{timestamp}
-			</p>
-
-			<p
-				class="text-[10px] italic text-secondary/80 transition-colors duration-300 sm:text-xs sm:group-hover:text-secondary"
-			>
-				{i18n.AUTHOR}: {author} | {i18n.LANGUAGE}: {lang}
-			</p>
-		</div>
+		</p>
 	</div>
 
-	<div class="flex-shrink-0">
-		<RightArrow
-			class="size-8 text-primary transition-all duration-300 sm:group-hover:translate-x-1 sm:group-hover:text-accent"
-		/>
+	<div class="relative flex items-end justify-between gap-3">
+		<div class="flex flex-col gap-0.5">
+			<p class="text-[10px] text-secondary/70 sm:text-xs">
+				{timestamp}
+			</p>
+			<p class="text-[10px] text-secondary/70 sm:text-xs">
+				{author} · {lang}
+			</p>
+		</div>
+
+		<div
+			class="flex size-8 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-all duration-300 sm:group-hover:border-accent/30 sm:group-hover:bg-accent/10"
+		>
+			<RightArrow
+				class="size-4 text-primary transition-all duration-300 sm:group-hover:translate-x-0.5 sm:group-hover:text-accent"
+			/>
+		</div>
 	</div>
 </a>

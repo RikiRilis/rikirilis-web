@@ -7,50 +7,57 @@ const { currentLocale } = Astro
 const i18n = getI18N({ currentLocale })
 ---
 
-<div class="flex w-full max-w-4xl flex-col sm:w-11/12 md:w-8/12">
+<div class="fade-up-anim flex w-full max-w-6xl flex-col sm:w-11/12">
 	<MainTitle>
-		<User class="size-8" />
+		<User class="size-7 text-accent" />
 		{i18n.ABOUT_ME}
 	</MainTitle>
 
 	<div
-		class="flex w-full flex-col-reverse items-center justify-between gap-6 lg:flex-row lg:items-center"
+		class="flex w-full flex-col-reverse items-center gap-8 overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-slate-800/30 via-slate-900/40 to-slate-950/60 p-6 shadow-xl shadow-black/20 backdrop-blur-md sm:p-8 lg:flex-row lg:items-center lg:gap-12"
 	>
-		<div class="flex flex-col gap-4 text-pretty font-ubuntu text-base sm:text-lg">
+		<div class="flex flex-1 flex-col gap-5 text-pretty font-ubuntu text-base leading-relaxed sm:text-lg">
 			<p class="text-primary">
 				{i18n.ABOUT_ME_TEXT_1}
-				<strong class="text-accent">RixelDev</strong>
+				<strong class="font-semibold text-accent">RixelDev</strong>
 				{i18n.ABOUT_ME_TEXT_2}
 			</p>
 
 			<p class="text-primary">
 				{i18n.ABOUT_ME_TEXT_3}
-				<strong class="text-accent">{i18n.ABOUT_ME_TEXT_4}</strong>, <strong class="text-accent"
-					>{i18n.ABOUT_ME_TEXT_5}</strong
+				<strong class="font-semibold text-accent">{i18n.ABOUT_ME_TEXT_4}</strong>, <strong
+					class="font-semibold text-accent">{i18n.ABOUT_ME_TEXT_5}</strong
 				>
 				{i18n.ABOUT_ME_TEXT_6}
 			</p>
 
 			<p class="text-primary">
 				{i18n.ABOUT_ME_TEXT_7}
-				'<strong class="text-accent">STOP!</strong>'
+				'<strong class="font-semibold text-accent">STOP!</strong>'
 				{i18n.ABOUT_ME_TEXT_8}
-				<strong class="text-accent">{i18n.ABOUT_ME_TEXT_9}</strong>. {i18n.ABOUT_ME_TEXT_10}
-				<strong class="text-accent">{i18n.ABOUT_ME_TEXT_11}</strong>, <strong class="text-accent"
-					>{i18n.ABOUT_ME_TEXT_12}</strong
+				<strong class="font-semibold text-accent">{i18n.ABOUT_ME_TEXT_9}</strong>. {i18n.ABOUT_ME_TEXT_10}
+				<strong class="font-semibold text-accent">{i18n.ABOUT_ME_TEXT_11}</strong>, <strong
+					class="font-semibold text-accent">{i18n.ABOUT_ME_TEXT_12}</strong
 				>
 				{i18n.ABOUT_ME_TEXT_13}
-				<strong class="text-accent">{i18n.ABOUT_ME_TEXT_14}</strong>
+				<strong class="font-semibold text-accent">{i18n.ABOUT_ME_TEXT_14}</strong>
 				{i18n.ABOUT_ME_TEXT_15}
 			</p>
 		</div>
 
-		<img
-			src="https://rixel.dev/images/about-image.webp"
-			width="720"
-			height="1280"
-			class="aspect-square h-full w-48 rotate-6 rounded-3xl bg-slate-800 object-cover p-1 shadow-lg shadow-black/60 transition-all ease-in-out hover:rotate-12 hover:shadow-2xl hover:shadow-accent/20 sm:hover:scale-105 md:w-64 md:p-2"
-			alt="About Rixel's image, Rikelvi Capellán"
-		/>
+		<div class="relative shrink-0">
+			<div
+				class="absolute -inset-3 rounded-3xl bg-gradient-to-br from-accent/20 to-main/20 opacity-50 blur-xl"
+				aria-hidden="true"
+			>
+			</div>
+			<img
+				src="https://rixel.dev/images/about-image.webp"
+				width="720"
+				height="1280"
+				class="relative aspect-square w-44 rounded-2xl border border-white/10 object-cover shadow-2xl shadow-black/40 transition-transform duration-500 sm:w-52 md:w-60 lg:w-64 sm:hover:scale-[1.02]"
+				alt="About Rixel's image, Rikelvi Capellán"
+			/>
+		</div>
 	</div>
 </div>
